@@ -9,5 +9,6 @@ solve = foldl (+) 0 . map toInt
 main = do line <- getLineOp
           case line of
                [] -> return ()
-               [x]  -> print (solve x)
+               [x]  -> do print (solve x)
+                          main
 
