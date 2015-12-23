@@ -40,3 +40,11 @@ getInts n = do x <- getInt
 
 getLineOp :: IO [String]
 getLineOp = getUntil (\ c -> c == '\n')
+
+
+getLines :: IO [String]
+getLines = do x <- getLineOp
+              case x of
+                  [] -> return []
+                  [y] -> do xs <- getLines
+                            return (y:xs)
