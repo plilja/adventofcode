@@ -19,3 +19,7 @@ nytprof.out
 *.bs
 /_eumm/
 .idea
+__pycache__/
+*.hi
+*.DS_Store
+*.iml
