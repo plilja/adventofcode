@@ -8,11 +8,15 @@ def md5(v):
     return m.hexdigest()
 
 
-for inp in map(str.strip, sys.stdin.readlines()):
-    i = 0
-    while True:
-        if md5(inp + str(i))[:5] == '00000':
-            break
-        else:
-            i += 1
-    print(i)
+def solve(n, input):
+    for inp in input:
+        i = 0
+        while True:
+            if md5(inp + str(i))[:n] == (n * '0'):
+                break
+            else:
+                i += 1
+        print(i)
+
+n = int(sys.argv[1])
+solve(n, map(str.strip, sys.stdin.readlines()))
