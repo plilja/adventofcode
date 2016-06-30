@@ -1,5 +1,6 @@
 import sys
 from collections import defaultdict
+from copy import copy
 
 def read_input():
     g = defaultdict(dict)
@@ -13,7 +14,7 @@ def read_input():
     return g
 
 
-def solve(g):
+def step1(g):
     def f(people, seating = []):
         if len(people) == 0:
             r = 0
@@ -28,4 +29,16 @@ def solve(g):
 
     return f(set([p for p in g.keys()]))
 
-print(solve(read_input()))
+
+def step2(g):
+    g_ = copy(g)
+    for p in g.keys():
+        g_[p]['me'] = 0
+        g_['me'][p] = 0
+    return step1(g_)
+
+
+g = read_input()
+print(step1(g))
+print(step2(g))
+
