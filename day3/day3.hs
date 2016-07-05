@@ -1,5 +1,6 @@
 import Kattio
 import Data.Set
+import Control.Monad
 
 type Point = (Int, Int)
 
@@ -20,3 +21,4 @@ main = do lineOp <- getLineOp
              [] -> return ()
              [line] -> do print $ solve line (0, 0) (singleton (0, 0))
                           main
+
