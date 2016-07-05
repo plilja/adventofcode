@@ -1,5 +1,4 @@
-import Kattio
-import Data.Set
+import qualified Data.Set as S
 import Control.Monad
 
 type Point = (Int, Int)
@@ -9,16 +8,13 @@ direction '<' = (-1, 0)
 direction '>' = (1, 0)
 direction 'v' = (0, -1)
 
-solve :: String -> Point -> Set Point -> Int
-solve [] _ visited = size visited
+solve :: String -> Point -> S.Set Point -> Int
+solve [] _ visited = S.size visited
 solve (z:zs) (x,y) visited = let dx = fst $ direction z
                                  dy = snd $ direction z
                                  nextPoint = (x + dx, y + dy)
-                             in solve zs nextPoint (insert nextPoint visited)
+                             in solve zs nextPoint (S.insert nextPoint visited)
 
-main = do lineOp <- getLineOp
-          case lineOp of
-             [] -> return ()
-             [line] -> do print $ solve line (0, 0) (singleton (0, 0))
-                          main
+main = do lines <- liftM lines getContents
+          mapM_ print $ map (\l -> solve l (0, 0) (S.singleton (0, 0))) lines
 
