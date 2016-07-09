@@ -77,12 +77,16 @@ def solve(boss):
 
         return hp > 0
 
-    ans = float('inf')
+    ans1 = float('inf')
+    ans2 = -float('inf')
     for p in picks():
         c = cost(p[0], p[1], p[2])
-        if wins(boss, p[0], p[1], p[2]) and c < ans:
-            ans = c
-    return ans
+        if wins(boss, p[0], p[1], p[2]):
+            ans1 = min(ans1, c)
+        else:
+            ans2 = max(ans2, c)
+
+    return (ans1, ans2)
 
 print(solve(read_boss()))
 
