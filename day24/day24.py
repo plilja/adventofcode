@@ -3,13 +3,17 @@ from math import *
 
 INF = float('inf')
 
-def solve(packages):
+def solve(packages, groups):
     packages.sort()
     n = len(packages)
-    target = floor(sum(packages) / 3)
-    def g(x, i, used):
+    target = floor(sum(packages) / groups)
+
+    def g(x, i, used, gr):
         if x == 0:
-            return True
+            if gr == 1:
+                return True
+            else:
+                return g(target, 0, used, gr - 1)
         if x < 0:
             return False
         for j in range(i, n):
@@ -18,13 +22,16 @@ def solve(packages):
             p = packages[j]
             if p > x:
                 break
-            if g(x - p, j + 1, used):
+            used.add(j)
+            t = g(x - p, j + 1, used, gr)
+            used.remove(j)
+            if t:
                 return True
         return False
 
     def f(x, c, i, used):
         if c == 0:
-            if x == 0 and g(target, 0, used):
+            if x == 0 and g(target, 0, used, groups - 1):
                 return (0, 1)
             else:
                 return (INF, INF)
@@ -37,9 +44,9 @@ def solve(packages):
             p = packages[j]
             if p > x:
                 break
-            used.add(p)
+            used.add(j)
             (a, b) = f(x - p, c - 1, j + 1, used)
-            used.remove(p)
+            used.remove(j)
             a += 1
             b *= p
             if a < ans or (a == ans and b < ent):
@@ -47,7 +54,7 @@ def solve(packages):
                 ent = b
         return (ans, ent)
 
-    for c in range(1, floor(n / 3) + 1):
+    for c in range(1, floor(n / groups) + 1):
         s = set()
         (a, b) = f(target, c, 0, s)
         if a < INF:
@@ -56,4 +63,5 @@ def solve(packages):
     return INF
 
 packages = list(map(int, sys.stdin.readlines()))
-print(solve(packages))
+print(solve(packages, 3))
+print(solve(packages, 4))
