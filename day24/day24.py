@@ -32,12 +32,11 @@ def solve(packages, groups):
     def f(x, c, i, used):
         if c == 0:
             if x == 0 and g(target, 0, used, groups - 1):
-                return (0, 1)
+                return 1
             else:
-                return (INF, INF)
+                return INF
 
         ans = INF
-        ent = INF
         for j in range(i, n):
             if j in used:
                 continue
@@ -45,20 +44,16 @@ def solve(packages, groups):
             if p > x:
                 break
             used.add(j)
-            (a, b) = f(x - p, c - 1, j + 1, used)
+            t = f(x - p, c - 1, j + 1, used)
+            ans = min(ans, p * t)
             used.remove(j)
-            a += 1
-            b *= p
-            if a < ans or (a == ans and b < ent):
-                ans = a
-                ent = b
-        return (ans, ent)
+        return ans
 
     for c in range(1, floor(n / groups) + 1):
         s = set()
-        (a, b) = f(target, c, 0, s)
+        a = f(target, c, 0, s)
         if a < INF:
-            return b
+            return a
 
     return INF
 
