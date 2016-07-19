@@ -4,12 +4,10 @@ from collections import defaultdict
 wires = {}
 computed = {}
 
-
 for i in range(0, 65536):
     def f(j):
         return lambda : j
     wires[str(i)] = f(i)
-
 
 for line in sys.stdin.readlines():
     def cache(key, f):
@@ -42,4 +40,10 @@ for line in sys.stdin.readlines():
     
     parse(line.split())
 
-print(wires[sys.argv[1]]())
+step1 = wires['a']()
+computed.clear()
+wires['b'] = lambda : step1
+step2 = wires['a']()
+
+print(step1)
+print(step2)
