@@ -9,7 +9,7 @@ for s in sys.stdin.readlines():
     g[to][fr] = int(dist)
 
 
-def h():
+def h(factor):
     INF = 1
     for a in g.values():
         for v in a.values():
@@ -21,7 +21,7 @@ def h():
         r = INF
         for j in g[i].keys():
             if j not in v:
-                r = min(r, f(j, v | {j}) + g[i][j])
+                r = min(r, f(j, v | {j}) + factor * g[i][j])
         return r
 
     r = INF
@@ -31,4 +31,5 @@ def h():
     return r
 
 
-print(h())
+print(h(1))
+print(-h(-1))
