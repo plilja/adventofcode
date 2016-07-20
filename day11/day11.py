@@ -36,4 +36,7 @@ def next_passwd(p):
         if is_valid(p):
             return p
 
-print(next_passwd(input()))
+step1 = next_passwd(input())
+print(step1)
+step2 = next_passwd(step1)
+print(step2)
