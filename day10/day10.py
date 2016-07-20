@@ -23,4 +23,6 @@ def f(s, i):
             t += str(len(g)) + g[0]
         return f(t, i - 1)
 
-print(len(f(input(), 40)))
+inp = input()
+print(len(f(inp, 40)))
+print(len(f(inp, 50)))
