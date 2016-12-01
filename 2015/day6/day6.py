@@ -33,12 +33,6 @@ def solve(lines, toggle, turn_on, turn_off):
             ans += grid[y][x]
     return ans
 
-
-step = int(sys.argv[1])
 lines = sys.stdin.readlines()
-if step == 1:
-    print(solve(lines, lambda x : (x + 1) % 2, lambda x : 1, lambda x : 0))
-elif step == 2:
-    print(solve(lines, lambda x : x + 2, lambda x : x + 1, lambda x : max(0, x - 1)))
-else:
-    raise ValueError()
+print(solve(lines, lambda x : (x + 1) % 2, lambda x : 1, lambda x : 0))
+print(solve(lines, lambda x : x + 2, lambda x : x + 1, lambda x : max(0, x - 1)))
