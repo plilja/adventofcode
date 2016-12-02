@@ -1,25 +1,41 @@
 import sys
 
-keypad = [[1, 2, 3],
-          [4, 5, 6],
-          [7, 8, 9]]
+def step1(inp):
+    keypad = ['-----',
+              '-123-',
+              '-456-',
+              '-789-',
+              '-----']
+    x, y = 2, 2
+    return solve(inp, keypad, x, y)
 
-x, y = 1, 1
+def step2(inp):
+    keypad = ['-------',
+              '---1---',
+              '--234--',
+              '-56789-',
+              '--ABC--',
+              '---D---',
+              '-------']
+    x, y = 1, 3
+    return solve(inp, keypad, x, y)
 
-code = ''
+def solve(inp, keypad, start_x, start_y):
+    x, y = start_x, start_y
+    code = ''
+    directions = {'U' : (0, -1),
+                  'D' : (0, 1),
+                  'L' : (-1, 0),
+                  'R' : (1, 0)}
+    for line in map(str.strip, inp):
+        for c in line:
+            dx, dy = directions[c]
+            if keypad[y + dy][x + dx] != '-':
+                x += dx
+                y += dy
+        code += keypad[y][x]
+    return code
 
-for line in map(str.strip, sys.stdin.readlines()):
-    for c in line:
-        if c == 'U':
-            y = max(0, y - 1)
-        elif c == 'D':
-            y = min(2, y + 1)
-        elif c == 'L':
-            x = max(0, x - 1)
-        elif c == 'R':
-            x = min(2, x + 1)
-        else:
-            raise ValueError('Illegal direction ' + c)
-    code += str(keypad[y][x])
-
-print(code)
+inp = sys.stdin.readlines()
+print(step1(inp))
+print(step2(inp))
