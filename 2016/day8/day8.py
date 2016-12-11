@@ -20,7 +20,7 @@ def rotate_row(grid, y, n):
 def rotate_column(grid, x, n):
     rotate(lambda i: grid[i][x], lambda i, v: operator.setitem(grid[i], x, v), n, len(grid))
 
-def step1(inp):
+def get_grid(inp):
     grid = [[False for i in range(0, 50)] for j in range(0, 6)]
     for line in inp:
         instructions = line.split()
@@ -37,7 +37,10 @@ def step1(inp):
             y = int(instructions[2][2:])
             n = int(instructions[4])
             rotate_column(grid, y, n)
+    return grid
 
+def step1(inp):
+    grid = get_grid(inp)
     ans = 0
     for row in grid:
         for cell in row:
@@ -45,5 +48,14 @@ def step1(inp):
                 ans += 1
     return ans
 
+def step2(inp):
+    grid = get_grid(inp)
+    for row in grid:
+        for cell in row:
+            c = '#' if cell else ' '
+            print(c, end='')
+        print()
+
 inp = sys.stdin.readlines()
 print(step1(inp))
+step2(inp)
