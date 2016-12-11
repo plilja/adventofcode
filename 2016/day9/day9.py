@@ -1,21 +1,37 @@
 import re
 import sys
+from collections import namedtuple
 
-p = re.compile('\(\d+x\d+\)')
+Marker = namedtuple('Marker', 'chars repeat')
 
-def step1(inp):
-    def decompress(s):
-        m = p.search(s)
-        if not m:
-            return len(s)
-        else:
-            i = m.start()
-            j = m.end()
-            marker = s[i+1:j-1]
-            [chars, repeat] = list(map(int, marker.split('x')))
-            return i + chars * repeat + decompress(s[j + chars:])
+marker_re = re.compile('\(\d+x\d+\)')
 
-    return sum([decompress(s) for s in inp])
+def parse_marker(marker_text):
+    without_parens = marker_text[1:-1]
+    [chars, repeat] = list(map(int, without_parens.split('x')))
+    return Marker(chars, repeat)
 
-inp = list(map(str.strip, sys.stdin.readlines()))
+def step1(s):
+    m = marker_re.search(s)
+    if not m:
+        return len(s)
+    else:
+        i = m.start()
+        j = m.end()
+        marker = parse_marker(s[i:j])
+        return i + marker.chars * marker.repeat + step1(s[j + marker.chars:])
+
+def step2(s):
+    m = marker_re.search(s)
+    if not m:
+        return len(s)
+    else:
+        i = m.start()
+        j = m.end()
+        marker = parse_marker(s[i:j])
+        sub = s[j:j + marker.chars]
+        return i + step2(sub) * marker.repeat + step2(s[j + marker.chars:])
+
+inp = input().strip()
 print(step1(inp))
+print(step2(inp))
