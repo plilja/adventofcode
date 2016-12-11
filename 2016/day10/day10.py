@@ -1,9 +1,10 @@
 import sys
 from collections import *
 
-def step1(inp):
+def solve(inp):
     value_to_bot = {}
     bot_to_values = defaultdict(set)
+    outputs = defaultdict(list)
     giveaways = []
     Giveaway = namedtuple('Giveaway', 'bot low_to low_type high_to high_type')
 
@@ -23,7 +24,9 @@ def step1(inp):
             high_to = int(instruction[11])
             giveaways+= [(bot, Giveaway(bot, low_to, low_type, high_to, high_type))]
 
-    while giveaways and value_to_bot[61] != value_to_bot[17]:
+    while giveaways:
+        if 61 in value_to_bot and 17 in value_to_bot and value_to_bot[61] == value_to_bot[17]:
+            step1 = value_to_bot[61]
         for i in range(0, len(giveaways)):
             (bot, giveaway) = giveaways[i]
             if len(bot_to_values[bot]) == 2:
@@ -35,15 +38,22 @@ def step1(inp):
                 if giveaway.low_type == 'bot':
                     bot_to_values[giveaway.low_to] |= {low}
                     value_to_bot[low] = giveaway.low_to
+                else:
+                    outputs[giveaway.low_to] += [low]
                 if giveaway.high_type == 'bot':
                     bot_to_values[giveaway.high_to] |= {high}
                     value_to_bot[high] = giveaway.high_to
+                else:
+                    outputs[giveaway.high_to] += [high]
 
                 giveaways = giveaways[:i] + giveaways[i + 1:]
                 break
 
-    assert value_to_bot[61] == value_to_bot[17]
-    return value_to_bot[61]
+    step2 = outputs[0][0] * outputs[1][0] * outputs[2][0]
+    return (step1, step2)
+
 
 inp = sys.stdin.readlines()
-print(step1(inp))
+(step1, step2) = solve(inp)
+print(step1)
+print(step2)
