@@ -3,8 +3,9 @@ from collections import defaultdict
 
 DIM = 100
 
+
 def new_grid():
-    return defaultdict(lambda : defaultdict(lambda : 0))
+    return defaultdict(lambda: defaultdict(lambda: 0))
 
 
 def solve(inp, exceptions):
@@ -27,14 +28,12 @@ def solve(inp, exceptions):
                         grid_[i][j] = 1 if neighbours == 3 else 0
             return step(n - 1, grid_)
 
-
     def count_on(grid):
         r = 0
         for i in range(0, DIM):
             for j in range(0, DIM):
                 r += grid[i][j]
         return r
-
 
     return count_on(step(100, inp))
 
@@ -46,6 +45,7 @@ def read_input():
         for j in range(0, DIM):
             grid[i][j] = 0 if raw[i][j] == '.' else 1
     return grid
+
 
 grid = read_input()
 print(solve(grid, set()))

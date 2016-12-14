@@ -1,15 +1,18 @@
 import sys
 
+
 class Boss:
     def __init__(self, hp, damage):
         self.hp = hp
         self.damage = damage
+
 
 class Player:
     def __init__(self, hp, mana, armor):
         self.hp = hp
         self.mana = mana
         self.armor = armor
+
 
 class Effect:
     def __init__(self, f, dur):
@@ -68,7 +71,7 @@ def recharge(player, boss):
 
 
 def spells():
-    return [('magic_missile', 53, lambda: Effect(magic_missile, 1)), 
+    return [('magic_missile', 53, lambda: Effect(magic_missile, 1)),
             ('drain', 73, lambda: Effect(drain, 1)),
             ('shield', 113, lambda: Shield(7)),
             ('poison', 173, lambda: Effect(poison, 6)),
@@ -84,7 +87,6 @@ def solve(boss, turn_cost):
                 act_spells_[k] = s_
         return (player, boss, act_spells_)
 
-
     def boss_turn(player, boss, avail_spells, act_spells, best):
         player, boss, act_spells = apply_spells(player, boss, avail_spells, act_spells)
         if boss.hp <= 0:
@@ -96,7 +98,6 @@ def solve(boss, turn_cost):
             else:
                 return player_turn(player, boss, avail_spells, act_spells, best)
 
-
     def player_turn(player, boss, avail_spells, act_spells, best):
         player = inflict_damage(player, turn_cost)
         if player.hp <= 0:
@@ -105,7 +106,7 @@ def solve(boss, turn_cost):
         if boss.hp <= 0:
             return 0
 
-        ans = best 
+        ans = best
         for name, cost, factory in avail_spells:
             if cost <= player.mana and name not in act_spells and cost < best:
                 p = Player(player.hp, player.mana - cost, player.armor)

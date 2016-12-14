@@ -1,8 +1,9 @@
-from collections import defaultdict
 import sys
+from collections import defaultdict
+
 
 def solve(lines, toggle, turn_on, turn_off):
-    grid = defaultdict(lambda : defaultdict(int))
+    grid = defaultdict(lambda: defaultdict(int))
 
     def transform(y1, x1, y2, x2, f):
         for y in range(y1, y2 + 1):
@@ -33,6 +34,7 @@ def solve(lines, toggle, turn_on, turn_off):
             ans += grid[y][x]
     return ans
 
+
 lines = sys.stdin.readlines()
-print(solve(lines, lambda x : (x + 1) % 2, lambda x : 1, lambda x : 0))
-print(solve(lines, lambda x : x + 2, lambda x : x + 1, lambda x : max(0, x - 1)))
+print(solve(lines, lambda x: (x + 1) % 2, lambda x: 1, lambda x: 0))
+print(solve(lines, lambda x: x + 2, lambda x: x + 1, lambda x: max(0, x - 1)))

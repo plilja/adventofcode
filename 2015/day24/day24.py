@@ -1,7 +1,7 @@
-import sys
 from math import *
 
 INF = float('inf')
+
 
 def solve(packages, groups):
     packages.sort()
@@ -56,6 +56,7 @@ def solve(packages, groups):
             return a
 
     return INF
+
 
 packages = list(map(int, sys.stdin.readlines()))
 print(solve(packages, 3))

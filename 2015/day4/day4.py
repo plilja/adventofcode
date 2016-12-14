@@ -18,5 +18,6 @@ def solve(n, input):
                 i += 1
         print(i)
 
+
 n = 5
 solve(n, map(str.strip, sys.stdin.readlines()))

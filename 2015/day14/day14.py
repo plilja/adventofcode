@@ -1,12 +1,11 @@
-import sys
 from math import *
 
 TIME = 2503
 
 reindeers = []
 for i in sys.stdin.readlines():
-    [reindeer, can, fly, speed, unit, _for1, num1, seconds1, 
-            but, then, must, rest, _for2, num2, seconds2] = i.split()
+    [reindeer, can, fly, speed, unit, _for1, num1, seconds1,
+     but, then, must, rest, _for2, num2, seconds2] = i.split()
     reindeers += [(int(speed), int(num1), int(num2))]
 
 
@@ -39,6 +38,7 @@ def solve():
     winner_by_dist = max(dists)
     winner_by_points = max(points)
     return (winner_by_dist, winner_by_points)
+
 
 step1, step2 = solve()
 print(step1)

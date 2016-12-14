@@ -9,5 +9,6 @@ def solve(row, col):
             prev = t
         i += 1
 
+
 [row, col] = list(map(int, input().split()))
 print(solve(row, col))

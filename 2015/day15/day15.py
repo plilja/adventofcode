@@ -1,5 +1,6 @@
 import sys
 
+
 def read_input():
     ings = []
     for s in sys.stdin.readlines():
@@ -10,7 +11,7 @@ def read_input():
 
 
 def solve(ings, pred):
-    def f(ings, rem, recipe = []):
+    def f(ings, rem, recipe=[]):
         if ings == []:
             res = [0, 0, 0, 0, 0]
             for r in recipe:
@@ -33,12 +34,13 @@ def solve(ings, pred):
         else:
             poss = range(0, rem + 1)
         for i in poss:
-            tmp = list(map(lambda x : i * x, ings[0]))
+            tmp = list(map(lambda x: i * x, ings[0]))
             best = max(best, f(ings[1:], rem - i, recipe + [tmp]))
         return best
 
     return f(ings, 100, )
 
+
 ings = read_input()
-print(solve(ings, lambda calories : True))
-print(solve(ings, lambda calories : calories == 500))
+print(solve(ings, lambda calories: True))
+print(solve(ings, lambda calories: calories == 500))

@@ -1,5 +1,6 @@
-import sys
 import re
+import sys
+
 
 def step1(lines):
     escs = [re.compile('\\\\\\\\'), re.compile('\\\\x[0-9a-f][0-9a-f]'), re.compile('\\\\"')]
@@ -11,6 +12,7 @@ def step1(lines):
             escaped = esc.sub('_', escaped)
         ans -= len(escaped)
     return ans
+
 
 def step2(lines):
     escs = ['"', "\\"]

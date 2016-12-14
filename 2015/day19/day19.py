@@ -1,6 +1,3 @@
-import time
-
-
 INF = float('inf')
 
 
@@ -34,7 +31,7 @@ def step1(transitions, molecule):
 
 # this is sort of cheating but there is no way that we can try
 # all possible paths in a reasonable amount of time
-def dfs(transitions, curr, v = {}):
+def dfs(transitions, curr, v={}):
     if curr == 'e':
         return 0
     if curr in v:
@@ -51,7 +48,6 @@ def dfs(transitions, curr, v = {}):
                 return sub + 1
             i = curr.find(to, i + 1)
     return INF
-
 
 
 g = read_transitions()

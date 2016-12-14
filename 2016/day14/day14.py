@@ -1,6 +1,6 @@
 import hashlib
-from collections import defaultdict
 import sys
+from collections import defaultdict
 
 
 def step1(salt):
@@ -29,7 +29,7 @@ def solve(salt, hash_function):
             for j in consecutive3_chr[c]:
                 keys |= {j}
                 max_key = max(max_key, j)
-                
+
         cs = consecutive(h, 3)
         if cs:
             consecutive3 += [(i, cs[0])]
@@ -41,7 +41,6 @@ def solve(salt, hash_function):
         i += 1
 
     return sorted(list(keys))[63]
-
 
 
 def consecutive(s, n):

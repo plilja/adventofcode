@@ -2,6 +2,7 @@ import sys
 from collections import defaultdict
 from copy import copy
 
+
 def read_input():
     g = defaultdict(dict)
     for s in sys.stdin.readlines():
@@ -15,7 +16,7 @@ def read_input():
 
 
 def step1(g):
-    def f(people, seating = []):
+    def f(people, seating=[]):
         if len(people) == 0:
             r = 0
             for (a, b) in zip(seating, [seating[-1]] + seating[:-1]):
@@ -41,4 +42,3 @@ def step2(g):
 g = read_input()
 print(step1(g))
 print(step2(g))
-

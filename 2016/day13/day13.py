@@ -1,4 +1,3 @@
-
 def step1(n, target_x, target_y):
     queue = [(1, 1, 0)]
     visited = {(1, 1)}
@@ -38,13 +37,13 @@ def step2(n):
 
 
 def neighbours(n, x, y):
-    for x, y in [(x+1, y), (x, y+1), (x-1, y), (x, y-1)]:
+    for x, y in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]:
         if x >= 0 and y >= 0 and is_open(n, x, y):
             yield (x, y)
 
 
 def is_open(n, x, y):
-    k = x*x + 3*x + 2*x*y + y + y*y + n
+    k = x * x + 3 * x + 2 * x * y + y + y * y + n
     count = 0
     while k != 0:
         count += k & 1

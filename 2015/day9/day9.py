@@ -1,7 +1,6 @@
 import sys
 from collections import defaultdict
 
-
 g = defaultdict(dict)
 for s in sys.stdin.readlines():
     [fr, foo, to, eq, dist] = s.split()
@@ -15,7 +14,7 @@ def h(factor):
         for v in a.values():
             INF += v
 
-    def f(i, v = set()):
+    def f(i, v=set()):
         if len(v) == len(g):
             return 0
         r = INF

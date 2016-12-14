@@ -20,6 +20,7 @@ def _sum(j, dict_predicate):
     else:
         return int_or_zero(j)
 
+
 j = json.loads(input())
-print(_sum(j, lambda d : d))
-print(_sum(j, lambda d : not ('red' in d.values())))
+print(_sum(j, lambda d: d))
+print(_sum(j, lambda d: not ('red' in d.values())))

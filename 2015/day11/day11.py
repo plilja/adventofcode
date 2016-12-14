@@ -1,5 +1,5 @@
-
 M = ord('z') - ord('a') + 1
+
 
 def next_passwd(p):
     def is_valid(p):
@@ -16,13 +16,12 @@ def next_passwd(p):
 
         straight = False
         for i in range(0, len(p) - 2):
-            if ord(p[i]) + 1== ord(p[i + 1]) and ord(p[i + 1]) + 1== ord(p[i + 2]):
+            if ord(p[i]) + 1 == ord(p[i + 1]) and ord(p[i + 1]) + 1 == ord(p[i + 2]):
                 straight = True
         if not straight:
             return False
 
         return True
-
 
     def inc(p):
         c = p[-1]
@@ -35,6 +34,7 @@ def next_passwd(p):
         p = inc(p)
         if is_valid(p):
             return p
+
 
 step1 = next_passwd(input())
 print(step1)
