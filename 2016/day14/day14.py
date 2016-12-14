@@ -1,15 +1,24 @@
 import hashlib
 from collections import defaultdict
+import sys
 
 
 def step1(salt):
+    return solve(salt, md5)
+
+
+def step2(salt):
+    return solve(salt, stretched_hash)
+
+
+def solve(salt, hash_function):
     i = 0
     keys = set()
     max_key = -1
     consecutive3 = []
     consecutive3_chr = defaultdict(list)
     while True:
-        h = md5(salt + str(i))
+        h = hash_function(salt + str(i))
 
         while consecutive3 and i - consecutive3[0][0] > 1000:
             (j, c) = consecutive3[0]
@@ -34,6 +43,7 @@ def step1(salt):
     return sorted(list(keys))[63]
 
 
+
 def consecutive(s, n):
     count = 0
     p = chr(ord(s[0]) + 1)
@@ -48,6 +58,13 @@ def consecutive(s, n):
     return r
 
 
+def stretched_hash(s):
+    r = s
+    for _ in range(0, 2017):
+        r = md5(r)
+    return r
+
+
 def md5(v):
     m = hashlib.md5()
     m.update(v.encode('utf-8'))
@@ -56,3 +73,5 @@ def md5(v):
 
 salt = input().strip()
 print(step1(salt))
+print('This one is slow...', file=sys.stderr)
+print(step2(salt))
