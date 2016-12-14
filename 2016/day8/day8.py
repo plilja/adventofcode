@@ -61,8 +61,9 @@ def step2(inp):
         for cell in row:
             c = '#' if cell else ' '
             print(c, end='')
-            print()
+        print()
 
-    inp = sys.stdin.readlines()
-    print(step1(inp))
-    step2(inp)
+
+inp = sys.stdin.readlines()
+print(step1(inp))
+step2(inp)

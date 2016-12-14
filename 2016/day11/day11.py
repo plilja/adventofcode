@@ -1,5 +1,6 @@
 import re
 from math import *
+import sys
 
 microchip_re = re.compile('\w+-compatible microchip')
 generator_re = re.compile('\w+ generator')
