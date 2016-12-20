@@ -1,4 +1,4 @@
-def step1(n, inp):
+def solve(n, inp):
     def dragon_curve(s):
         r = s + '0'
         for c in reversed(s):
@@ -27,4 +27,5 @@ def step1(n, inp):
 
 
 [n, inp] = input().split()
-print(step1(int(n), inp))
+print(solve(272, inp))
+print(solve(35651584, inp))
