@@ -1,29 +1,36 @@
 import hashlib
-from queue import PriorityQueue
 
 
-def step1(passcode):
+def solve(passcode):
     def open(c):
         return c >= 'b' and c <= 'f'
 
-    pq = PriorityQueue()
-    pq.put((0, 0, 0, passcode))
-    while not pq.empty():
-        (dist, x, y, path) = pq.get()
+    q = []
+    q += [(0, 0, 0, '')]
+    step1 = float('inf')
+    step1_path = 'IMPOSSIBLE'
+    step2 = -1
+    while q:
+        (dist, x, y, path) = q[0]
+        q = q[1:]
         if x == 3 and y == 3:
-            return path[len(passcode):]
+            if dist < step1:
+                step1 = dist
+                step1_path = path
+            step2 = max(step2, dist)
+            continue
 
-        h = md5(path)
+        h = md5(passcode + path)
         if y > 0 and open(h[0]):
-            pq.put((dist + 1, x, y - 1, path + 'U'))
+            q += [(dist + 1, x, y - 1, path + 'U')]
         if y < 3 and open(h[1]):
-            pq.put((dist + 1, x, y + 1, path + 'D'))
+            q += [(dist + 1, x, y + 1, path + 'D')]
         if x > 0 and open(h[2]):
-            pq.put((dist + 1, x - 1, y, path + 'L'))
+            q += [(dist + 1, x - 1, y, path + 'L')]
         if x < 3 and open(h[3]):
-            pq.put((dist + 1, x + 1, y, path + 'R'))
+            q += [(dist + 1, x + 1, y, path + 'R')]
 
-    return 'IMPOSSIBLE'
+    return (step1_path, step2)
 
 
 def md5(v):
@@ -33,4 +40,6 @@ def md5(v):
 
 
 passcode = input()
-print(step1(passcode))
+step1, step2 = solve(passcode)
+print(step1)
+print(step2)
