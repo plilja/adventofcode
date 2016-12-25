@@ -3,9 +3,20 @@ from collections import *
 
 
 def step1(grid):
+    return tsp(grid, False)
+
+
+def step2(grid):
+    return tsp(grid, True)
+
+
+def tsp(grid, return_to_start):
     def solve(grid, current, dists, unvisited, cache = {}):
         if len(unvisited) == 0:
-            return 0
+            if return_to_start:
+                return dists[current][0]
+            else:
+                return 0
         if (current, unvisited) in cache:
             return cache[(current, unvisited)]
         r = float('inf')
@@ -55,3 +66,4 @@ def step1(grid):
 
 grid = sys.stdin.readlines()
 print(step1(grid))
+print(step2(grid))
