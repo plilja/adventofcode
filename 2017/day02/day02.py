@@ -10,6 +10,16 @@ def step1(inp):
     return ans
 
 
+def step2(inp):
+    ans = 0
+    for row in inp:
+        for a in row:
+            for b in row:
+                if a != b and a % b == 0:
+                    ans += a // b
+    return ans
+
+
 def read_input():
     ans = []
     for row in sys.stdin.readlines():
@@ -18,3 +28,4 @@ def read_input():
 
 inp = read_input()
 print(step1(inp))
+print(step2(inp))
