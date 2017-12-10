@@ -1,9 +1,23 @@
-
 def step1(inp):
     ls, s = single_group(strip_comments(inp))
     if s != '':
         raise ValueError('Garbage at end of top level group')
     return score(ls, 1)
+
+
+def step2(inp):
+    r = 0
+    garbage = False
+    s = strip_comments(inp)
+    for c in s:
+        if not garbage and c == '<':
+            garbage = True
+            continue
+        if c == '>':
+            garbage = False
+        if garbage:
+            r += 1
+    return r
 
 
 def score(ls, level):
@@ -72,3 +86,4 @@ def single_char(c, s):
 
 inp = input()
 print(step1(inp))
+print(step2(inp))
