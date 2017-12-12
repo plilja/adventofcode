@@ -3,16 +3,30 @@ import sys
 
 def step1(g):
     visited = set()
-    q = [0]
+    visit(g, 0, visited)
+    return len(visited)
+
+
+def step2(g):
+    visited = set()
+    groups = 0
+    for v in g.keys():
+        if v not in visited:
+            groups += 1
+            visit(g, v, visited)
+    return groups
+
+
+def visit(g, start, visited):
+    q = [start]
     while q:
         v = q[0]
         q = q[1:]
         if v in visited:
             continue
-        visited |= {v}
+        visited.add(v)
         for v2 in g[v]:
             q += [v2]
-    return len(visited)
 
 
 def read_input():
@@ -22,7 +36,7 @@ def read_input():
         res[int(program)] = [int(i) for i in communicates_with.split(',')]
     return res
 
+
 g = read_input()
 print(step1(g))
-
-
+print(step2(g))
