@@ -19,6 +19,21 @@ def step1(programs, moves):
     return programs
 
 
+def step2(programs, moves):
+    m = {}
+    i = 0
+    while i < 1000000000:
+        m[programs] = i
+        programs = step1(programs, moves)
+        i += 1
+        if programs in m:
+            d = i - m[programs]
+            while i + d < 1000000000:
+                i += d
+    return programs
+
+
 programs = 'abcdefghijklmnop'
 moves = input().strip().split(',')
 print(step1(programs, moves))
+print(step2(programs, moves))
