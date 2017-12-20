@@ -1,11 +1,20 @@
 import sys
 
 def step1(grid):
+    return run(grid)[0]
+
+
+def step2(grid):
+    return run(grid)[1]
+
+
+def run(grid):
     start_x = grid[0].index('|')
     start_y = 0
     q = [(start_x, start_y, 0, 1)]
     v = set()
-    ans = ''
+    letters = ''
+    steps = 0
     while q:
         x, y, dx, dy = q[0]
         q = q[1:]
@@ -15,10 +24,11 @@ def step1(grid):
         c = grid[y][x]
         if c == ' ':
             break
+        steps += 1
         if c != '+':
             q += [(x + dx, y + dy, dx, dy)]
             if 'A' <= c <= 'Z':
-                ans += c
+                letters += c
         else:
             pipe = '|' if dx == 0 else '-'
             dx, dy = dy, dx
@@ -32,8 +42,9 @@ def step1(grid):
                 assert grid[y - dy][x - dx] not in (pipe, ' ')
                 q += [(x - dx, y - dy, -dx, -dy)]
 
-    return ans
+    return letters, steps
 
 
 inp = sys.stdin.readlines()
 print(step1(inp))
+print(step2(inp))
