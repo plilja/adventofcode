@@ -1,6 +1,6 @@
 import sys
 import re
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 
 Particle = namedtuple('Particle', 'position velocity acceleration')
 
@@ -20,6 +20,32 @@ def step1(particles):
     return min_idx
 
 
+def step2(particles):
+    particles_map = defaultdict(list)
+    for particle in particles:
+        particles_map[particle.position] += [particle]
+
+    for i in range(0, 1000):
+        new_particles_map = defaultdict(list)
+        for pos in particles_map.keys():
+            particles_at_pos = particles_map[pos]
+            if len(particles_at_pos) > 1:
+                continue # collision
+            p = particles_at_pos[0]
+            x, y, z = p.position
+            dx, dy, dz = p.velocity
+            dax, day, daz = p.acceleration
+            p2 = Particle(
+                    (x + dx + dax, y + dy + day, z + dz + daz), 
+                    (dx + dax, dy + day, dz + daz),
+                    p.acceleration
+                )
+            new_particles_map[p2.position] += [p2]
+        particles_map = new_particles_map
+
+    return len(particles_map)
+
+
 def get_input():
     res = []
     for s in sys.stdin:
@@ -34,3 +60,4 @@ def ints(s):
 
 particles = get_input()
 print(step1(particles))
+print(step2(particles))
