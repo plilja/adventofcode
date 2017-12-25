@@ -2,6 +2,14 @@ import sys
 
 
 def step1(rules):
+    return run(5)
+
+
+def step2(rules):
+    return run(18)
+
+
+def run(iterations):
     def extract(grid, i, j, r):
         res = []
         for k in range(0, r):
@@ -14,7 +22,7 @@ def step1(rules):
                 new_grid[i + k][j + h] = pattern[k][h]
 
     grid = ('.#.', '..#', '###')
-    for _ in range(0, 5):
+    for _ in range(0, iterations):
         if len(grid) % 2 == 0:
             d = 2
         else:
@@ -69,3 +77,4 @@ def flip(grid):
 
 rules = get_input()
 print(step1(rules))
+print(step2(rules))
