@@ -68,3 +68,4 @@ def get_input():
 
 start_state, diagnostics, states = get_input()
 print(step1(start_state, diagnostics, states))
+# No step 2 for this day
