@@ -1,6 +1,20 @@
 import sys
 
 def step1(rows):
-    return sum(map(int, rows))
+    return sum(rows)
 
-print(step1(sys.stdin.readlines()))
+
+def step2(rows):
+    i = 0
+    f = 0
+    v = set()
+    while f not in v:
+        v |= {f}
+        f += rows[i]
+        i = (i + 1) % len(rows)
+    return f
+
+
+inp = list(map(int, sys.stdin.readlines()))
+print(step1(inp))
+print(step2(inp))
