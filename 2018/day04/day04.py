@@ -59,9 +59,7 @@ class Records():
                 assert command.startswith('Guard ')
                 nr, = re.match(r'Guard #(\d+) begins shift', command).groups()
                 nr = int(nr)
-                if nr not in self.guards:
-                    self.guards[nr] = Guard(nr)
-                guard = self.guards[nr]
+                guard = self.guards.setdefault(nr, Guard(nr))
 
 
     def sleepiest_guard(self):
