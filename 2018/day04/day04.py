@@ -7,12 +7,10 @@ from collections import *
 class Guard():
     def __init__(self, nr):
         self.nr = nr
-        self.sleep_days = set()
         self.sleep_minutes = Counter()
 
 
     def sleep(self, timestamp):
-        self.sleep_days |= {timestamp.date()}
         minute = timestamp.time().minute
         self.sleep_start = minute
 
@@ -29,6 +27,10 @@ class Guard():
 
     def most_slept_minute(self):
         return self.sleep_minutes.most_common(1)[0][0]
+
+
+    def times_slept_on_minute(self, m):
+        return self.sleep_minutes[m]
 
 
 class Records():
@@ -66,11 +68,32 @@ class Records():
         return guard
 
 
+    def guard_sleeps_on_same_minute(self):
+        best = 0
+        guard = None
+        for g in self.guards.values():
+            if g.total_sleep() > 0:
+                m = g.most_slept_minute()
+                t = g.times_slept_on_minute(m)
+                if t > best:
+                    guard = g
+                    best = t
+        return guard
+
+
+
 def step1(inp):
     records = Records(inp)
     guard = records.sleepiest_guard()
     return guard.nr * guard.most_slept_minute()
 
 
+def step2(inp):
+    records = Records(inp)
+    guard = records.guard_sleeps_on_same_minute()
+    return guard.nr * guard.most_slept_minute()
+
+
 inp = sys.stdin.readlines()
 print(step1(inp))
+print(step2(inp))
