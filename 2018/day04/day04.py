@@ -26,11 +26,17 @@ class Guard():
 
 
     def most_slept_minute(self):
-        return self.sleep_minutes.most_common(1)[0][0]
+        if len(self.sleep_minutes) > 0:
+            return self.sleep_minutes.most_common(1)[0][0]
+        else:
+            return 0
 
 
     def times_slept_on_minute(self, m):
-        return self.sleep_minutes[m]
+        if len(self.sleep_minutes) > 0:
+            return self.sleep_minutes[m]
+        else:
+            return 0
 
 
 class Records():
@@ -59,27 +65,11 @@ class Records():
 
 
     def sleepiest_guard(self):
-        best = 0
-        guard = None
-        for g in self.guards.values():
-            if g.total_sleep() > best:
-                guard = g
-                best = g.total_sleep()
-        return guard
+        return max(self.guards.values(), key=lambda g: g.total_sleep())
 
 
     def guard_sleeps_on_same_minute(self):
-        best = 0
-        guard = None
-        for g in self.guards.values():
-            if g.total_sleep() > 0:
-                m = g.most_slept_minute()
-                t = g.times_slept_on_minute(m)
-                if t > best:
-                    guard = g
-                    best = t
-        return guard
-
+        return max(self.guards.values(), key=lambda g: g.times_slept_on_minute(g.most_slept_minute()))
 
 
 def step1(inp):
