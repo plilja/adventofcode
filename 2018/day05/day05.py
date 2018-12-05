@@ -14,5 +14,12 @@ def step1(inp):
     return len(right)
 
 
+def step2(inp):
+    units = set(list(inp.lower()))
+    lengths = [step1(inp.replace(x, '').replace(x.upper(), '')) for x in units]
+    return min(lengths)
+
+
 inp = input()
 print(step1(inp))
+print(step2(inp))
