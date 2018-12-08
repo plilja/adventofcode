@@ -17,6 +17,7 @@ def parse(inp):
     s = list(reversed(inp))
     return f(s)
 
+
 def step1(inp):
     def sum_meta(node):
         a = sum(node.metadata)
@@ -25,5 +26,19 @@ def step1(inp):
     return sum_meta(parse(inp))
 
 
+def step2(inp):
+    def sum_func(node):
+        if node.children:
+            r = 0
+            for i in node.metadata:
+                if i > 0 and i <= len(node.children):
+                    r += sum_func(node.children[i - 1])
+            return r
+        else:
+            return sum(node.metadata)
+    return sum_func(parse(inp))
+
+
 inp = list(map(int, input().split()))
 print(step1(inp))
+print(step2(inp))
