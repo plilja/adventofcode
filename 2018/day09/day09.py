@@ -1,6 +1,7 @@
 from collections import deque
 
-def step1(num_players, last_marble):
+def solve(num_players, last_marble):
+    assert(last_marble >= 3)
     players = [0] * num_players
     circle = deque([0, 2, 1])
     current_player = 2
@@ -9,8 +10,7 @@ def step1(num_players, last_marble):
         if marble % 23 == 0:
             for _ in range(0, 8):
                 circle.appendleft(circle.pop())
-            tmp = circle.pop()
-            players[current_player] += tmp
+            players[current_player] += circle.pop()
             players[current_player] += marble
             for _ in range(0, 2):
                 circle.append(circle.popleft())
@@ -21,6 +21,15 @@ def step1(num_players, last_marble):
     return max(players)
 
 
+def step1(num_players, last_marble):
+    return solve(num_players, last_marble)
+
+
+def step2(num_players, last_marble):
+    return solve(num_players, 100 * last_marble)
+
+
 inp = input().split()
 num_players, last_marble = int(inp[0]), int(inp[6])
 print(step1(num_players, last_marble))
+print(step2(num_players, last_marble))
