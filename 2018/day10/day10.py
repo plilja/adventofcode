@@ -10,7 +10,7 @@ def bounds(inp):
     return (min_x, max_x, min_y, max_y)
 
 
-def print_matrix(inp):
+def print_grid(inp):
     grid = defaultdict(lambda: defaultdict(lambda: '.'))
     for point in inp:
         grid[point[1]][point[0]] = '#'
@@ -22,22 +22,28 @@ def print_matrix(inp):
     print()
 
 
-def step1(inp, iterations):
-    prev = None
-    curr = [point[::] for point in inp] # copy to ensure original list in not modified
+def solve(inp, max_iterations):
     res = None
     res_size = float('inf')
-    for i in range(0, iterations):
-        min_x, max_x, min_y, max_y = bounds(curr)
+    res_seconds = 0
+    seconds = 0
+    for i in range(0, max_iterations):
+        min_x, max_x, min_y, max_y = bounds(inp)
         t = max_x - min_x + max_y - min_y
         if t < res_size:
-            res = [point[::] for point in curr]
+            res = [point[::] for point in inp]
             res_size = t
-        for point in curr:
+            res_seconds = seconds
+            
+        for point in inp:
             point[0] += point[2]
             point[1] += point[3]
-        prev = t
-    print_matrix(res)
+        seconds += 1
+    print('Step 1')
+    print_grid(res)
+    print('Step 2')
+    print(res_seconds)
+
 
 def parse_inp():
     res = []
@@ -46,5 +52,6 @@ def parse_inp():
         res += [[x, y, dx, dy]]
     return res
 
+
 inp = parse_inp()
-step1(inp, 15000)
+solve(inp, 15000)
