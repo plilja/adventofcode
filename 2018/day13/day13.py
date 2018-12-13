@@ -1,6 +1,16 @@
 import sys
 
 def step1(inp):
+    crashes, remaining = solve(inp, lambda num_carts: 1)
+    return crashes[0]
+
+
+def step2(inp):
+    crashes, remaining = solve(inp, lambda num_carts: num_carts // 2)
+    return remaining[0]
+
+
+def solve(inp, num_crashes_allowed_func):
     # parse carts
     carts = {}
     for y in range(0, len(inp)):
@@ -15,8 +25,14 @@ def step1(inp):
             elif c == 'v':
                 carts[(x, y)] = (0, 1, 0)
 
-    while True:
+    
+    crashes = []
+    num_crashes_allowed = num_crashes_allowed_func(len(carts.keys()))
+    while len(crashes) < num_crashes_allowed:
         for (x, y) in sorted(carts.keys(), key=lambda c: (c[1], c[0])):
+            if (x, y) not in carts:
+                # has crashed in previous loop step
+                continue
             c = inp[y][x]
             dx, dy, turns = carts[(x, y)]
             if c == '+':
@@ -34,11 +50,16 @@ def step1(inp):
             x2 = x + dx
             y2 = y + dy
             if (x2, y2) in carts:
-                return (x2, y2)
+                del carts[(x, y)]
+                del carts[(x2, y2)]
+                crashes.append((x2, y2))
             else:
                 del carts[(x, y)]
                 carts[(x2, y2)] = (dx, dy, turns)
 
+    return crashes, list(carts.keys())
+
 
 inp = sys.stdin.readlines()
 print(step1(inp))
+print(step2(inp))
