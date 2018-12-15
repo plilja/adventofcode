@@ -5,6 +5,25 @@ from collections import deque
 deltas = [(0, -1), (-1, 0), (1, 0), (0, 1)]
 
 def step1(grid):
+    (winner, rounds, remaining) = solve(grid, 3, 3)
+    return rounds * sum(remaining)
+
+
+def step2(grid):
+    elves = 0
+    for row in grid:
+        for c in row:
+            if c == 'E':
+                elves += 1
+    i = 3
+    while True:
+        (winner, rounds, remaining) = solve(grid, i, 3)
+        if winner == 'E' and len(remaining) == elves:
+            return rounds * sum(remaining)
+        i += 1
+
+
+def solve(grid, elves_hit, goblins_hit):
     grid = copy.deepcopy(grid) 
 
     def bfs(start_x, start_y, targets):
@@ -64,7 +83,7 @@ def step1(grid):
             possible_attacks = sorted([p for p in attacking_dist if p in targets], key=lambda p: (targets[p], p[1], p[0]))
             if possible_attacks:
                 p = possible_attacks[0]
-                targets[p] -= 3
+                targets[p] -= elves_hit if (x, y) in elves else goblins_hit
                 if targets[p] <= 0:
                     del targets[p]
                     grid[p[1]][p[0]] = '.'
@@ -72,10 +91,12 @@ def step1(grid):
                 if (x, y) != units[-1]:
                     r -=1 # round was not fully completed
                     break
-    s = sum(elves.values()) + sum(goblins.values())
-    return r * s
+
+    winner = 'E' if len(elves) > 0 else 'G'
+    return winner, r, list(elves.values()) + list(goblins.values())
 
 
 # Spread input across a matrix for mutability
 inp = [[c for c in s.strip()] for s in sys.stdin.readlines()]
 print(step1(inp))
+print(step2(inp))
