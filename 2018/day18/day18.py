@@ -13,10 +13,19 @@ deltas = [
         ]
 
 def step1(inp):
+    return solve(inp, 10)
+
+
+def step2(inp):
+    return solve(inp, 1000000000)
+
+
+def solve(inp, iterations):
+    cache = {}
     g = copy.deepcopy(inp)
     g_next = copy.deepcopy(inp)
-    iterations = 10
-    for i in range(0, iterations):
+    i = 0
+    while i < iterations:
         for y in range(0, len(g)):
             for x in range(0, len(g[y])):
                 num_trees, num_lumber, num_open = 0, 0, 0
@@ -33,7 +42,15 @@ def step1(inp):
                     g_next[y][x] = '#'
                 if g[y][x] == '#' and (num_lumber < 1 or num_trees < 1):
                     g_next[y][x] = '.'
+
+        cache_key = ''.join([''.join(x) for x in g_next])
+        if cache_key in cache:
+            j = cache[cache_key]
+            d = i - j
+            i += d * ((iterations - i) // d)
+        cache[cache_key] = i
         g, g_next = g_next, g
+        i += 1
     
     trees, lumber = 0, 0
     for row in g:
@@ -44,3 +61,4 @@ def step1(inp):
 
 inp = list(map(lambda s: list(s.strip()), sys.stdin.readlines()))
 print(step1(inp))
+print(step2(inp))
