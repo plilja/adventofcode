@@ -1,9 +1,17 @@
+from collections import *
 import sys
 import re
-from collections import *
 import copy
 
 def step1(grid):
+    return solve(grid)[0]
+
+
+def step2(grid):
+    return solve(grid)[1]
+
+
+def solve(grid):
     grid = copy.deepcopy(grid)
     min_y = min(grid.keys())
     max_y = max(grid.keys())
@@ -44,11 +52,12 @@ def step1(grid):
 
 
     dfs(500, 1)
-    r = 0
+    wet, resting = 0, 0
     for y, row in grid.items():
         if y >= min_y:
-            r += sum([1 for v in row.values() if v in '~|'])
-    return r
+            wet += sum([1 for v in row.values() if v in '~|'])
+            resting += sum([1 for v in row.values() if v in '~'])
+    return wet, resting
         
 
 def parse_inp():
@@ -64,14 +73,7 @@ def parse_inp():
     return grid
 
 
-#def print_grid(grid):
-#    m = max(len(g) for g in grid.values())
-#    for i in range(2200):
-#        for j in range(0, 1000):
-#            print(grid[i][j], end='')
-#        print()
-#    print()
-
 sys.setrecursionlimit(4000)
 grid = parse_inp()
 print(step1(grid))
+print(step2(grid))
