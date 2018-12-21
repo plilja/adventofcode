@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 import sys
 
-def step1(inp):
+def solve(inp):
     grid = defaultdict(lambda: defaultdict(lambda: '#'))
 
     def group(s, i):
@@ -64,19 +64,23 @@ def step1(inp):
     # bfs
     q = deque([(0, 0, 0)])
     v = set()
-    r = 0
+    r1, r2 = 0, 0
     while q:
         x, y, d = q.popleft()
         if (x, y) in v:
             continue
         v |= {(x, y)}
-        r = max(r, d)
+        r1 = max(r1, d)
+        if d >= 1000:
+            r2 += 1
         for (dx, dy) in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             if grid[y + dy][x + dx] in '-|':
                 q.append((x + 2 * dx, y + 2 * dy, d + 1))
-    return r
+    return r1, r2
 
 
 sys.setrecursionlimit(10000)
 inp = input().strip()[1:-1]
-print(step1(inp)) 
+a, b = solve(inp)
+print(a) 
+print(b) 
