@@ -1,4 +1,5 @@
 import sys
+from math import sqrt
 
 def opr(f):
     def op(registers, args):
@@ -58,6 +59,27 @@ def step1(ip, instructions):
     return registers[0]
 
 
+def step2(ip, instructions):
+    registers = [1, 0, 0, 0, 0, 0]
+    while 0 <= registers[ip] < len(instructions):
+        if 2 == registers[ip] or 13 == registers[ip]:
+            # The instructions are an algorithm for summing divisors of register 2
+            num = registers[2]
+            r = 0
+            for i in range(1, int(sqrt(num)) + 1):
+                if num % i == 0:
+                    r += i + num // i
+            return r
+                    
+        instruction = instructions[registers[ip]]
+        op = ops[instruction[0]]
+        op(registers, instruction[1:])
+        if registers[ip] + 1 >= len(instructions):
+            break
+        registers[ip] += 1
+    return registers[0]
+
+
 def parse_input():
     instructions = []
     ip = None
@@ -72,3 +94,4 @@ def parse_input():
 
 ip, instructions = parse_input()
 print(step1(ip, instructions))
+print(step2(ip, instructions))
