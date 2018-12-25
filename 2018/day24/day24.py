@@ -16,10 +16,42 @@ def get(groups, t):
 
 
 def step1(groups):
+    rem_groups = combat(groups)
+    return sum([g.units for g in rem_groups])
+
+
+def step2(groups):
+    rem = {}
+    a = 0
+    b = 5000
+    while a < b:
+        m = (a + b) // 2
+        boosted_groups = []
+        for group in groups:
+            if group.type == Type.IMMUNE_SYSTEM:
+                d = group._asdict()
+                del d['attack_damage']
+                boosted_group = Group(attack_damage=group.attack_damage + m, **d)
+                boosted_groups.append(boosted_group)
+            else:
+                boosted_groups.append(group)
+        rem_groups = combat(boosted_groups)
+        r = sum([g.units for g in get(rem_groups, Type.IMMUNE_SYSTEM)])
+        rem[m] = r
+        if r > 0:
+            b = m
+        else:
+            a = m + 1
+
+    return rem[a]
+
+
+def combat(groups):
     rem_groups = groups[::]
     while get(rem_groups, Type.IMMUNE_SYSTEM) != [] and get(rem_groups, Type.INFECTION) != []:
         rem_groups.sort(key=lambda x: (-x.units*x.attack_damage, -x.initiative))
         selections = {}
+        before = sorted(x.units for x in rem_groups)
         for group in rem_groups:
             highest_target = None
             highest_damage = 0
@@ -52,7 +84,10 @@ def step1(groups):
                 else:
                     del next_groups[target.id]
         rem_groups = list(next_groups.values())
-    return sum([g.units for g in rem_groups])
+        after = sorted(x.units for x in rem_groups)
+        if before == after:
+            return [] # deadlock
+    return rem_groups
 
 
 def determine_damage(group, target):
@@ -94,6 +129,7 @@ def parse_input():
             groups.append(g)
     return groups
 
+
 groups = parse_input()
 print(step1(groups))
-
+print(step2(groups))
