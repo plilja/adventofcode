@@ -1,6 +1,7 @@
 import sys
 from math import *
 
+
 def solve(ip, instructions):
     seen_order = []
     seen = set()
@@ -41,9 +42,10 @@ def parse_input():
         else:
             instructions += [[args[0]] + list(map(int, args[1:]))]
     return ip, instructions
-        
+
 
 ip, instructions = parse_input()
 a, b = solve(ip, instructions)
 print(a)
 print(b)
+

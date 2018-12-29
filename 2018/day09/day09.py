@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def solve(num_players, last_marble):
     assert(last_marble >= 3)
     players = [0] * num_players
@@ -33,3 +34,4 @@ inp = input().split()
 num_players, last_marble = int(inp[0]), int(inp[6])
 print(step1(num_players, last_marble))
 print(step2(num_players, last_marble))
+

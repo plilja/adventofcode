@@ -32,7 +32,6 @@ def step2(programs, root):
     weight_cache = {}
     namelookup = dict([(p.name, p) for p in programs])
 
-
     def weight(program):
         if program.name in weight_cache:
             return weight_cache[program.name]
@@ -42,14 +41,12 @@ def step2(programs, root):
             weight_cache[program.name] = w
             return w
 
-
     def is_balanced(program):
         for c in program.children:
             if not is_balanced(namelookup[c]):
                 return False
         s = set([weight(namelookup[c]) for c in program.children])
         return len(s) <= 1
-
 
     def go(program):
         for c in program.children:
@@ -63,7 +60,6 @@ def step2(programs, root):
                 return namelookup[c].weight + target - actual
         return None
 
-        
     return go(root)
 
 
@@ -71,3 +67,4 @@ programs = read_input()
 root = step1(programs)
 print(root.name)
 print(step2(programs, root))
+

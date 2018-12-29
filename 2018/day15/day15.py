@@ -4,6 +4,7 @@ from collections import deque
 
 deltas = [(0, -1), (-1, 0), (1, 0), (0, 1)]
 
+
 def step1(grid):
     (winner, rounds, remaining) = solve(grid, 3, 3)
     return rounds * sum(remaining)
@@ -24,7 +25,7 @@ def step2(grid):
 
 
 def solve(grid, elves_hit, goblins_hit):
-    grid = copy.deepcopy(grid) 
+    grid = copy.deepcopy(grid)
 
     def bfs(start_x, start_y, targets):
         v = {(start_x, start_y)}
@@ -46,7 +47,6 @@ def solve(grid, elves_hit, goblins_hit):
                     v.add((x + dx, y + dy))
         return None
 
-
     goblins = {}
     elves = {}
     for y, row in enumerate(grid):
@@ -58,7 +58,8 @@ def solve(grid, elves_hit, goblins_hit):
 
     r = 0
     while elves and goblins:
-        units = sorted(list(elves.keys()) + list(goblins.keys()), key=lambda p: (p[1], p[0]))
+        units = sorted(list(elves.keys()) + list(goblins.keys()),
+                       key=lambda p: (p[1], p[0]))
         r += 1
         for x, y in units:
             if (x, y) not in elves and (x, y) not in goblins:
@@ -80,7 +81,8 @@ def solve(grid, elves_hit, goblins_hit):
                 x, y = move
 
             attacking_dist = [(x + dx, y + dy) for dx, dy in deltas]
-            possible_attacks = sorted([p for p in attacking_dist if p in targets], key=lambda p: (targets[p], p[1], p[0]))
+            possible_attacks = sorted(
+                [p for p in attacking_dist if p in targets], key=lambda p: (targets[p], p[1], p[0]))
             if possible_attacks:
                 p = possible_attacks[0]
                 targets[p] -= elves_hit if (x, y) in elves else goblins_hit
@@ -89,7 +91,7 @@ def solve(grid, elves_hit, goblins_hit):
                     grid[p[1]][p[0]] = '.'
             if not elves or not goblins:
                 if (x, y) != units[-1]:
-                    r -=1 # round was not fully completed
+                    r -= 1  # round was not fully completed
                     break
 
     winner = 'E' if len(elves) > 0 else 'G'
@@ -100,3 +102,4 @@ def solve(grid, elves_hit, goblins_hit):
 inp = [[c for c in s.strip()] for s in sys.stdin.readlines()]
 print(step1(inp))
 print(step2(inp))
+

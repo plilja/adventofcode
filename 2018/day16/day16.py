@@ -4,6 +4,7 @@ from collections import namedtuple
 
 Sample = namedtuple('Sample', 'before args after')
 
+
 def is_reg(*args):
     r = True
     for arg in args:
@@ -63,23 +64,23 @@ def seti(registers, args):
 
 
 ops = [
-        opr(lambda a, b: a + b),
-        opi(lambda a, b: a + b),
-        opr(lambda a, b: a * b),
-        opi(lambda a, b: a * b),
-        opr(lambda a, b: a & b),
-        opi(lambda a, b: a & b),
-        opr(lambda a, b: a | b),
-        opi(lambda a, b: a | b),
-        setr,
-        seti,
-        opr(lambda a, b: 1 if a > b else 0),
-        opi(lambda a, b: 1 if a > b else 0),
-        opir(lambda a, b: 1 if a > b else 0),
-        opr(lambda a, b: 1 if a == b else 0),
-        opi(lambda a, b: 1 if a == b else 0),
-        opir(lambda a, b: 1 if a == b else 0)
-        ]
+    opr(lambda a, b: a + b),
+    opi(lambda a, b: a + b),
+    opr(lambda a, b: a * b),
+    opi(lambda a, b: a * b),
+    opr(lambda a, b: a & b),
+    opi(lambda a, b: a & b),
+    opr(lambda a, b: a | b),
+    opi(lambda a, b: a | b),
+    setr,
+    seti,
+    opr(lambda a, b: 1 if a > b else 0),
+    opi(lambda a, b: 1 if a > b else 0),
+    opir(lambda a, b: 1 if a > b else 0),
+    opr(lambda a, b: 1 if a == b else 0),
+    opi(lambda a, b: 1 if a == b else 0),
+    opir(lambda a, b: 1 if a == b else 0)
+]
 
 
 def step1(samples):
@@ -93,7 +94,7 @@ def step1(samples):
 
 
 def step2(samples, program):
-    opcodes = {i:list(range(0, len(ops))) for i in range(0, len(ops))}
+    opcodes = {i: list(range(0, len(ops))) for i in range(0, len(ops))}
     # Determine impossible opcode mappings from sample observations
     for sample in samples:
         xs = opcodes[sample.args[0]]
@@ -105,7 +106,7 @@ def step2(samples, program):
         for r in rem:
             xs.remove(r)
 
-    # From previous step, use uniquely determined opcodes to further narrow down opcodes. 
+    # From previous step, use uniquely determined opcodes to further narrow down opcodes.
     # For example if previous step determined that opcode 2 is addr, then opcode 3 can't also be addr.
     unstable = True
     while unstable:
@@ -127,7 +128,7 @@ def step2(samples, program):
     state = [0, 0, 0, 0]
     for instr in program:
         op = ops[opcodes[instr[0]][0]]
-        state = op(state, instr[1:]) 
+        state = op(state, instr[1:])
     return state[0]
 
 
@@ -149,3 +150,4 @@ def parse_input():
 samples, program = parse_input()
 print(step1(samples))
 print(step2(samples, program))
+

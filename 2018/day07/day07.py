@@ -1,6 +1,7 @@
 import sys
 import heapq
-from collections import *
+from collections import defaultdict
+
 
 def step1(graph):
     incoming = defaultdict(int)
@@ -44,7 +45,8 @@ def step2(graph, num_workers, step_offset):
 
         wait = min([t for _, t in busy_workers])
         time += wait
-        busy_workers = [(task, task_time - wait) for task, task_time in busy_workers]
+        busy_workers = [(task, task_time - wait)
+                        for task, task_time in busy_workers]
         i = 0
         while i < len(busy_workers):
             task, task_time = busy_workers[i]
@@ -70,6 +72,8 @@ def parse_input(inp):
         g[a] += [b]
     return g
 
+
 graph = parse_input(sys.stdin.readlines())
 print(step1(graph))
 print(step2(graph, 5, 60))
+

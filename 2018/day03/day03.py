@@ -1,8 +1,9 @@
 import sys
 import re
-from collections import *
+from collections import namedtuple, defaultdict
 
 Claim = namedtuple('Claim', 'id left top width height')
+
 
 def claim_points(claim):
     for y in range(0, claim.height):
@@ -20,7 +21,7 @@ def step1(claims):
             if c == 1:
                 r += 1
     return r
-    
+
 
 def step2(claims):
     d = defaultdict(lambda: defaultdict(set))
@@ -36,19 +37,21 @@ def step2(claims):
         if poss:
             return claim.id
     raise ValueError('No solution found')
-    
+
 
 def read_claims():
     claims = []
     for line in sys.stdin:
         claim_id, left, right, width, height = re.match(
-                r'#(\d+) @ (\d+),(\d+): (\d+)x(\d+)', 
-                line
-                ).groups()
-        claims += [Claim(int(claim_id), int(left), int(right), int(width), int(height))]
+            r'#(\d+) @ (\d+),(\d+): (\d+)x(\d+)',
+            line
+        ).groups()
+        claims += [Claim(int(claim_id), int(left),
+                         int(right), int(width), int(height))]
     return claims
 
 
 claims = read_claims()
 print(step1(claims))
 print(step2(claims))
+

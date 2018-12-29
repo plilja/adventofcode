@@ -1,6 +1,5 @@
 from collections import deque, defaultdict
 import re
-import sys
 import heapq
 
 UNKNOWN = -1
@@ -15,10 +14,11 @@ CHANGING_COST = 7
 TRAVEL_COST = 1
 INF = float('inf')
 
+
 def step1(depth, tx, ty):
     terrain = determine_terrain(depth, tx, ty, tx, ty)
     r = 0
-    riskyness = {ROCKY:0, WET:1, NARROW:2}
+    riskyness = {ROCKY: 0, WET: 1, NARROW: 2}
     for y in range(0, ty + 1):
         for x in range(0, tx + 1):
             r += riskyness[terrain[y][x]]
@@ -27,10 +27,10 @@ def step1(depth, tx, ty):
 
 def step2(depth, tx, ty):
     valid_eqip = {
-            ROCKY:{CLIMBING, TORCH},
-            WET:{CLIMBING, NEITHER},
-            NARROW:{TORCH, NEITHER}
-            }
+        ROCKY: {CLIMBING, TORCH},
+        WET: {CLIMBING, NEITHER},
+        NARROW: {TORCH, NEITHER}
+    }
 
     edge = int(1.2 * max(tx, ty))
     terrain = determine_terrain(depth, tx, ty, edge, edge)
@@ -91,4 +91,5 @@ def determine_terrain(depth, tx, ty, maxx, maxy):
 depth = int(input().split()[1])
 tx, ty = list(map(int, re.findall(r'\d+', input())))
 print(step1(depth, tx, ty))
-print(step2(depth, tx, ty)) # This one is slow
+print(step2(depth, tx, ty))  # This one is slow
+

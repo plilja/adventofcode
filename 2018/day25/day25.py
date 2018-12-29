@@ -1,6 +1,6 @@
 import sys
-from math import *
 from collections import deque, defaultdict
+
 
 def solve(points):
     g = defaultdict(list)
@@ -31,6 +31,8 @@ def solve(points):
                 q.append(k)
     return r
 
+
 points = [tuple(map(int, s.strip().split(','))) for s in sys.stdin]
 print(solve(points))
 # No step 2 this day
+

@@ -2,6 +2,7 @@ from collections import namedtuple
 
 Node = namedtuple('Node', 'children metadata')
 
+
 def parse(inp):
     def f(s):
         num_children = s.pop()
@@ -42,3 +43,4 @@ def step2(inp):
 inp = list(map(int, input().split()))
 print(step1(inp))
 print(step2(inp))
+

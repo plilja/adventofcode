@@ -1,7 +1,7 @@
 import sys
 import re
 from datetime import datetime
-from collections import *
+from collections import Counter
 
 
 class Guard():
@@ -9,28 +9,23 @@ class Guard():
         self.nr = nr
         self.sleep_minutes = Counter()
 
-
     def sleep(self, timestamp):
         minute = timestamp.time().minute
         self.sleep_start = minute
-
 
     def wake(self, timestamp):
         wake_minute = timestamp.time().minute
         for m in range(self.sleep_start, wake_minute):
             self.sleep_minutes[m] += 1
 
-
     def total_sleep(self):
         return sum(self.sleep_minutes.values())
-
 
     def most_slept_minute(self):
         if len(self.sleep_minutes) > 0:
             return self.sleep_minutes.most_common(1)[0][0]
         else:
             return 0
-
 
     def times_slept_on_minute(self, m):
         if len(self.sleep_minutes) > 0:
@@ -61,10 +56,8 @@ class Records():
                 nr = int(nr)
                 guard = self.guards.setdefault(nr, Guard(nr))
 
-
     def sleepiest_guard(self):
         return max(self.guards.values(), key=lambda g: g.total_sleep())
-
 
     def guard_sleeps_on_same_minute(self):
         return max(self.guards.values(), key=lambda g: g.times_slept_on_minute(g.most_slept_minute()))
@@ -85,3 +78,4 @@ def step2(inp):
 inp = sys.stdin.readlines()
 print(step1(inp))
 print(step2(inp))
+

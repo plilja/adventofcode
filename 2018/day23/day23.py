@@ -8,13 +8,15 @@ Nanobot = namedtuple('Nanobot', 'x y z r')
 Box = namedtuple('Box', 'x y z side')
 Point = namedtuple('Point', 'x y z')
 
+
 def dist_between_bots(bot1, bot2):
     return abs(bot1.x - bot2.x) + abs(bot1.y - bot2.y) + abs(bot1.z - bot2.z)
 
 
 def step1(nanobots):
     strongest = max(nanobots, key=lambda n: n.r)
-    in_range = list(filter(lambda n: dist_between_bots(n, strongest) <= strongest.r, nanobots))
+    in_range = list(filter(lambda n: dist_between_bots(
+        n, strongest) <= strongest.r, nanobots))
     return len(in_range)
 
 
@@ -42,15 +44,15 @@ def split_box(box):
     z = box.z
     side = box.side // 2
     return [
-            Box(x, y, z, side),
-            Box(x + side, y, z, side),
-            Box(x, y + side, z, side),
-            Box(x + side, y + side, z, side),
-            Box(x, y, z + side, side),
-            Box(x + side, y, z + side, side),
-            Box(x, y + side, z + side, side),
-            Box(x + side, y + side, z + side, side),
-            ]
+        Box(x, y, z, side),
+        Box(x + side, y, z, side),
+        Box(x, y + side, z, side),
+        Box(x + side, y + side, z, side),
+        Box(x, y, z + side, side),
+        Box(x + side, y, z + side, side),
+        Box(x, y + side, z + side, side),
+        Box(x + side, y + side, z + side, side),
+    ]
 
 
 def count_bots_in_box(box, bots):
@@ -99,7 +101,7 @@ def bounds(bots):
     z = min(zs)
     return Box(x, y, z, side)
 
-        
+
 def parse_input():
     r = []
     for s in sys.stdin:
@@ -109,5 +111,6 @@ def parse_input():
 
 
 nanobots = parse_input()
-print(step1(nanobots)) 
-print(step2(nanobots)) 
+print(step1(nanobots))
+print(step2(nanobots))
+

@@ -1,6 +1,7 @@
 from collections import defaultdict, deque
 import sys
 
+
 def solve(inp):
     grid = defaultdict(lambda: defaultdict(lambda: '#'))
 
@@ -27,7 +28,6 @@ def solve(inp):
             j += 1
         r.append(sub)
         return r, j
-
 
     def parse(s, x, y, i, v):
         if (x, y, i, s) in v:
@@ -82,5 +82,6 @@ def solve(inp):
 sys.setrecursionlimit(10000)
 inp = input().strip()[1:-1]
 a, b = solve(inp)
-print(a) 
-print(b) 
+print(a)
+print(b)
+

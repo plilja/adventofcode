@@ -1,6 +1,6 @@
 import sys
 from collections import defaultdict
-from math import *
+from math import sqrt
 
 operations = {
         'set' : lambda x, y: y,

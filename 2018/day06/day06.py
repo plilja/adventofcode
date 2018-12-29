@@ -1,7 +1,8 @@
 import sys
-from collections import *
+from collections import defaultdict, deque
 
 deltas = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
 
 def step1(coordinates):
     closest = defaultdict(lambda: defaultdict(set))
@@ -72,3 +73,4 @@ def step2(coordinates):
 coordinates = [tuple(map(int, s.split(', '))) for s in sys.stdin.readlines()]
 print(step1(coordinates))
 print(step2(coordinates))
+

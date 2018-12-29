@@ -2,6 +2,7 @@ import sys
 import re
 from collections import defaultdict
 
+
 def bounds(inp):
     min_x = min([point[0] for point in inp])
     max_x = max([point[0] for point in inp])

@@ -4,7 +4,9 @@ from collections import namedtuple
 from enum import Enum
 from math import *
 
-Group = namedtuple('Group', 'type id units hit_points weaknesses immunities attack_damage attack_type initiative')
+Group = namedtuple(
+    'Group', 'type id units hit_points weaknesses immunities attack_damage attack_type initiative')
+
 
 class Type(Enum):
     IMMUNE_SYSTEM = 1
@@ -31,7 +33,8 @@ def step2(groups):
             if group.type == Type.IMMUNE_SYSTEM:
                 d = group._asdict()
                 del d['attack_damage']
-                boosted_group = Group(attack_damage=group.attack_damage + m, **d)
+                boosted_group = Group(
+                    attack_damage=group.attack_damage + m, **d)
                 boosted_groups.append(boosted_group)
             else:
                 boosted_groups.append(group)
@@ -49,7 +52,8 @@ def step2(groups):
 def combat(groups):
     rem_groups = groups[::]
     while get(rem_groups, Type.IMMUNE_SYSTEM) != [] and get(rem_groups, Type.INFECTION) != []:
-        rem_groups.sort(key=lambda x: (-x.units*x.attack_damage, -x.initiative))
+        rem_groups.sort(
+            key=lambda x: (-x.units*x.attack_damage, -x.initiative))
         selections = {}
         before = sorted(x.units for x in rem_groups)
         for group in rem_groups:
@@ -69,13 +73,14 @@ def combat(groups):
 
         rem_groups.sort(key=lambda x: -x.initiative)
 
-        next_groups = {group.id:group for group in rem_groups}
+        next_groups = {group.id: group for group in rem_groups}
         for group in rem_groups:
             if group.id in selections and group.id in next_groups:
                 group = next_groups[group.id]
                 target = selections[group.id]
                 damage = determine_damage(group, target)
-                killed = min(target.units, (group.units * damage) // target.hit_points)
+                killed = min(target.units, (group.units *
+                                            damage) // target.hit_points)
                 remaining = target.units - killed
                 if remaining > 0:
                     d = target._asdict()
@@ -86,7 +91,7 @@ def combat(groups):
         rem_groups = list(next_groups.values())
         after = sorted(x.units for x in rem_groups)
         if before == after:
-            return [] # deadlock
+            return []  # deadlock
     return rem_groups
 
 
@@ -111,20 +116,23 @@ def parse_input():
         elif s == 'Infection:':
             type_ = Type.INFECTION
         elif s:
-            args = re.match(r'(\d+)[^\d]*(\d+)[^\d]*(\d+) ([^ ]+) damage[^\d]*(\d+)', s).groups()
+            args = re.match(
+                r'(\d+)[^\d]*(\d+)[^\d]*(\d+) ([^ ]+) damage[^\d]*(\d+)', s).groups()
             units = int(args[0])
             hit_points = int(args[1])
             weaknesses = []
             immunities = []
             if 'weak to' in s:
-                weaknesses = re.match(r'.*weak to ([^;\)]+)', s).groups()[0].split(', ')
+                weaknesses = re.match(
+                    r'.*weak to ([^;\)]+)', s).groups()[0].split(', ')
             if 'immune to' in s:
-                immunities = re.match(r'.*immune to ([^;\)]+)', s).groups()[0].split(', ')
+                immunities = re.match(
+                    r'.*immune to ([^;\)]+)', s).groups()[0].split(', ')
             attack_damage = int(args[2])
             attack_type = args[3]
             initiative = int(args[4])
-            g = Group(type_, i, units, hit_points, weaknesses, immunities, 
-                    attack_damage, attack_type, initiative)
+            g = Group(type_, i, units, hit_points, weaknesses, immunities,
+                      attack_damage, attack_type, initiative)
             i += 1
             groups.append(g)
     return groups
@@ -133,3 +141,4 @@ def parse_input():
 groups = parse_input()
 print(step1(groups))
 print(step2(groups))
+

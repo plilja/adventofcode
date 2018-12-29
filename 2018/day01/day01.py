@@ -1,5 +1,6 @@
 import sys
 
+
 def step1(rows):
     return sum(rows)
 
@@ -18,3 +19,4 @@ def step2(rows):
 inp = list(map(int, sys.stdin.readlines()))
 print(step1(inp))
 print(step2(inp))
+

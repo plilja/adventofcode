@@ -1,5 +1,6 @@
 import sys
-from collections import *
+from collections import defaultdict, Counter
+
 
 def step1(inp):
     r = defaultdict(int)
