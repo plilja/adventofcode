@@ -77,5 +77,10 @@ def step1(program):
     return run_program(program[::], 1)
 
 
+def step2(program):
+    return run_program(program[::], 2)
+
+
 program = list(map(int, input().split(',')))
 print(step1(program))
+print(step2(program))
