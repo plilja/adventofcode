@@ -1,47 +1,60 @@
 import re
-from dataclasses import dataclass
+from math import gcd
 
 
-@dataclass
-class Moon:
-    x: int
-    y: int
-    z: int
-    dx: int
-    dy: int
-    dz: int
+def lcm(a, b):
+    return abs(a * b) // gcd(a, b)
+
+
+def forward(vs, dvs):
+    for j in range(0, len(vs)):
+        for k in range(0, len(vs)):
+            if j == k:
+                continue
+            v1 = vs[j]
+            v2 = vs[k]
+            if v1 != v2:
+                dvs[j] += 1 if v1 < v2 else -1
+    for j in range(0, len(moons)):
+        vs[j] += dvs[j]
 
 
 def step1(moons):
+    xs = [m[0] for m in moons]
+    dxs = [0 for _ in range(0, 4)]
+    ys = [m[1] for m in moons]
+    dys = [0 for _ in range(0, 4)]
+    zs = [m[2] for m in moons]
+    dzs = [0 for _ in range(0, 4)]
     for i in range(0, 1000):
-        for j in range(0, len(moons)):
-            for k in range(0, len(moons)):
-                if j == k:
-                    continue
-                m1 = moons[j]
-                m2 = moons[k]
-                if m1.x != m2.x:
-                    moons[j].dx += 1 if m1.x < m2.x else -1
-                if m1.y != m2.y:
-                    moons[j].dy += 1 if m1.y < m2.y else -1
-                if m1.z != m2.z:
-                    moons[j].dz += 1 if m1.z < m2.z else -1
-        for j in range(0, len(moons)):
-            moons[j].x += moons[j].dx
-            moons[j].y += moons[j].dy
-            moons[j].z += moons[j].dz
-
+        forward(xs, dxs)
+        forward(ys, dys)
+        forward(zs, dzs)
     result = 0
-    for m in moons:
-        result += (abs(m.x) + abs(m.y) + abs(m.z)) * (abs(m.dx) + abs(m.dy) + abs(m.dz))
+    for i in range(0, 4):
+        result += (abs(xs[i]) + abs(ys[i]) + abs(zs[i])) * (abs(dxs[i]) + abs(dys[i]) + abs(dzs[i]))
     return result
 
+
+def step2(moons):
+    result = 1
+    for i in range(0, 3):
+        vs = [m[i] for m in moons]
+        dvs = [0 for _ in range(0, 4)]
+        first = (tuple(vs), tuple(dvs))
+        i = 0
+        while i == 0 or first != (tuple(vs), tuple(dvs)):
+            forward(vs, dvs)
+            i += 1
+        result = lcm(result, i)
+    return result
 
 
 def read_moon():
     [x, y, z] = re.match(r'<x=(-?\d+), y=(-?\d+), z=(-?\d+)>.*', input()).groups()
-    return Moon(int(x), int(y), int(z), 0, 0, 0)
+    return (int(x), int(y), int(z))
 
 
 moons = [read_moon() for _ in range(0, 4)]
 print(step1(moons))
+print(step2(moons))
