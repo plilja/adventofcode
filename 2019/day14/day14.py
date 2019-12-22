@@ -6,14 +6,15 @@ Amount = namedtuple('Amount', 'amount chemical')
 Reaction = namedtuple('Reaction', 'inputs output')
 
 
-def step1(reactions):
+def produce_fuel(reactions, amount):
     output_to_reaction = {}
     for reaction in reactions:
         output_to_reaction[reaction.output.chemical] = reaction
 
-    state = defaultdict(int)
-    state['FUEL'] = -1
     debt = ['FUEL']
+    ore = 0
+    state = defaultdict(int)
+    state['FUEL'] = -amount
     while debt:
         debt_chemical = debt[0]
         debt = debt[1:]
@@ -22,11 +23,32 @@ def step1(reactions):
             reaction = output_to_reaction[debt_chemical]
             t = ceil(debt_amount / reaction.output.amount)
             for amount in reaction.inputs:
-                state[amount.chemical] -= t * amount.amount
-                if amount.chemical != 'ORE' and state[amount.chemical] < 0:
-                    debt.append(amount.chemical)
+                if amount.chemical != 'ORE':
+                    state[amount.chemical] -= t * amount.amount
+                    if state[amount.chemical] < 0:
+                        debt.append(amount.chemical)
+                else:
+                    ore -= t * amount.amount
             state[debt_chemical] += t * reaction.output.amount
-    return -state['ORE']
+    return -ore
+
+
+def step1(reactions):
+    return produce_fuel(reactions, 1)
+
+
+def step2(reactions):
+    ore = 1000000000000
+    a = 0
+    b = ore
+    while a < b:
+        m = (a + b + 1) // 2
+        cost = produce_fuel(reactions, m)
+        if cost > ore:
+            b = m - 1
+        else:
+            a = m
+    return a
 
 
 def read_input():
@@ -47,3 +69,4 @@ def read_input():
 
 reactions = read_input()
 print(step1(reactions))
+print(step2(reactions))
