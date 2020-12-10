@@ -5,8 +5,7 @@ from collections import deque, Counter
 def step1(nums):
     q = deque()
     counter = Counter()
-    for i in range(0, len(nums)):
-        num = nums[i]
+    for i, num in enumerate(nums):
         if i >= 25:
             good = False
             for x in q:
@@ -27,5 +26,21 @@ def step1(nums):
         counter[nums[i]] += 1
 
 
+def step2(nums):
+    weakness = step1(nums)
+    acc = 0
+    starts = {}
+    for i, num in enumerate(nums):
+        starts[acc] = i
+        acc += num
+        rem = acc - weakness
+        if rem in starts:
+            start = starts[rem]
+            seq = nums[start:i + 1]
+            return min(seq) + max(seq)
+    raise ValueError('Unable to find solution')
+
+
 nums = [int(x) for x in sys.stdin]
 print(step1(nums))
+print(step2(nums))
