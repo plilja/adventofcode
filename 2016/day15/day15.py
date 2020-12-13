@@ -1,6 +1,7 @@
 import sys
+sys.path.append("../..")
 from collections import namedtuple
-from math_util import *
+from common.math_util import *
 
 
 Disc = namedtuple('Disc', 'nr num_positions start')
