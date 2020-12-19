@@ -2,7 +2,7 @@ import sys
 import re
 
 
-def simple_expression(inp):
+def simple_expression_step1(inp):
     args = re.split(r'(\+|\*)', inp)
     result = int(args[0])
     for i in range(1, len(args), 2):
@@ -16,7 +16,15 @@ def simple_expression(inp):
     return result
 
 
-def expression(inp):
+def simple_expression_step2(inp):
+    args = inp.split('*')
+    result = 1
+    for arg in args:
+        result *= eval(arg)
+    return result
+
+
+def expression(inp, simple_expression):
     balance = 0
     start, end = None, None
     for i, c in enumerate(inp):
@@ -30,24 +38,19 @@ def expression(inp):
             end = i
             break
     if start is not None and end is not None:
-        return expression(inp[:start] + str(expression(inp[start+1:end])) + inp[end+1:])
+        return expression(inp[:start] + str(expression(inp[start+1:end], simple_expression)) + inp[end+1:], simple_expression)
     else:
         return simple_expression(inp)
 
 
 def step1(inp):
-    return sum([expression(x.replace(' ', '')) for x in inp])
+    return sum([expression(x.replace(' ', ''), simple_expression_step1) for x in inp])
 
 
-assert expression('1') == 1
-assert expression('1+2') == 3
-assert expression('(1+3)') == 4
-assert expression('(1*3)') == 3
-assert expression('(1)') == 1
-assert expression('(1)*2') == 2
-assert expression('(1+2)*2') == 6
-assert expression('(1+2)*(2+3)') == 15
-assert expression('((1+2)*(2+3))*2') == 30
-assert expression('1+2*2') == 6
+def step2(inp):
+    return sum([expression(x.replace(' ', ''), simple_expression_step2) for x in inp])
+
+
 inp = [x.strip() for x in sys.stdin]
 print(step1(inp))
+print(step2(inp))
