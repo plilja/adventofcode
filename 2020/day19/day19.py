@@ -26,7 +26,7 @@ def matches(rule_id, rules, s, i):
         return result
 
 
-def step1(rules, inp):
+def solve(rules, inp):
     result = 0
     for x in inp:
         if len(x) in matches(0, rules, x, 0):
@@ -62,4 +62,8 @@ def read_input():
 
 
 rules, inp = read_input()
-print(step1(rules, inp))
+print(solve(rules, inp))
+# Replacements of rule 8 and 11 according to instructions from step 2
+rules[8] = Rule(8, [[42], [42, 8]], None)
+rules[11] = Rule(11, [[42, 31], [42, 11, 31]], None)
+print(solve(rules, inp))
