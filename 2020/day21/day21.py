@@ -1,0 +1,60 @@
+import sys
+import re
+import copy
+
+
+def solve(foods, remaining_ingredients, remaining_allergens, ingredient_to_allergen):
+    if len(remaining_allergens) > len(remaining_ingredients):
+        return []
+    if not remaining_allergens:
+        for ingredients, allergens in foods:
+            actual_allergens = set()
+            for ingr in ingredients:
+                if ingr in ingredient_to_allergen:
+                    actual_allergens.add(ingredient_to_allergen[ingr])
+            if allergens & actual_allergens != allergens:
+                return []
+        return [copy.deepcopy(ingredient_to_allergen)]
+    allergen = remaining_allergens.pop()
+    possible_ingredients = copy.deepcopy(remaining_ingredients)
+    for ingredients, allergens in foods:
+        if allergen in allergens:
+            possible_ingredients &= ingredients
+    result = []
+    for ingredient in possible_ingredients:
+        ingredient_to_allergen[ingredient] = allergen
+        result += solve(foods, remaining_ingredients - {ingredient}, remaining_allergens, ingredient_to_allergen)
+        del ingredient_to_allergen[ingredient]
+    remaining_allergens.append(allergen)
+    return result
+
+
+def step1(foods):
+    all_ingredients = set()
+    all_allergens = set()
+    for ingredients, allergens in foods:
+        all_ingredients |= ingredients
+        all_allergens |= allergens
+    solutions = solve(foods, all_ingredients, list(all_allergens), {})
+    result = 0
+    for ingredient in all_ingredients:
+        maybe_allergen = False
+        for solution in solutions:
+            maybe_allergen = maybe_allergen or ingredient in solution
+        if not maybe_allergen:
+            for ingredients, allergens in foods:
+                if ingredient in ingredients:
+                    result += 1
+    return result
+
+
+def read_input():
+    result = []
+    for line in sys.stdin:
+        ingredients, allergens = re.match(r'([a-z ]+) \(contains ([a-z ,]+)\)', line).groups()
+        result.append((set(ingredients.split(' ')), set(allergens.split(', '))))
+    return result
+
+
+foods = read_input()
+print(step1(foods))
