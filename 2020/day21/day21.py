@@ -3,17 +3,10 @@ import re
 import copy
 
 
-def solve(foods, remaining_ingredients, remaining_allergens, ingredient_to_allergen):
+def solve_helper(foods, remaining_ingredients, remaining_allergens, ingredient_to_allergen):
     if len(remaining_allergens) > len(remaining_ingredients):
         return []
     if not remaining_allergens:
-        for ingredients, allergens in foods:
-            actual_allergens = set()
-            for ingr in ingredients:
-                if ingr in ingredient_to_allergen:
-                    actual_allergens.add(ingredient_to_allergen[ingr])
-            if allergens & actual_allergens != allergens:
-                return []
         return [copy.deepcopy(ingredient_to_allergen)]
     allergen = remaining_allergens.pop()
     possible_ingredients = copy.deepcopy(remaining_ingredients)
@@ -23,29 +16,37 @@ def solve(foods, remaining_ingredients, remaining_allergens, ingredient_to_aller
     result = []
     for ingredient in possible_ingredients:
         ingredient_to_allergen[ingredient] = allergen
-        result += solve(foods, remaining_ingredients - {ingredient}, remaining_allergens, ingredient_to_allergen)
+        result += solve_helper(foods, remaining_ingredients - {ingredient}, remaining_allergens, ingredient_to_allergen)
         del ingredient_to_allergen[ingredient]
     remaining_allergens.append(allergen)
     return result
 
 
-def step1(foods):
+def solve(foods):
     all_ingredients = set()
     all_allergens = set()
     for ingredients, allergens in foods:
         all_ingredients |= ingredients
         all_allergens |= allergens
-    solutions = solve(foods, all_ingredients, list(all_allergens), {})
+    solutions = solve_helper(foods, all_ingredients, list(all_allergens), {})
+    assert len(solutions) == 1
+    return solutions[0]
+
+
+def step1(foods):
+    solution = solve(foods)
     result = 0
-    for ingredient in all_ingredients:
-        maybe_allergen = False
-        for solution in solutions:
-            maybe_allergen = maybe_allergen or ingredient in solution
-        if not maybe_allergen:
-            for ingredients, allergens in foods:
-                if ingredient in ingredients:
-                    result += 1
+    for ingredients, allergens in foods:
+        for ingredient in ingredients:
+            if ingredient not in solution:
+                result += 1
     return result
+
+
+def step2(foods):
+    solution = solve(foods)
+    d = {v: k for k, v in solution.items()}
+    return ','.join([d[k] for k in sorted(d.keys())])
 
 
 def read_input():
@@ -58,3 +59,4 @@ def read_input():
 
 foods = read_input()
 print(step1(foods))
+print(step2(foods))
