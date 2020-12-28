@@ -1,30 +1,56 @@
+def play(cups, iterations):
+    successor = {}
+    for i, c in enumerate(cups):
+        successor[c] = cups[(i + 1) % len(cups)]
 
-
-def shift_leftmost(cups, target):
-    while cups[0] != target:
-        x = cups.pop(0)
-        cups.append(x)
-
-
-def step1(cups):
     highest = max(cups)
-    for i in range(0, 100):
-        pick_up = cups[1:4]
-        cups = cups[:1] + cups[4:]
-        next_current = cups[1]
-        destination = cups[0]
+    current = cups[0]
+    for i in range(0, iterations):
+        picked_up = []
+        next_to_pick_up = successor[current]
+        for i in range(0, 3):
+            picked_up.append(next_to_pick_up)
+            next_to_pick_up = successor[next_to_pick_up]
+
+        destination = current
+        next_current = successor[picked_up[-1]]
+        successor[current] = next_current
+        current = next_current
+
         while True:
             destination -= 1
             if destination < 1:
                 destination = highest
-            if destination not in pick_up:
+            if destination not in picked_up:
                 break
-        i = cups.index(destination)
-        cups = cups[:i + 1] + pick_up + cups[i + 1:]
-        shift_leftmost(cups, next_current)
-    shift_leftmost(cups, 1)
-    return ''.join(map(str, cups[1:]))
+
+        # Insert the picked up values
+        successor[picked_up[-1]] = successor[destination]
+        successor[destination] = picked_up[0]
+
+    result = []
+    node = 1
+    visited = set()
+    while node not in visited:
+        result.append(node)
+        visited.add(node)
+        node = successor[node]
+    return result[1:]
 
 
-inp = [int(x) for x in input()]
-print(step1(inp[::]))
+def step1(cups):
+    return ''.join(map(str, play(cups, 100)))
+
+
+def step2(cups):
+    # This is slow, heavy looping isn't where Python shines
+    m = max(cups) + 1
+    for i in range(m, 1000001):
+        cups.append(i)
+    nums = play(cups, 10000000)
+    return nums[0] * nums[1]
+
+
+cups = [int(x) for x in input()]
+print(step1(cups[::]))
+print(step2(cups[::]))
