@@ -10,10 +10,16 @@ def sign(x):
 
 
 def step1(lines):
+    straight_lines = []
+    for (x1, y1), (x2, y2) in lines:
+        if x1 == x2 or y1 == y2:
+            straight_lines.append(((x1, y1), (x2, y2)))
+    return step2(straight_lines)
+
+
+def step2(lines):
     grid = defaultdict(lambda: defaultdict(int))
     for (x1, y1), (x2, y2) in lines:
-        if x1 != x2 and y1 != y2:
-            continue  # as per instructions these should be ignored in step1
         x, y = x1, y1
         dx = sign(x2 - x1)
         dy = sign(y2 - y1)
@@ -39,3 +45,4 @@ def read_input():
 
 lines = read_input()
 print(step1(lines))
+print(step2(lines))
