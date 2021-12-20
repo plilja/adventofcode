@@ -1,4 +1,5 @@
 import sys
+from itertools import permutations
 
 WIRES = {'a', 'b', 'c', 'd', 'e', 'f', 'g'}
 VALID = {'abcefg': 0,
@@ -23,20 +24,12 @@ def step1(inp):
 
 
 def step2(inp):
-    def picks(wires):
-        if not wires:
-            yield []
-        for wire in wires:
-            sub = list(picks(wires - {wire}))
-            for pick in sub:
-                yield [wire] + pick
-
     result = 0
     for signal_values, output_values in inp:
-        for pick in picks(WIRES):
+        for perm in permutations(WIRES):
             m = {}
-            for i in range(0, len(pick)):
-                m[chr(ord('a') + i)] = pick[i]
+            for i in range(0, len(perm)):
+                m[chr(ord('a') + i)] = perm[i]
             valid = True
             for s in signal_values + output_values:
                 sp = ''
