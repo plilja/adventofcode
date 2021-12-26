@@ -10,36 +10,25 @@ def step2(start_template, rules):
     return run_process(start_template, rules, 40)
 
 
-def run_process(start_template, rules, total_steps):
-    def helper(template, steps, cache):
-        key = (template, steps)
-        if key in cache:
-            return cache[key]
-        elif steps == 0:
-            result = Counter(template)
-        elif len(template) <= 3:
-            new_template = template[0]
-            for x, y in zip(template, template[1:]):
-                insert = rules.get(x + y, '')
-                new_template += insert
-                new_template += y
-            result = helper(new_template, steps - 1, cache)
-        else:
-            a = template[:len(template) // 2]
-            b = template[len(template) // 2:]
-            joint = a[-1] + b[0]
-            result = Counter()
-            insert = rules.get(joint)
+def run_process(template, rules, total_steps):
+    pairs = Counter()
+    for x, y in zip(template, template[1:]):
+        pairs[x + y] += 1
+    pairs[template[-1] + '|'] = 1  # end marker
+    for i in range(0, total_steps):
+        pairs2 = Counter()
+        for pair, count in pairs.items():
+            insert = rules.get(pair)
             if insert:
-                result += helper(joint, steps, cache)
-                result[joint[0]] -= 1
-                result[joint[1]] -= 1
-            result += helper(a, steps, cache)
-            result += helper(b, steps, cache)
-        cache[key] = result
-        return result
-
-    mc = helper(start_template, total_steps, {}).most_common()
+                pairs2[pair[0] + insert] += count
+                pairs2[insert + pair[1]] += count
+            else:
+                pairs2[pair] += count
+        pairs = pairs2
+    chars = Counter()
+    for pair, count in pairs.items():
+        chars[pair[0]] += count
+    mc = chars.most_common()
     return mc[0][1] - mc[-1][1]
 
 
