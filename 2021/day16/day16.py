@@ -10,12 +10,44 @@ def step1(inp):
     return sum_versions(packet)
 
 
+def step2(inp):
+    packet, rem = parse(inp)
+    return calculate_value(packet)
+
+
 def sum_versions(packet):
     result = packet.version
     if isinstance(packet.payload, Operator):
         for sub_packet in packet.payload.sub_packets:
             result += sum_versions(sub_packet)
     return result
+
+
+def calculate_value(packet):
+    if packet.type == 4:
+        return packet.payload.value
+    elif packet.type == 0:
+        return sum(map(calculate_value, packet.payload.sub_packets))
+    elif packet.type == 1:
+        result = 1
+        for sub_packet in packet.payload.sub_packets:
+            result *= calculate_value(sub_packet)
+        return result
+    elif packet.type == 2:
+        return min(map(calculate_value, packet.payload.sub_packets))
+    elif packet.type == 3:
+        return max(map(calculate_value, packet.payload.sub_packets))
+    else:
+        assert packet.type in [5, 6, 7]
+        assert len(packet.payload.sub_packets) == 2
+        a = calculate_value(packet.payload.sub_packets[0])
+        b = calculate_value(packet.payload.sub_packets[1])
+        if packet.type == 5:
+            return 1 if a > b else 0
+        elif packet.type == 6:
+            return 1 if a < b else 0
+        elif packet.type == 7:
+            return 1 if a == b else 0
 
 
 def parse(inp):
@@ -60,5 +92,10 @@ def parse_operator(inp):
         return Operator(sub_packets), rem
 
 
-inp = ''.join([('0000' + bin(int(s, 16))[2:])[-4:] for s in input().strip()])
-print(step1(inp))
+def to_bin(hex_val):
+    return ''.join([('0000' + bin(int(s, 16))[2:])[-4:] for s in hex_val.strip()])
+
+
+decoded = to_bin(input())
+print(step1(decoded))
+print(step2(decoded))
