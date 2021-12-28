@@ -6,18 +6,18 @@ Literal = namedtuple('Literal', 'value')
 
 
 def step1(inp):
-    packet, rem = parse(inp)
+    packet = parse(inp)
     return sum_versions(packet)
 
 
 def step2(inp):
-    packet, rem = parse(inp)
+    packet = parse(inp)
     return calculate_value(packet)
 
 
 def sum_versions(packet):
     result = packet.version
-    if isinstance(packet.payload, Operator):
+    if packet.type != 4:
         for sub_packet in packet.payload.sub_packets:
             result += sum_versions(sub_packet)
     return result
@@ -51,51 +51,60 @@ def calculate_value(packet):
 
 
 def parse(inp):
-    version = int(inp[:3], 2)
-    type_id = int(inp[3:6], 2)
+    version = parse_integer(inp, 3)
+    type_id = parse_integer(inp, 3)
     if type_id == 4:
-        packet, rem = parse_literal(inp[6:])
+        payload = parse_literal(inp)
     else:
-        packet, rem = parse_operator(inp[6:])
-    return Packet(version, type_id, packet), rem
+        payload = parse_operator(inp)
+    return Packet(version, type_id, payload)
 
 
 def parse_literal(inp):
-    def helper(s):
-        if s[0] == '0':
-            return s[1:5], s[5:]
-        else:
-            s2, rem = helper(s[5:])
-            return s[1:5] + s2, rem
-    s, rem = helper(inp)
-    return Literal(int(s, 2)), rem
+    s = ''
+    while True:
+        bit = parse_integer(inp, 1)
+        s += pop(inp, 4)
+        if bit == 0:
+            break
+    return Literal(int(s, 2))
 
 
 def parse_operator(inp):
-    length_type_id = inp[0]
+    length_type_id = pop(inp, 1)
     if length_type_id == '0':
-        n = int(inp[1:16], 2)
-        rem = inp[16:16+n]
+        n = parse_integer(inp, 15)
+        rem = list(pop(inp, n))
         sub_packets = []
         while '1' in rem:
-            sub_packet, rem = parse(rem)
+            sub_packet = parse(rem)
             sub_packets.append(sub_packet)
-        return Operator(sub_packets), inp[16 + n:]
+        return Operator(sub_packets)
     else:
         assert length_type_id == '1'
-        n = int(inp[1:12], 2)
-        rem = inp[12:]
+        n = parse_integer(inp, 11)
         sub_packets = []
         for i in range(0, n):
-            sub_packet, rem = parse(rem)
+            sub_packet = parse(inp)
             sub_packets.append(sub_packet)
-        return Operator(sub_packets), rem
+        return Operator(sub_packets)
+
+
+def parse_integer(inp, n):
+    return int(pop(inp, n), 2)
+
+
+def pop(inp, n):
+    result = ''
+    for i in range(0, n):
+        result += inp.pop(0)
+    return result
 
 
 def to_bin(hex_val):
-    return ''.join([('0000' + bin(int(s, 16))[2:])[-4:] for s in hex_val.strip()])
+    return list(''.join([('0000' + bin(int(s, 16))[2:])[-4:] for s in hex_val.strip()]))
 
 
 decoded = to_bin(input())
-print(step1(decoded))
-print(step2(decoded))
+print(step1(decoded[::]))
+print(step2(decoded[::]))
