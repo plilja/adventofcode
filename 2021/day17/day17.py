@@ -1,18 +1,22 @@
 import re
 
 
-def sign(n):
-    if n == 0:
-        return 0
-    return -1 if n < 0 else 1
-
-
 def step1(x1, x2, y1, y2):
-    result = 0
+    max_y, n = solve(x1, x2, y1, y2)
+    return max_y
+
+
+def step2(x1, x2, y1, y2):
+    max_y, n = solve(x1, x2, y1, y2)
+    return n
+
+
+def solve(x1, x2, y1, y2):
+    max_ys = []
     x1, x2 = min(x1, x2), max(x1, x2)
     y1, y2 = min(y1, y2), max(y1, y2)
     for init_vel_x in range(-x1 - 1, x2 + 2):
-        for init_vel_y in range(y1, 2 * abs(y2) + 2):
+        for init_vel_y in range(min(y1, 1), 2 * abs(y2) + 2):
             vel_x = init_vel_x
             vel_y = init_vel_y
             match = False
@@ -27,8 +31,14 @@ def step1(x1, x2, y1, y2):
                 if x1 <= x <= x2 and y1 <= y <= y2:
                     match = True
             if match:
-                result = max(result, max_y)
-    return result
+                max_ys.append(max_y)
+    return max(max_ys), len(max_ys)
+
+
+def sign(n):
+    if n == 0:
+        return 0
+    return -1 if n < 0 else 1
 
 
 def read_input():
@@ -37,4 +47,6 @@ def read_input():
     return int(args[0]), int(args[1]), int(args[2]), int(args[3])
 
 
-print(step1(*read_input()))
+args = read_input()
+print(step1(*args))
+print(step2(*args))
