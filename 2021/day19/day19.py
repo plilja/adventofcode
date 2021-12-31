@@ -1,9 +1,22 @@
 import sys
 
 
-def step1(scanners):
+def step1(beacons):
+    return len(beacons)
+
+
+def step2(scanner_position):
+    result = 0
+    for x1, y1, z1 in scanner_position:
+        for x2, y2, z2 in scanner_position:
+            result = max(result, abs(x1 - x2) + abs(y1 - y2) + abs(z1 - z2))
+    return result
+
+
+def solve(scanners):
     correctly_rotated = {0}
     tested = set()
+    scanner_positions = set()
     while len(correctly_rotated) < len(scanners):
         for i in range(0, len(scanners)):
             scanner1 = scanners[i]
@@ -14,18 +27,19 @@ def step1(scanners):
                     continue
                 scanner2 = scanners[j]
                 tested |= {(i, j)}
-                correct_rotation = find_rotation(scanner1, scanner2)
+                correct_rotation, scanner_pos = find_correct_rotation(scanner1, scanner2)
                 if correct_rotation:
                     scanners[j] = correct_rotation
                     correctly_rotated.add(j)
-    result = set()
+                    scanner_positions.add(scanner_pos)
+    beacons = set()
     for scanner in scanners:
         for beacon in scanner:
-            result.add(beacon)
-    return len(result)
+            beacons.add(beacon)
+    return beacons, scanner_positions
 
 
-def find_rotation(scanner1, scanner2):
+def find_correct_rotation(scanner1, scanner2):
     beacons1 = set(scanner1)
     for rot in rotations(scanner2):
         for x1, y1, z1 in scanner1[11:]:
@@ -46,13 +60,12 @@ def find_rotation(scanner1, scanner2):
                     ls = []
                     for x3, y3, z3 in rot:
                         ls.append((x3 + dx, y3 + dy, z3 + dz))
-                    return ls
-    return None
+                    return ls, (dx, dy, dz)
+    return None, None
 
 
 def rotations(scanner):
-    perms = [
-             ((0, 1), (1, 1), (2, 1)),
+    perms = [((0, 1), (1, 1), (2, 1)),
              ((1, 1), (2, 1), (0, 1)),
              ((0, -1), (2, 1), (1, 1)),
              ((2, 1), (0, -1), (1, -1)),
@@ -87,4 +100,6 @@ def read_input():
 
 
 scanners = read_input()
-print(step1(scanners))
+beacons, scanner_positions = solve(scanners)
+print(step1(beacons))
+print(step2(scanner_positions))
