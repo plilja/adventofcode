@@ -14,6 +14,10 @@ def step1(cubes):
     return solve(to_check)
 
 
+def step2(cubes):
+    return solve(cubes)
+
+
 def solve(cubes):
     result = 0
     for i in range(0, len(cubes)):
@@ -34,15 +38,20 @@ def solve(cubes):
 def split(cube1, cube2):
     """Splits cube1 such that only sections that doesn't overlap cube2 remains"""
     result = []
-    splits_x = split_section(cube1.section_x, cube2.section_x)
-    splits_y = split_section(cube1.section_y, cube2.section_y)
-    splits_z = split_section(cube1.section_z, cube2.section_z)
-    for split_x in splits_x:
-        for split_y in splits_y:
-            for split_z in splits_z:
-                c = Cube(cube1.on_off, split_x, split_y, split_z)
-                if not cube_has_overlap(c, cube2):
-                    result.append(c)
+    if not section_has_overlap(cube1.section_x, cube2.section_x):
+        result.append(cube1)
+    else:
+        for split_x in split_section(cube1.section_x, cube2.section_x):
+            if not section_has_overlap(split_x, cube2.section_x):
+                result.append(Cube(cube1.on_off, split_x, cube1.section_y, cube1.section_z))
+            else:
+                for split_y in split_section(cube1.section_y, cube2.section_y):
+                    if not section_has_overlap(split_y, cube2.section_y):
+                        result.append(Cube(cube1.on_off, split_x, split_y, cube1.section_z))
+                    else:
+                        for split_z in split_section(cube1.section_z, cube2.section_z):
+                            if not section_has_overlap(split_z, cube2.section_z):
+                                result.append(Cube(cube1.on_off, split_x, split_y, split_z))
     return result
 
 
@@ -94,3 +103,4 @@ def read_input():
 
 cubes = read_input()
 print(step1(cubes))
+print(step2(cubes))
