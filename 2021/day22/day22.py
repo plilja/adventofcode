@@ -38,7 +38,7 @@ def solve(cubes):
 def split(cube1, cube2):
     """Splits cube1 such that only sections that doesn't overlap cube2 remains"""
     result = []
-    if not section_has_overlap(cube1.section_x, cube2.section_x):
+    if not cube_has_overlap(cube1, cube2):
         result.append(cube1)
     else:
         for split_x in split_section(cube1.section_x, cube2.section_x):
@@ -78,14 +78,10 @@ def split_section(section1, section2):
     return result
 
 
-def section_len(section):
-    return round(abs(section.p2 - section.p1)) + 1
-
-
 def volume(cube):
-    return section_len(cube.section_x) * \
-        section_len(cube.section_y) * \
-        section_len(cube.section_z)
+    return (abs(cube.section_x.p1 - cube.section_x.p2) + 1) * \
+        (abs(cube.section_y.p1 - cube.section_y.p2) + 1) * \
+        (abs(cube.section_z.p1 - cube.section_z.p2) + 1)
 
 
 def read_input():
