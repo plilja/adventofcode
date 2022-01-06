@@ -2,6 +2,14 @@ import sys
 
 
 def step1(instructions):
+    return solve(instructions, max)
+
+
+def step2(instructions):
+    return solve(instructions, min)
+
+
+def solve(instructions, tie_breaker):
     args = []
     num_divs = 0
     for i in range(0, len(instructions), 18):
@@ -23,9 +31,11 @@ def step1(instructions):
             if z < 26 ** num_divs:
                 for w in range(1, 10):
                     if w == x:
-                        new_states[z] = inp + [w]
+                        new_z = z
                     else:
-                        new_states[z * 26 + w + off] = inp + [w]
+                        new_z = z * 26 + w + off
+                    if new_z not in new_states or tie_breaker(w, new_states[new_z][-1]) == w:
+                        new_states[new_z] = inp + [w]
         if div == 26:
             num_divs -= 1
         states = new_states
@@ -34,3 +44,4 @@ def step1(instructions):
 
 inp = [s.strip() for s in sys.stdin]
 print(step1(inp))
+print(step2(inp))
