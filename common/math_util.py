@@ -1,6 +1,3 @@
-from collections import namedtuple
-
-
 def gcd(a, b):
     while b != 0:
         t = b
@@ -35,8 +32,8 @@ def extended_gcd(a, b):
         t = old_t - q * t
         old_t = tmp3
 
-    assert(old_s*a + old_t*b == old_r)
-    return (old_s, old_t, old_r)
+    assert (old_s * a + old_t * b == old_r)
+    return old_s, old_t, old_r
 
 
 def chinese_remainder_theorem(a1, n1, a2, n2):
@@ -45,7 +42,7 @@ def chinese_remainder_theorem(a1, n1, a2, n2):
     assert (a1 % common) == (a2 % common)
 
     if common == min(n1, n2):
-        return (max(a1, a2), max(n1, n2))
+        return max(a1, a2), max(n1, n2)
 
     n = n1 * n2 // common
 
@@ -63,6 +60,11 @@ def chinese_remainder_theorem(a1, n1, a2, n2):
 
     a1_aux = a1 % n1
     a2_aux = a2 % n2
-    
+
     return ((a1_aux * e1 * m1 + a2_aux * e2 * m2) % n, n)
 
+
+def sign(n):
+    if n == 0:
+        return 0
+    return 1 if n > 0 else -1
