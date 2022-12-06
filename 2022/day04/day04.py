@@ -12,6 +12,16 @@ def step1(inp):
     return result
 
 
+def step2(inp):
+    result = 0
+    for (a1, a2), (b1, b2) in inp:
+        if a1 <= b1 <= a2:
+            result += 1
+        elif b1 <= a1 <= b2:
+            result += 1
+    return result
+
+
 def read_input():
     result = []
     for line in sys.stdin:
@@ -22,3 +32,4 @@ def read_input():
 
 inp = read_input()
 print(step1(inp))
+print(step2(inp))
