@@ -11,8 +11,24 @@ def step1(stacks, moves):
         for i in range(0, move.num):
             x = stacks_copy[move.fr].pop()
             stacks_copy[move.to].append(x)
+    return top_of_stacks(stacks_copy)
+
+
+def step2(stacks, moves):
+    stacks_copy = [stack[::] for stack in stacks]
+    for move in moves:
+        lifted = []
+        for i in range(0, move.num):
+            x = stacks_copy[move.fr].pop()
+            lifted.append(x)
+        lifted.reverse()
+        stacks_copy[move.to] += lifted
+    return top_of_stacks(stacks_copy)
+
+
+def top_of_stacks(stacks):
     result = []
-    for stack in stacks_copy:
+    for stack in stacks:
         if stack:
             result.append(stack[-1])
     return ''.join(result)
@@ -39,3 +55,4 @@ def read_input():
 
 stacks, moves = read_input()
 print(step1(stacks, moves))
+print(step2(stacks, moves))
