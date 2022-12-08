@@ -20,6 +20,27 @@ def step1(inp):
     return result
 
 
+def step2(inp):
+    total = 70000000
+    unused_needed = 30000000
+    root = parse(inp)
+    sizes = {}
+    root_size = get_size(root, sizes)
+    min_delete = unused_needed - (total - root_size)
+    if min_delete < 0:
+        return 0
+    result = float('inf')
+    q = deque([root])
+    while q:
+        directory = q.popleft()
+        size = get_size(directory, sizes)
+        if size >= min_delete and size < result:
+            result = size
+        for key, value in directory.dirs.items():
+            q.append(value)
+    return result
+
+
 def get_size(directory, cache):
     p = path(directory)
     if p in cache:
@@ -85,3 +106,4 @@ def path(directory):
 
 inp = list(map(str.strip, sys.stdin.readlines()))
 print(step1(inp))
+print(step2(inp))
