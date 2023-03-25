@@ -9,20 +9,40 @@ dirs = {
 
 
 def step1(inp):
-    head = [0, 0]
-    tail = [0, 0]
+    return snake(inp, 2)
+
+
+def step2(inp):
+    return snake(inp, 10)
+
+
+def snake(inp, ropelen):
+    rope = [[0, 0] for _ in range(0, ropelen)]
     visited = set()
     for dir, steps in inp:
         dx, dy = dirs[dir]
         for _ in range(0, steps):
-            head[0] += dx
-            head[1] += dy
-            if abs(head[0] - tail[0]) > 1 or abs(head[1] - tail[1]) > 1:
-                tail[0] = head[0] - dx
-                tail[1] = head[1] - dy
-            visited.add(tuple(tail))
+            rope[0][0] += dx
+            rope[0][1] += dy
+            for i in range(1, ropelen):
+                if abs(rope[i - 1][0] - rope[i][0]) > 1 or abs(rope[i - 1][1] - rope[i][1]) > 1:
+                    dx2 = signum(rope[i - 1][0] - rope[i][0])
+                    dy2 = signum(rope[i - 1][1] - rope[i][1])
+                    rope[i][0] += dx2
+                    rope[i][1] += dy2
+            visited.add(tuple(rope[-1]))
     return len(visited)
+
+
+def signum(x):
+    if x == 0:
+        return 0
+    elif x < 0:
+        return -1
+    else:
+        return 1
 
 
 inp = [(x.split()[0], int(x.split()[1])) for x in sys.stdin]
 print(step1(inp))
+print(step2(inp))
