@@ -2,6 +2,18 @@ import sys
 
 
 def step1(paths):
+    return simulate(paths)
+
+
+def step2(paths):
+    lowest = float('-inf')
+    for path in paths:
+        for x, y in path:
+            lowest = max(lowest, y)
+    return simulate(paths + [[(-10000, lowest + 2), (10000, lowest + 2)]])
+
+
+def simulate(paths):
     # find lowest
     lowest = float('-inf')
     for path in paths:
@@ -41,6 +53,8 @@ def step1(paths):
                 y += 1
             else:
                 break
+        if (x, y) == (500, 0):
+            return result
         if y > lowest:
             return result - 1
         grid.add((x, y))
@@ -67,3 +81,4 @@ def read_input():
 
 paths = read_input()
 print(step1(paths))
+print(step2(paths))
