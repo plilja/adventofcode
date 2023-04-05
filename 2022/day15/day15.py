@@ -4,14 +4,43 @@ import re
 
 def step1(sensors):
     target_y = 2000000
-    non_beacon = set()
+    intervals = []
     for ((sx, sy), (bx, by)) in sensors:
         dist_to_beacon = abs(sx - bx) + abs(sy - by)
-        for x in range(sx - dist_to_beacon, sx + dist_to_beacon + 1):
-            dist = abs(sx - x) + abs(sy - target_y)
-            if dist <= dist_to_beacon and (x, target_y) != (bx, by):
-                non_beacon.add((x, target_y))
-    return len(non_beacon)
+        rem_dist = dist_to_beacon - abs(target_y - sy)
+        intervals.append((sx - rem_dist, sx + rem_dist))
+    intervals.sort()
+    prev = float('-inf')
+    result = 0
+    for (start, end) in intervals:
+        if end > prev:
+            result += end - max(start, prev)
+            prev = end
+    return result
+
+
+def step2(sensors):
+    lim = 4000000
+    for y in range(0, lim + 1):
+        intervals = []
+        for ((sx, sy), (bx, by)) in sensors:
+            dist_to_beacon = abs(sx - bx) + abs(sy - by)
+            rem_dist = dist_to_beacon - abs(y - sy)
+            intervals.append((sx - rem_dist, sx + rem_dist))
+        intervals.sort()
+        prev = -1
+        for (start, end) in intervals:
+            if prev + 1 < start and 0 <= prev <= lim:
+                return tuning_freq(prev + 1, y)
+            prev = max(prev, end)
+        if prev < lim:
+            return tuning_freq(prev + 1, y)
+
+    raise ValueError('Unable to locate beacon')
+
+
+def tuning_freq(x, y):
+    return x * 4000000 + y
 
 
 def read_input():
@@ -26,4 +55,5 @@ def read_input():
 
 sensors = read_input()
 print(step1(sensors))
-
+print('This one is slow. Wait for it...', file=sys.stderr)
+print(step2(sensors))
