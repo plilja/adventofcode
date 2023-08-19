@@ -1,6 +1,7 @@
 import sys
 import re
 import heapq
+from concurrent.futures import ProcessPoolExecutor
 from collections import namedtuple
 
 Blueprint = namedtuple('Blueprint',
@@ -11,13 +12,27 @@ INF = float('INF')
 
 def step1(blueprints):
     result = 0
-    for blueprint in blueprints:
-        b = evaluate_blueprint(blueprint)
-        result += blueprint.id * b
+    with ProcessPoolExecutor(max_workers=16) as executor:
+        futures = {}
+        for blueprint in blueprints:
+            futures[blueprint.id] = executor.submit(evaluate_blueprint, blueprint, 24)
+        for blueprint in blueprints:
+            result += blueprint.id * futures[blueprint.id].result()
     return result
 
 
-def evaluate_blueprint(blueprint):
+def step2(blueprints):
+    result = 1
+    with ProcessPoolExecutor(max_workers=3) as executor:
+        futures = []
+        for blueprint in blueprints[0:3]:
+            futures.append(executor.submit(evaluate_blueprint, blueprint, 32))
+        for future in futures:
+            result *= future.result()
+    return result
+
+
+def evaluate_blueprint(blueprint, time):
     pq = []
     heapq.heappush(pq, (0, 0, State(0, 0, 0, 0, 1, 0, 0, 0)))
     cache = {}
@@ -32,11 +47,10 @@ def evaluate_blueprint(blueprint):
         if prev <= minute:
             continue
         cache[state] = minute
-        # print(state)
-        if minute == 24:
+        if minute == time:
             result = max(result, state.geode)
             continue
-        if approximate_max(state, 24 - minute) <= result:
+        if approximate_max(state, time - minute) <= result:
             continue
 
         if state.ore >= blueprint.ore_robot_ore and most_expensive_ore(blueprint) > state.ore_robots:
@@ -146,6 +160,8 @@ def read_input():
     return result
 
 
-blueprints = read_input()
-print('This one is slow. Wait for it...', file=sys.stderr)
-print(step1(blueprints))
+if __name__ == '__main__':
+    blueprints = read_input()
+    print('This one is slow. Wait for it...', file=sys.stderr)
+    print(step1(blueprints))
+    print(step2(blueprints))
