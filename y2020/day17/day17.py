@@ -12,7 +12,7 @@ for i in range(1, 6):
         DELTAS[i] += [x + (1,) for x in DELTAS[i - 1]]
 
 
-def neighbours(point, i=0):
+def neighbours(point):
     for deltas in DELTAS[len(point)]:
         xs = []
         for i in range(0, len(point)):

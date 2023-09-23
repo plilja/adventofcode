@@ -25,7 +25,7 @@ def step2(inp):
             vis = set()
             limit = len(inp) // 2
             dfs(grid, x + dx, y + dy, z + dz, vis, limit)
-            if len(vis) < limit and len(vis) > 0:
+            if 0 < len(vis) < limit:
                 for x2, y2, z2 in vis:
                     grid[x2][y2][z2] = True
     return count_exposed_sides(inp, grid)

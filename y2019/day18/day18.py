@@ -19,11 +19,11 @@ def find(grid, what):
 
 
 def is_key(c):
-    return c >= 'a' and c <= 'z'
+    return 'a' <= c <= 'z'
 
 
 def is_door(c):
-    return c >= 'A' and c <= 'Z'
+    return 'A' <= c <= 'Z'
 
 
 def get_all_keys(grid):

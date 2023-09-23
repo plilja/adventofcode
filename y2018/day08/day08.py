@@ -32,7 +32,7 @@ def step2(inp):
         if node.children:
             r = 0
             for i in node.metadata:
-                if i > 0 and i <= len(node.children):
+                if 0 < i <= len(node.children):
                     r += sum_func(node.children[i - 1])
             return r
         else:

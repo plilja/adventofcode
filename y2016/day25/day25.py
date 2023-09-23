@@ -9,14 +9,11 @@ class Machine():
         self.d = d
         self.pc = pc
 
-
     def __hash__(self):
         return hash((self.a, self.b, self.c, self.d, self.pc))
 
-
     def __eq__(self, other):
         return (self.a, self.b, self.c, self.d, self.pc) == (other.a, other.b, other.c, other.d, other.pc)
-
 
     def copy(self):
         return Machine(self.a, self.b, self.c, self.d, self.pc)
@@ -121,7 +118,7 @@ def jnz(m, value, delta):
 
 def tgl(m, unknown, instructions):
     v = register_or_constant(m, unknown)
-    if m.pc + v >= 0 and m.pc + v < len(instructions):
+    if 0 <= m.pc + v < len(instructions):
         instruction = instructions[m.pc + v].strip().split()
         if len(instruction) == 2:
             if instruction[0] == 'inc':

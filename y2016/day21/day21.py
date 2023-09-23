@@ -1,5 +1,6 @@
 import sys
 
+
 def step1(ops):
     return scramble('abcdefgh', ops)
 

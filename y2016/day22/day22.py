@@ -53,8 +53,7 @@ def step2(inp):
                     visited |= {(x + dx, y + dy)}
                     q += [(x + dx, y + dy, d + 1)]
 
-        return float('inf') # impossible
-
+        return float('inf')  # impossible
 
     grid = parse_grid(inp)
     d = bfs(grid)

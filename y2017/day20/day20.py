@@ -4,10 +4,10 @@ from collections import namedtuple, defaultdict
 
 Particle = namedtuple('Particle', 'position velocity acceleration')
 
+
 def step1(particles):
     min_acc = float('inf')
     min_idx = -1
-    min_point = None
     for i, particle in enumerate(particles):
         a1, a2, a3 = particle.acceleration
         acc = abs(a1) + abs(a2) + abs(a3)

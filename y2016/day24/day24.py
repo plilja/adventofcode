@@ -35,20 +35,19 @@ def tsp(grid, return_to_start):
                 return d
             directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
             for dx, dy in directions:
-                if x + dx >= 0 and y + dy >= 0 and \
-                        y + dy < len(grid) and x + dx < len(grid[y + dy]) and \
+                if 0 <= x + dx < len(grid[y + dy]) and 0 <= y + dy < len(grid) and \
                         grid[y + dy][x + dx] != '#' and \
                         (x + dx, y + dy) not in v:
                     q += [(x + dx, y + dy, d + 1)]
                     v |= {(x + dx, y + dy)}
-        return float('inf') # impossible
+        return float('inf')  # impossible
 
     positions = {}
     unvisited = frozenset()
     for y in range(0, len(grid)):
         for x in range(0, len(grid[y])):
             c = grid[y][x]
-            if c >= '1' and c <= '9':
+            if '1' <= c <= '9':
                 d = ord(c) - ord('0')
                 unvisited |= {d}
                 positions[d] = (x, y)

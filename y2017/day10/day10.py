@@ -1,5 +1,6 @@
 M = 256
 
+
 def step1(inp):
     lengths = [int(s) for s in inp.split(',')]
     ls = [i for i in range(0, M)]

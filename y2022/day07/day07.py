@@ -34,7 +34,7 @@ def step2(inp):
     while q:
         directory = q.popleft()
         size = get_size(directory, sizes)
-        if size >= min_delete and size < result:
+        if min_delete <= size < result:
             result = size
         for key, value in directory.dirs.items():
             q.append(value)

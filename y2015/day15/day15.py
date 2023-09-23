@@ -12,7 +12,7 @@ def read_input():
 
 def solve(ings, pred):
     def f(ings, rem, recipe=[]):
-        if ings == []:
+        if not ings:
             res = [0, 0, 0, 0, 0]
             for r in recipe:
                 for i in range(0, len(res)):

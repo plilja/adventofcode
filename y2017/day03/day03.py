@@ -36,7 +36,6 @@ def step2(d):
                grid[y - 1][x] + \
                grid[y - 1][x + 1]
 
-
     grid = defaultdict(lambda: defaultdict(lambda: 0))
     grid[0][0] = 1
     edge = 2

@@ -19,7 +19,7 @@ class Direction(Enum):
 def step1(inp):
     state_map = {State.INFECTED: State.CLEAN, State.CLEAN: State.INFECTED}
     direction_map = {State.INFECTED: Direction.RIGHT, State.CLEAN: Direction.LEFT}
-    return run(state_map, direction_map, 10000)
+    return run(inp, state_map, direction_map, 10000)
 
 
 def step2(inp):
@@ -31,10 +31,10 @@ def step2(inp):
             State.CLEAN: Direction.LEFT,
             State.WEAKENED: Direction.STRAIGHT,
             State.FLAGGED: Direction.REVERSE}
-    return run(state_map, direction_map, 10000000)
+    return run(inp, state_map, direction_map, 10000000)
 
 
-def run(state_map, direction_map, iterations):
+def run(inp, state_map, direction_map, iterations):
     x = len(inp) // 2
     y = x
     dx = 0

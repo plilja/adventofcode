@@ -118,7 +118,7 @@ def jnz(m, value, delta):
 
 def tgl(m, unknown, instructions):
     v = register_or_constant(m, unknown)
-    if m.pc + v >= 0 and m.pc + v < len(instructions):
+    if 0 <= m.pc + v < len(instructions):
         instruction = instructions[m.pc + v].strip().split()
         if len(instruction) == 2:
             if instruction[0] == 'inc':
@@ -132,7 +132,6 @@ def tgl(m, unknown, instructions):
             else:
                 instructions[m.pc + v] = 'jnz %s %s' % (instruction[1], instruction[2])
     m.pc += 1
-
 
 
 def get_register(machine, register):

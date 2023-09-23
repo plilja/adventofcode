@@ -1,5 +1,6 @@
 import sys
 
+
 def step1(inp):
     ans = 0
     for row in inp:

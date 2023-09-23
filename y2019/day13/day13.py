@@ -19,7 +19,6 @@ def step1(program):
     return result
 
 
-
 def find(grid, what):
     for y in grid.keys():
         for x in grid[y].keys():

@@ -1,6 +1,7 @@
-import sys
 import re
+import sys
 from collections import defaultdict
+
 
 class State:
     def __init__(self):

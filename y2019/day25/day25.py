@@ -26,6 +26,7 @@ commands_to_pick_all_items = [
         'drop candy cane', 'drop dark matter'
     ]
 
+
 def solve(instructions):
     items = [
         'manifold',

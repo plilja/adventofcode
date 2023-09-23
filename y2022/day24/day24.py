@@ -21,8 +21,7 @@ def solve(inp, waypoints):
     result = 1
     start_x = 1
     start_y = 0
-    dist_to_grid = {}
-    dist_to_grid[0] = initial_grid
+    dist_to_grid = {0: initial_grid}
     for target_x, target_y in waypoints:
         q = [(abs(target_y - start_y) + abs(target_x - start_x), result, start_x, start_y)]
         visited = set()
@@ -45,7 +44,7 @@ def solve(inp, waypoints):
                 continue
             heappush(q, (to_goal, d + 1, x, y))  # wait without moving
             for x2, y2 in neighbors4(x, y):
-                if y2 >= 0 and y2 < len(grid):
+                if 0 <= y2 < len(grid):
                     heappush(q, (abs(target_y - y2) + abs(target_x - x2), d + 1, x2, y2))
         result = best
         start_x = target_x

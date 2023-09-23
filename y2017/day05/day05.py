@@ -1,10 +1,11 @@
 import sys
 
+
 def step1(inp):
     copy = inp[::]
     i = 0
     ans = 0
-    while i >= 0 and i < len(copy):
+    while 0 <= i < len(copy):
         off = copy[i]
         copy[i] += 1
         i += off
@@ -16,7 +17,7 @@ def step2(inp):
     copy = inp[::]
     i = 0
     ans = 0
-    while i >= 0 and i < len(copy):
+    while 0 <= i < len(copy):
         off = copy[i]
         if off >= 3:
             copy[i] -= 1

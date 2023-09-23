@@ -1,5 +1,6 @@
 M = 256
 
+
 def step1(grid):
     ans = 0
     for i in range(0, 128):
@@ -30,7 +31,6 @@ def step2(grid):
                                 grid[y_ + dy][x_ + dx] == 1:
                             q += [(x_ + dx, y_ + dy)]
     return ans
-
 
 
 def get_grid(inp):

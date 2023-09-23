@@ -26,6 +26,7 @@ def read_input():
         ans += [list(map(int, row.split()))]
     return ans
 
+
 inp = read_input()
 print(step1(inp))
 print(step2(inp))

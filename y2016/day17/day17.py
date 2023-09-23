@@ -3,7 +3,7 @@ import hashlib
 
 def solve(passcode):
     def open(c):
-        return c >= 'b' and c <= 'f'
+        return 'b' <= c <= 'f'
 
     q = []
     q += [(0, 0, 0, '')]

@@ -7,6 +7,7 @@ class NumberMonkey:
         self.value = value
         self.name = name
 
+
 class OperationMonkey:
     def __init__(self, name, operation, operand1, operand2, op_name):
         self.name = name

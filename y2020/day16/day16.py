@@ -5,7 +5,7 @@ from collections import namedtuple
 Rule = namedtuple('Rule', 'name ranges')
 
 
-def step1(rules, your_ticket, nearby_tickets):
+def step1(rules, nearby_tickets):
     result = 0
     for ticket in nearby_tickets:
         for num in ticket:
@@ -93,5 +93,5 @@ def read_input():
 
 
 rules, your_ticket, nearby_tickets = read_input()
-print(step1(rules, your_ticket, nearby_tickets))
+print(step1(rules, nearby_tickets))
 print(step2(rules, your_ticket, nearby_tickets))

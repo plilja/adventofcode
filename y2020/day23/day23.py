@@ -8,7 +8,7 @@ def play(cups, iterations):
     for i in range(0, iterations):
         picked_up = []
         next_to_pick_up = successor[current]
-        for i in range(0, 3):
+        for j in range(0, 3):
             picked_up.append(next_to_pick_up)
             next_to_pick_up = successor[next_to_pick_up]
 

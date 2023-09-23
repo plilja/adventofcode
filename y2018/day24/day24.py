@@ -68,7 +68,7 @@ def combat(groups):
                         highest_damage = damage
                         highest_effective_power = effective_power
                         highest_target = target
-            if highest_target != None and highest_damage > 0:
+            if highest_target is not None and highest_damage > 0:
                 selections[group.id] = highest_target
 
         rem_groups.sort(key=lambda x: -x.initiative)

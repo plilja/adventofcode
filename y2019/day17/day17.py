@@ -114,7 +114,7 @@ def determine_movement_functions(path):
                         walk.append('C')
                         continue
                     break
-                if rem == []:
+                if not rem:
                     return walk, a, b, c
 
 

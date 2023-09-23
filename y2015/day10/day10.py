@@ -8,7 +8,7 @@ def group(v):
             r += [t]
             t = [i]
 
-    if t != []:
+    if t:
         r += [t]
 
     return r

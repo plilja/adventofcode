@@ -1,5 +1,4 @@
 import re
-from math import *
 import sys
 
 microchip_re = re.compile('\w+-compatible microchip')
@@ -89,7 +88,7 @@ def is_stable(floor):
             break
     if has_generator:
         for item in floor:
-            if is_microship(item) and not -item in floor:
+            if is_microship(item) and -item not in floor:
                 return False
     return True
 

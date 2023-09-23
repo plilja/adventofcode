@@ -14,7 +14,6 @@ def step1(inp):
     return result
 
 
-
 def step2(inp):
     inp_copy = inp
     divider_packet1 = [[2]]

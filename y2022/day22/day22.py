@@ -33,7 +33,7 @@ def solve(grid, path, deduce_next_pos):
         elif inst == 'L':
             dx, dy = dy, -dx
         else:
-            assert inst[0] >= '0' and inst[0] <= '9'
+            assert '0' <= inst[0] <= '9'
             steps = int(inst)
             for i in range(0, steps):
                 x2, y2, dx2, dy2 = deduce_next_pos(grid, x, y, dx, dy)

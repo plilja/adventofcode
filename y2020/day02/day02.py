@@ -17,7 +17,7 @@ def step1(inp):
     result = 0
     for pattern, password in parse_input(inp):
         counter = Counter(password)
-        if pattern.a <= counter[pattern.char] and pattern.b >= counter[pattern.char]:
+        if pattern.a <= counter[pattern.char] <= pattern.b:
             result += 1
     return result
 

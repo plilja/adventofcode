@@ -73,7 +73,7 @@ def step1():
             c = get_or(x2, y2, '-')
             if c == '.':
                 q.append((dist + 1, x2, y2))
-            elif c >= 'A' and c <= 'Z':
+            elif 'A' <= c <= 'Z':
                 end = other_end(x2, y2)
                 if end:
                     q.append((dist + 1, end[0], end[1]))
@@ -103,7 +103,7 @@ def step2():
             c = get_or(x2, y2, '-')
             if c == '.':
                 q.append((dist + 1, level, x2, y2))
-            elif c >= 'A' and c <= 'Z':
+            elif 'A' <= c <= 'Z':
                 label = get_label(x2, y2)
                 if label not in ['AA', 'ZZ']:
                     x3, y3 = other_end(x2, y2)

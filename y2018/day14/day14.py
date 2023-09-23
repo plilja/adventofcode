@@ -35,4 +35,4 @@ def step2(n):
 
 n = int(input())
 print(step1(n))
-print(step2(n)) # This one is slow
+print(step2(n))  # This one is slow

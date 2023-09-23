@@ -90,7 +90,7 @@ def step2(instructions):
 def read_instructions():
     result = []
     for line in sys.stdin:
-        m1 = re.match(r'mem\[(\d+)\] = (\d+)', line)
+        m1 = re.match(r'mem\[(\d+)] = (\d+)', line)
         if m1:
             a, b = m1.groups()
             result.append((Operations.MEM, int(a), int(b)))

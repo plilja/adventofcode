@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+
 
 def step1(inp):
     def f(components, connector, cache):

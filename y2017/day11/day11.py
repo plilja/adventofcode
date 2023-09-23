@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 def step1(directions):
     return run(directions)[0]
 

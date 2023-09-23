@@ -57,10 +57,10 @@ def parse_input(lines):
     while i < len(lines):
         [_, monkey_id] = lines[i].split()
         items = deque(map(int, lines[i + 1].split(': ')[1].split(', ')))
-        [operator, amount] = re.match('\s*Operation: new = old ([+*]) (\d+|old)\s*', lines[i + 2]).groups()
-        [divisor] = re.match('\s*Test: divisible by (\d+)\s*', lines[i + 3]).groups()
-        [if_true] = re.match('\s*If true: throw to monkey (\d+)\s*', lines[i + 4]).groups()
-        [if_false] = re.match('\s*If false: throw to monkey (\d+)\s*', lines[i + 5]).groups()
+        [operator, amount] = re.match('\\s*Operation: new = old ([+*]) (\\d+|old)\\s*', lines[i + 2]).groups()
+        [divisor] = re.match('\\s*Test: divisible by (\\d+)\\s*', lines[i + 3]).groups()
+        [if_true] = re.match('\\s*If true: throw to monkey (\\d+)\\s*', lines[i + 4]).groups()
+        [if_false] = re.match('\\s*If false: throw to monkey (\\d+)\\s*', lines[i + 5]).groups()
         result.append(Monkey(monkey_id, items, operator, amount, int(divisor), int(if_true), int(if_false)))
         i += 7
     return result

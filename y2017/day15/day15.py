@@ -2,6 +2,7 @@ f_a = 16807
 f_b = 48271
 m = 2147483647
 
+
 def step1(seed_a, seed_b):
     a = seed_a
     b = seed_b

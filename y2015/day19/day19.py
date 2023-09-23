@@ -17,7 +17,7 @@ def read_molecule():
 
 
 def step1(transitions, molecule):
-    if transitions == []:
+    if not transitions:
         return set()
     else:
         (fr, to) = transitions[0]

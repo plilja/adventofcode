@@ -3,12 +3,13 @@ from collections import defaultdict
 from math import sqrt
 
 operations = {
-        'set' : lambda x, y: y,
-        'sub' : lambda x, y: x - y,
-        'mul' : lambda x, y: x * y
+    'set': lambda x, y: y,
+    'sub': lambda x, y: x - y,
+    'mul': lambda x, y: x * y
 }
 
-def step1(inst):
+
+def step1(inp):
     reg = defaultdict(lambda: 0)
     inst_pnt = 0
     muls = 0

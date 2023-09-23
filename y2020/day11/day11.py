@@ -24,8 +24,8 @@ def safe_get(seats, x, dx, y, dy):
 
 
 def get_diagonal(seats, x, dx, y, dy):
-    while y >= 0 and y < len(seats) and \
-            x >= 0 and x < len(seats[0]):
+    while 0 <= y < len(seats) and \
+            0 <= x < len(seats[0]):
         seat = seats[y][x]
         if seat != FLOOR:
             return seat

@@ -75,6 +75,7 @@ def flip(grid):
             res[i][j] = grid[i][len(grid) - j - 1]
     return tuple(map(lambda xs: ''.join(xs), res))
 
+
 rules = get_input()
 print(step1(rules))
 print(step2(rules))
