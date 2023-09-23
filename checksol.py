@@ -13,21 +13,21 @@ parser.add_argument('day')
 args = parser.parse_args()
 
 day_padded = ('0' + args.day)[-2:]
-test_search_path = 'y{}/day{}/test/*.in'.format(args.year, day_padded)
+input_search_path = 'y{}/day{}/input/*.in'.format(args.year, day_padded)
 success = True
-tests_found = False
+inputs_found = False
 
-for test_file in glob.glob(test_search_path):
-    tests_found = True
+for input_file in glob.glob(input_search_path):
+    inputs_found = True
     start = time.time()
     answer_tmp_file = '.answer-{}'.format(random.randint(0, 100000000000))
-    os.system('python3 runner.py {} {} < {} > {}'.format(args.year, day_padded, test_file, answer_tmp_file))
+    os.system('python3 runner.py {} {} < {} > {}'.format(args.year, day_padded, input_file, answer_tmp_file))
     end = time.time()
-    test_exp_file = test_file.replace(".in", ".ans")
-    if not filecmp.cmp(test_exp_file, answer_tmp_file):
+    input_ans_file = input_file.replace(".in", ".ans")
+    if not filecmp.cmp(input_ans_file, answer_tmp_file):
         success = False
-        print(test_file + ', FAILED, execution time = {:.2f}'.format(end - start))
+        print(input_file + ', FAILED, execution time = {:.2f}'.format(end - start))
     else:
-        print(test_file + ', success, execution time = {:.2f}'.format(end - start))
+        print(input_file + ', success, execution time = {:.2f}'.format(end - start))
     if os.path.isfile(answer_tmp_file):
         os.remove(answer_tmp_file)
