@@ -35,7 +35,7 @@ def get_all_keys(grid):
     return keys
 
 
-def dist(grid, initial_x, initial_y, all_keys):
+def dist(grid, initial_x, initial_y):
     q = [(initial_x, initial_y, 0, set())]
     result = []
     v = set()
@@ -68,7 +68,7 @@ def solve(grid, initial_robots):
     dists = {}
     for x, y in list(map(lambda k: find(grid, k), all_keys)) + initial_robots:
         dists[(x, y)] = defaultdict(list)
-        for d, x2, y2, needed_keys in dist(grid, x, y, all_keys):
+        for d, x2, y2, needed_keys in dist(grid, x, y):
             dists[(x, y)][grid[y2][x2]].append((d, x2, y2, needed_keys))
 
     pq = [(0, initial_robots, set())]

@@ -1,7 +1,7 @@
 import sys
 
 
-class Machine():
+class Machine:
     def __init__(self, a, b, c, d, pc):
         self.a = a
         self.b = b
@@ -132,7 +132,6 @@ def tgl(m, unknown, instructions):
             else:
                 instructions[m.pc + v] = 'jnz %s %s' % (instruction[1], instruction[2])
     m.pc += 1
-
 
 
 def get_register(machine, register):

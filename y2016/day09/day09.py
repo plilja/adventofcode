@@ -3,7 +3,7 @@ from collections import namedtuple
 
 Marker = namedtuple('Marker', 'chars repeat')
 
-marker_re = re.compile('\(\d+x\d+\)')
+marker_re = re.compile('\\(\\d+x\\d+\\)')
 
 
 def parse_marker(marker_text):

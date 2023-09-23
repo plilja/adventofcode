@@ -24,7 +24,7 @@ class Effect:
             player_, boss_ = self.f(player, boss)
         else:
             player_, boss_ = player, boss
-        return (Effect(self.f, self.dur - 1), player_, boss_)
+        return Effect(self.f, self.dur - 1), player_, boss_
 
     def active(self):
         return self.dur > 0
@@ -36,11 +36,11 @@ class Shield:
 
     def apply(self, p, b):
         if self.dur == 7:
-            return (Shield(6), Player(p.hp, p.mana, p.armor + 7), b)
+            return Shield(6), Player(p.hp, p.mana, p.armor + 7), b
         elif self.dur == 1:
-            return (Shield(0), Player(p.hp, p.mana, p.armor - 7), b)
+            return Shield(0), Player(p.hp, p.mana, p.armor - 7), b
         else:
-            return (Shield(self.dur - 1), p, b)
+            return Shield(self.dur - 1), p, b
 
     def active(self):
         return self.dur > 0
@@ -55,19 +55,19 @@ def inflict_damage(character, damage):
 
 
 def magic_missile(player, boss):
-    return (player, inflict_damage(boss, 4))
+    return player, inflict_damage(boss, 4)
 
 
 def drain(player, boss):
-    return (Player(player.hp + 2, player.mana, player.armor), inflict_damage(boss, 2))
+    return Player(player.hp + 2, player.mana, player.armor), inflict_damage(boss, 2)
 
 
 def poison(player, boss):
-    return (player, inflict_damage(boss, 3))
+    return player, inflict_damage(boss, 3)
 
 
 def recharge(player, boss):
-    return (Player(player.hp, player.mana + 101, player.armor), boss)
+    return Player(player.hp, player.mana + 101, player.armor), boss
 
 
 def spells():
@@ -85,7 +85,7 @@ def solve(boss, turn_cost):
             s_, player, boss = s.apply(player, boss)
             if s_.active():
                 act_spells_[k] = s_
-        return (player, boss, act_spells_)
+        return player, boss, act_spells_
 
     def boss_turn(player, boss, avail_spells, act_spells, best):
         player, boss, act_spells = apply_spells(player, boss, avail_spells, act_spells)

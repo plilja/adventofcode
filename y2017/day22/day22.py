@@ -2,6 +2,7 @@ import sys
 from collections import defaultdict
 from enum import Enum
 
+
 class State(Enum):
     CLEAN = 1
     WEAKENED = 2

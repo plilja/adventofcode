@@ -32,7 +32,6 @@ def step2(inp):
         q = []
         for y in range(0, len(grid)):
             for x in range(0, len(grid[y])):
-                n = grid[y][x]
                 if grid[y][x].size - grid[y][x].used >= payload.used:
                     q += [(x, y, 0)]
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -68,7 +67,6 @@ def step2(inp):
 
 def parse_grid(inp):
     nodes_dict = defaultdict(dict)
-    nodes = []
     max_x = 0
     max_y = 0
     for [node, size, used, avail, percentage] in map(str.split, inp):
@@ -83,7 +81,7 @@ def parse_grid(inp):
         max_x = max(max_x, x)
         max_y = max(max_y, y)
 
-    grid = [[Node(0, 0)] * (max_x + 1) for i in range(0, max_y + 1)]
+    grid = [[Node(0, 0)] * (max_x + 1) for _ in range(0, max_y + 1)]
     for y, v in nodes_dict.items():
         for x, node in v.items():
             grid[y][x] = node
@@ -91,8 +89,8 @@ def parse_grid(inp):
     return grid
 
 
-input() # skip
-input() # skip
+input()  # skip
+input()  # skip
 df = sys.stdin.readlines()
 print(step1(df))
 print(step2(df))

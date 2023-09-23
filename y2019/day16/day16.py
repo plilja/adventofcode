@@ -1,5 +1,6 @@
 BASE_PATTERN = [0, 1, 0, -1]
 
+
 def step1(signal):
     r = [int(t) for t in signal]
     for phase in range(0, 100):

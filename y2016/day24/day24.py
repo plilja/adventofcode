@@ -11,7 +11,7 @@ def step2(grid):
 
 
 def tsp(grid, return_to_start):
-    def solve(grid, current, dists, unvisited, cache = {}):
+    def solve(grid, current, dists, unvisited, cache={}):
         if len(unvisited) == 0:
             if return_to_start:
                 return dists[current][0]

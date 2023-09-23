@@ -52,7 +52,7 @@ def step2(moons):
 
 def read_moon():
     [x, y, z] = re.match(r'<x=(-?\d+), y=(-?\d+), z=(-?\d+)>.*', input()).groups()
-    return (int(x), int(y), int(z))
+    return int(x), int(y), int(z)
 
 
 moons = [read_moon() for _ in range(0, 4)]

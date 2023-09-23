@@ -39,7 +39,7 @@ def run_instructions(instructions):
             else:
                 raise ValueError('Unknown operation ' + op)
             largest = max(largest, registers[reg1])
-    return (max(registers.values()), largest)
+    return max(registers.values()), largest
 
 
 inp = sys.stdin.readlines()

@@ -48,7 +48,7 @@ def find(space, what):
     for y in space.keys():
         for x in space[y].keys():
             if space[y][x] == what:
-                return (x, y)
+                return x, y
     raise ValueError('Value not found')
 
 

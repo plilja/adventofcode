@@ -23,7 +23,6 @@ def step1(inp):
 
 
 def step2(inp):
-    w = walk(inp)
     visited = set()
     for w in walk(inp):
         if w in visited:

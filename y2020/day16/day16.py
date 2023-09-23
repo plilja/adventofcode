@@ -36,7 +36,7 @@ def step2(rules, your_ticket, nearby_tickets):
     rule_idx = {}
     idx_rule = {}
     while len(rules) != len(rule_idx):
-        xs = [[] for i in range(0, len(valid_tickets[0]))]
+        xs = [[] for _ in range(0, len(valid_tickets[0]))]
         for ticket in valid_tickets:
             for i, num in enumerate(ticket):
                 xs[i].append(num)

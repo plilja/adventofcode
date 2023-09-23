@@ -9,7 +9,7 @@ def calculate_results(draw, boards):
     for board_num, board in enumerate(boards):
         for x, y in coordinates:
             num_to_board[board[y][x]].append((board_num, x, y))
-    bingo = [defaultdict(lambda: defaultdict(int)) for i in range(0, len(boards))]
+    bingo = [defaultdict(lambda: defaultdict(int)) for _ in range(0, len(boards))]
     results = []
     winners = set()
     for num in draw:

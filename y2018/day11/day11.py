@@ -6,7 +6,7 @@ def power_level(serial_number, x, y):
 
 def step1(serial_number):
     x, y, _ = solve(serial_number, 3, 3)
-    return (x, y)
+    return x, y
 
 
 def step2(serial_number):
@@ -15,7 +15,7 @@ def step2(serial_number):
 
 def solve(serial_number, min_size, max_size):
     # grid[y][x] stores the sum of the grid bounded by (1, 1) to (x, y)
-    grid = [[0 for j in range(0, 302)] for i in range(0, 302)]
+    grid = [[0 for _ in range(0, 302)] for _ in range(0, 302)]
     for y in range(1, 301):
         s = 0
         for x in range(1, 301):
@@ -25,7 +25,6 @@ def solve(serial_number, min_size, max_size):
     r, rz, ry, rz = 0, 0, 0, 0
     for z in range(min_size, max_size + 1):
         for y in range(1, 301 - z):
-            s = 0
             for x in range(1, 301 - z):
                 s = grid[y + z - 1][x + z - 1] - grid[y + z - 1][x - 1] - grid[y - 1][x + z - 1] + grid[y - 1][x - 1]
                 if s > r:
@@ -33,7 +32,7 @@ def solve(serial_number, min_size, max_size):
                     rx = x
                     ry = y
                     rz = z
-    return (rx, ry, rz)
+    return rx, ry, rz
 
 
 serial_number = int(input())

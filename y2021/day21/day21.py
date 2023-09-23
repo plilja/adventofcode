@@ -35,7 +35,7 @@ def step2(player1, player2):
                 p1 += a
                 p2 += b
             cache[key] = (p1, p2)
-            return (p1, p2)
+            return p1, p2
     cache = {}
     a, b = helper((0, 0), (player1, player2), 0, 1, cache)
     return max(a, b)

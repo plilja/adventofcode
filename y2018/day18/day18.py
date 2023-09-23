@@ -12,6 +12,7 @@ deltas = [
         (1, 1)
         ]
 
+
 def step1(inp):
     return solve(inp, 10)
 
@@ -35,7 +36,7 @@ def solve(inp, iterations):
                         num_open += 1 if g[y + dy][x + dx] == '.' else 0
                         num_lumber += 1 if g[y + dy][x + dx] == '#' else 0
 
-                g_next[y][x] = g[y][x] # default, just copy
+                g_next[y][x] = g[y][x]  # default, just copy
                 if g[y][x] == '.' and num_trees >= 3:
                     g_next[y][x] = '|'
                 if g[y][x] == '|' and num_lumber >= 3:

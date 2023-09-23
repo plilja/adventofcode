@@ -12,7 +12,7 @@ def solve(lines, toggle, turn_on, turn_off):
 
     def coord(s):
         [y, x] = s.split(',')
-        return (int(y), int(x))
+        return int(y), int(x)
 
     for inp in lines:
         args = inp.split()

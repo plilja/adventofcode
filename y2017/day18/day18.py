@@ -1,11 +1,12 @@
 import sys
 
 operations = {
-        'add' : lambda x, y: x + y,
-        'mul' : lambda x, y: x * y,
-        'set' : lambda x, y: y,
-        'mod' : lambda x, y: x % y
+    'add': lambda x, y: x + y,
+    'mul': lambda x, y: x * y,
+    'set': lambda x, y: y,
+    'mod': lambda x, y: x % y
 }
+
 
 def step1(inp):
     reg = {}

@@ -12,7 +12,7 @@ def step1(grid):
 
 
 def step2(grid):
-    new_grid = [[0] * 5 * len(grid[0]) for x in range(0, 5 * len(grid))]
+    new_grid = [[0] * 5 * len(grid[0]) for _ in range(0, 5 * len(grid))]
     assert len(grid) == len(grid[0])
     n = len(grid)
     for y in range(0, 5*n):

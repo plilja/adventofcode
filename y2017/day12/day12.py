@@ -1,6 +1,7 @@
 import re
 import sys
 
+
 def step1(g):
     visited = set()
     visit(g, 0, visited)

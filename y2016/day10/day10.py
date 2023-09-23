@@ -51,7 +51,7 @@ def solve(inp):
                 break
 
     step2 = outputs[0][0] * outputs[1][0] * outputs[2][0]
-    return (step1, step2)
+    return step1, step2
 
 
 inp = sys.stdin.readlines()

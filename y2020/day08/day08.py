@@ -15,9 +15,9 @@ def run_program(program):
     seen = set()
     while True:
         if pointer in seen:
-            return (False, acc)
+            return False, acc
         if pointer >= len(program):
-            return (True, acc)
+            return True, acc
         seen.add(pointer)
         inst, arg = program[pointer]
         if inst == 'jmp':

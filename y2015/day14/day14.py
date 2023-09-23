@@ -12,8 +12,8 @@ for i in sys.stdin.readlines():
 
 def solve():
     timers = [reindeers[i][1] for i in range(0, len(reindeers))]
-    dists = [0 for i in reindeers]
-    points = [0 for i in reindeers]
+    dists = [0 for _ in reindeers]
+    points = [0 for _ in reindeers]
     speeds = [reindeers[i][0] for i in range(0, len(reindeers))]
     for i in range(0, TIME):
         leaders = [0]
@@ -38,7 +38,7 @@ def solve():
 
     winner_by_dist = max(dists)
     winner_by_points = max(points)
-    return (winner_by_dist, winner_by_points)
+    return winner_by_dist, winner_by_points
 
 
 step1, step2 = solve()

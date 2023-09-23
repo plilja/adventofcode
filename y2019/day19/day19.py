@@ -38,7 +38,7 @@ def step2(instructions):
         while is_pulled(instructions, x - 1, y):
             x -= 1
         if is_pulled(instructions, x + 99, top_y):
-            return (x, top_y)
+            return x, top_y
         else:
             return None
 

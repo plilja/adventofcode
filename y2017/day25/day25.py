@@ -64,7 +64,7 @@ def get_input():
             [out_state] = m.groups()
             if_branch.out_state = out_state
 
-    return (start_state, diagnostics, states)
+    return start_state, diagnostics, states
 
 
 start_state, diagnostics, states = get_input()

@@ -95,7 +95,7 @@ def solve(tiles):
         max_x = max(x, max_x)
         min_y = min(y, min_y)
         max_y = max(y, max_y)
-    result = [[None] * side for foo in range(0, side)]
+    result = [[None] * side for _ in range(0, side)]
     for y in range(min_y, max_y + 1):
         for x in range(min_x, max_x + 1):
             result[y - min_y][x - min_x] = matrix[(x, y)]
@@ -115,7 +115,7 @@ def rotations(pattern):
     def rotate_once(pattern):
         x_len = len(pattern[0])
         y_len = len(pattern)
-        new_pattern = [['?'] * y_len for y in range(0, x_len)]
+        new_pattern = [['?'] * y_len for _ in range(0, x_len)]
         for y in range(0, y_len):
             for x in range(0, x_len):
                 new_pattern[x][y_len - y - 1] = pattern[y][x]
@@ -152,7 +152,7 @@ def step2(tiles):
     matrix = solve(tiles)
     n = len(matrix)
     m = len(tiles[matrix[0][0].id].rotations[0].top) - 2
-    original_grid = ['' for x in range(0, n*m)]
+    original_grid = ['' for _ in range(0, n*m)]
     for y1 in range(0, n):
         for x1 in range(0, n):
             tilerot = matrix[y1][x1]
@@ -187,7 +187,6 @@ def make_tile_rotation(id_, pattern):
     edges = (top, right, bottom, left)
     pattern_as_tuple = tuple([tuple(x) for x in pattern])
     return TileRotation(id_, top, right, bottom, left, edges, pattern_as_tuple)
-
 
 
 def read_input():

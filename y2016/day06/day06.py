@@ -3,7 +3,7 @@ from collections import Counter
 
 
 def aggregated_counts(inp):
-    counters = [Counter() for i in range(0, len(inp[0]))]
+    counters = [Counter() for _ in range(0, len(inp[0]))]
     for line in inp:
         for i in range(0, len(line)):
             counters[i][line[i]] += 1

@@ -9,21 +9,21 @@ for s in sys.stdin.readlines():
 
 
 def h(factor):
-    INF = 1
+    inf = 1
     for a in g.values():
         for v in a.values():
-            INF += v
+            inf += v
 
     def f(i, v=set()):
         if len(v) == len(g):
             return 0
-        r = INF
+        r = inf
         for j in g[i].keys():
             if j not in v:
                 r = min(r, f(j, v | {j}) + factor * g[i][j])
         return r
 
-    r = INF
+    r = inf
     for i in g:
         r = min(r, f(i, {i}))
 

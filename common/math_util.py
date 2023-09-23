@@ -61,7 +61,7 @@ def chinese_remainder_theorem(a1, n1, a2, n2):
     a1_aux = a1 % n1
     a2_aux = a2 % n2
 
-    return ((a1_aux * e1 * m1 + a2_aux * e2 * m2) % n, n)
+    return (a1_aux * e1 * m1 + a2_aux * e2 * m2) % n, n
 
 
 def sign(n):

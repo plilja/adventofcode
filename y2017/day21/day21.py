@@ -2,14 +2,14 @@ import sys
 
 
 def step1(rules):
-    return run(5)
+    return run(5, rules)
 
 
 def step2(rules):
-    return run(18)
+    return run(18, rules)
 
 
-def run(iterations):
+def run(iterations, rules):
     def extract(grid, i, j, r):
         res = []
         for k in range(0, r):

@@ -23,7 +23,6 @@ def step1(nanobots):
 def step2(bots):
     """A* search the box that covers the most bots
        until we reach a box with side 1. Then we have the answer."""
-    cache = {}
     pq = [(-len(bots), 0, bounds(bots))]
     centre = Point(0, 0, 0)
     while pq:

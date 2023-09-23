@@ -43,7 +43,7 @@ def step2(inp):
                     if sub_len > ans_len or (sub_len == ans_len and sub_str > ans_str):
                         ans_len, ans_str = sub_len, sub_str
             cache[key] = (ans_len, ans_str)
-            return (ans_len, ans_str)
+            return ans_len, ans_str
 
     components = frozenset()
     for c in inp:
@@ -58,6 +58,7 @@ def get_input():
         [a, b] = list(map(int, s.strip().split('/')))
         res += [(a, b)]
     return res
+
 
 inp = get_input()
 print(step1(inp))

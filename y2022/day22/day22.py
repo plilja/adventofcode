@@ -12,9 +12,9 @@ def step2(grid, path):
     def next_pos(grid, x, y, dx, dy):
         x2, y2, dx2, dy2 = m[(x, y, dx, dy)]
         if grid[y2][x2] == '#':
-            return (x, y, dx, dy)
+            return x, y, dx, dy
         else:
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
 
     return solve(grid, path, next_pos)
 
@@ -90,39 +90,39 @@ def calc_next_step_matrix_step2(grid):
             x2 = 0
             y2 = 150 + x - 50
             dx2, dy2 = 1, 0
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif y == 0 and dy < 0:
             assert 100 <= x < 150
             x2 = x - 100
             y2 = 199
             dx2, dy2 = 0, -1
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif x == 50 and 0 <= y < 50 and dx < 0:
             x2 = 0
             y2 = 149 - y
             dx2, dy2 = 1, 0
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif x == 50 and 50 <= y < 100 and dx < 0:
             x2 = y - 50
             y2 = 100
             dx2, dy2 = 0, 1
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif y == 49 and 100 <= x < 150 and dy > 0:
             y2 = x - 50
             x2 = 99
             dx2, dy2 = -1, 0
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif x == 149 and dx > 0:
             assert 0 <= y < 50
             x2 = 99
             y2 = 149 - y
             dx2, dy2 = -1, 0
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         elif y == 149 and 50 <= x < 100 and dy > 0:
             x2 = 49
             y2 = 150 + x - 50
             dx2, dy2 = -1, 0
-            return (x2, y2, dx2, dy2)
+            return x2, y2, dx2, dy2
         else:
             return None
 

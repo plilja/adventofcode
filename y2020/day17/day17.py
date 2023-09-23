@@ -25,7 +25,7 @@ def run(initial_state, dim):
     space = [defaultdict(int), defaultdict(int)]
     for y, xs in enumerate(initial_state):
         for x, c in enumerate(xs):
-            key = (x, y) + tuple(0 for i in range(0, dim - 2))
+            key = (x, y) + tuple(0 for _ in range(0, dim - 2))
             space[0][key] = 1 if c == '#' else 0
     for i in range(1, 8):
         nodes = set()

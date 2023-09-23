@@ -26,7 +26,7 @@ def rotate_column(grid, x, n):
 
 
 def get_grid(inp):
-    grid = [[False for i in range(0, 50)] for j in range(0, 6)]
+    grid = [[False for _ in range(0, 50)] for _ in range(0, 6)]
     for line in inp:
         instructions = line.split()
         op = instructions[0]

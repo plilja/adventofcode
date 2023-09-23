@@ -1,7 +1,7 @@
 import sys
 
 
-class Machine():
+class Machine:
     def __init__(self, a, b, c, d, pc):
         self.a = a
         self.b = b

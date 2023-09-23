@@ -4,6 +4,7 @@ from collections import namedtuple
 
 Layer = namedtuple('Layer', 'depth range')
 
+
 def step1(layers):
     return sum(layer.depth * layer.range for layer in run(layers, 0))
 
@@ -26,7 +27,6 @@ def run(layers, start_time):
         layer_pos = time % (2 * layer.range - 2)
         if layer_pos == 0:
             yield layer
-
 
 
 def read_input():

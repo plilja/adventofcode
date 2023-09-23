@@ -1,5 +1,6 @@
 import sys
 
+
 def step1(grid):
     return run(grid)[0]
 

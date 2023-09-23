@@ -1,16 +1,16 @@
 import re
 import sys
 
-microchip_re = re.compile('\w+-compatible microchip')
-generator_re = re.compile('\w+ generator')
+microchip_re = re.compile('\\w+-compatible microchip')
+generator_re = re.compile('\\w+ generator')
 
 
 def step1(inp):
-    return solve(parse_floors())
+    return solve(parse_floors(inp))
 
 
 def step2(inp):
-    floors = parse_floors()
+    floors = parse_floors(inp)
     free_number = 1000  # Can be any number, as long as it doesn't clash with the ones given by parse_floors
     floors = (floors[0] | {free_number, -free_number, free_number + 1, -free_number - 1},) + floors[1:]
     return solve(floors)
@@ -50,8 +50,8 @@ def solve(initial_floors):
     return float('inf')  # unsolvable
 
 
-def parse_floors():
-    floors = [frozenset() for i in range(0, 4)]
+def parse_floors(inp):
+    floors = [frozenset() for _ in range(0, 4)]
     d = {}
     j = 1
     for i in range(0, len(inp)):
@@ -62,14 +62,14 @@ def parse_floors():
             floor = floor | {j}
             d[element] = j
             j += 1
-        floors[i] = (floor)
+        floors[i] = floor
     for i in range(0, len(inp)):
         line = inp[i]
         floor = floors[i]
         for generator in generator_re.findall(line):
             element = generator.split(' ')[0]
             floor = floor | {-d[element]}
-        floors[i] = (floor)
+        floors[i] = floor
     return tuple(floors)
 
 
@@ -125,7 +125,7 @@ def generify(floors):
     Floor 1: [polonium generator, polonium microship]
     Floor 2: [cobalt generator, cobalt microship]
     """
-    new_floors = [frozenset() for f in floors]
+    new_floors = [frozenset() for _ in floors]
     d = {}
     k = 1
     for i in range(0, len(floors)):

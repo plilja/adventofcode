@@ -25,7 +25,7 @@ def read_boss():
     [_, _, hp] = line().split()
     [_, damage] = line().split()
     [_, armor] = line().split()
-    return (int(hp), int(damage), int(armor))
+    return int(hp), int(damage), int(armor)
 
 
 def solve(boss):
@@ -46,7 +46,7 @@ def solve(boss):
         for w in weapons:
             for a in armor_picks():
                 for r in ring_picks():
-                    yield ([w], a, r)
+                    yield [w], a, r
 
     def eval_attr(f, ws, as_, rs):
         ans = 0
@@ -87,7 +87,7 @@ def solve(boss):
         else:
             ans2 = max(ans2, c)
 
-    return (ans1, ans2)
+    return ans1, ans2
 
 
 print(solve(read_boss()))

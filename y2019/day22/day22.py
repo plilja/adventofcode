@@ -74,7 +74,7 @@ def ext_gcd(a, b):
         tmp3 = t
         t = old_t - q * t
         old_t = tmp3
-    return (old_s, old_t, old_r)
+    return old_s, old_t, old_r
 
 
 def geometric_sum(a, e, p):

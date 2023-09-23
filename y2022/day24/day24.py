@@ -53,7 +53,7 @@ def solve(inp, waypoints):
 
 
 def advance_avalanches(grid):
-    new_grid = [[[] for c in row] for row in grid]
+    new_grid = [[[] for _ in row] for row in grid]
     for y, row in enumerate(grid):
         for x, cell in enumerate(row):
             for c in cell:

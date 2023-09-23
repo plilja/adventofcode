@@ -23,7 +23,7 @@ def find(grid, what):
     for y in grid.keys():
         for x in grid[y].keys():
             if grid[y][x] == what:
-                return (x, y)
+                return x, y
 
 
 def step2(program):

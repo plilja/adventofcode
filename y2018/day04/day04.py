@@ -4,7 +4,7 @@ from datetime import datetime
 from collections import Counter
 
 
-class Guard():
+class Guard:
     def __init__(self, nr):
         self.nr = nr
         self.sleep_minutes = Counter()
@@ -34,8 +34,8 @@ class Guard():
             return 0
 
 
-class Records():
-    def __init__(self, records):
+class Records:
+    def __init__(self, inp):
         self.guards = {}
         guard = None
         log = []

@@ -18,10 +18,8 @@ def solve(ip, instructions):
         reg4 *= 65899
         reg4 &= 16777215
         if 256 > reg3:
-            reg5 = 1
             if reg4 in seen:
                 return seen_order[0], seen_order[-1]
-            last_seen = reg4
             seen.add(reg4)
             seen_order.append(reg4)
             start_from_top = True

@@ -37,7 +37,7 @@ def run(a, b, instructions, pointer):
                 pointer += int(arg[2])
             else:
                 pointer += 1
-    return (a, b)
+    return a, b
 
 
 instructions = [s.replace(',', '').split() for s in sys.stdin.readlines()]

@@ -51,7 +51,7 @@ def other_end(x, y):
     ends = find(label)
     for x2, y2 in ends:
         if abs(x - x2) + abs(y - y2) > 2:
-            return (x2, y2)
+            return x2, y2
     return None
 
 

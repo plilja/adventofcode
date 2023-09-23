@@ -39,7 +39,7 @@ def step2(n):
 def neighbours(n, x, y):
     for x, y in [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]:
         if x >= 0 and y >= 0 and is_open(n, x, y):
-            yield (x, y)
+            yield x, y
 
 
 def is_open(n, x, y):

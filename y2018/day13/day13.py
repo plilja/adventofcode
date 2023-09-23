@@ -1,5 +1,6 @@
 import sys
 
+
 def step1(inp):
     crashes, remaining = solve(inp, lambda num_carts: 1)
     return crashes[0]
@@ -25,7 +26,6 @@ def solve(inp, num_crashes_allowed_func):
             elif c == 'v':
                 carts[(x, y)] = (0, 1, 0)
 
-    
     crashes = []
     num_crashes_allowed = num_crashes_allowed_func(len(carts.keys()))
     while len(crashes) < num_crashes_allowed:
@@ -37,7 +37,7 @@ def solve(inp, num_crashes_allowed_func):
             dx, dy, turns = carts[(x, y)]
             if c == '+':
                 r = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-                idx = r.index((-dx, -dy)) # Idx of previous place
+                idx = r.index((-dx, -dy))  # Idx of previous place
                 dx, dy = r[(idx + 1 + (turns % 3)) % 4]
                 turns += 1
             elif c == '\\':
@@ -45,7 +45,7 @@ def solve(inp, num_crashes_allowed_func):
             elif c == '/':
                 dx, dy = -dy, -dx
             else:
-                assert c in ['-', '<', '>', '|', '^', 'v'] # dx, dy is unchanged
+                assert c in ['-', '<', '>', '|', '^', 'v']  # dx, dy is unchanged
 
             x2 = x + dx
             y2 = y + dy

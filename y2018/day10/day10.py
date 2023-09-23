@@ -8,7 +8,7 @@ def bounds(inp):
     max_x = max([point[0] for point in inp])
     min_y = min([point[1] for point in inp])
     max_y = max([point[1] for point in inp])
-    return (min_x, max_x, min_y, max_y)
+    return min_x, max_x, min_y, max_y
 
 
 def print_grid(inp):

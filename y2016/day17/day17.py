@@ -30,7 +30,7 @@ def solve(passcode):
         if x < 3 and open(h[3]):
             q += [(dist + 1, x + 1, y, path + 'R')]
 
-    return (step1_path, step2)
+    return step1_path, step2
 
 
 def md5(v):

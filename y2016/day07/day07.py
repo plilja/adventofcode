@@ -21,7 +21,7 @@ def annotations(n, ip):
                 else:
                     in_brackets += [sub]
 
-    return (in_brackets, outside_brackets)
+    return in_brackets, outside_brackets
 
 
 def step1(inp):

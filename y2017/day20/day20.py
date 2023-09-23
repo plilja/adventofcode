@@ -30,7 +30,7 @@ def step2(particles):
         for pos in particles_map.keys():
             particles_at_pos = particles_map[pos]
             if len(particles_at_pos) > 1:
-                continue # collision
+                continue  # collision
             p = particles_at_pos[0]
             x, y, z = p.position
             dx, dy, dz = p.velocity

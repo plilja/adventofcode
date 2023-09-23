@@ -5,7 +5,7 @@ INF = 10 ** 10
 
 
 def solve(n, m, fact, lim=10000):
-    arr = array('i', [10 for i in range(0, lim + 1)])
+    arr = array('i', [10 for _ in range(0, lim + 1)])
 
     for i in range(2, lim):
         q = min(m, floor(lim / i))
