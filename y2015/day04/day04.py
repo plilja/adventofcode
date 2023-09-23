@@ -8,8 +8,8 @@ def md5(v):
     return m.hexdigest()
 
 
-def solve(n, input):
-    for inp in input:
+def solve(n, inp):
+    for inp in inp:
         i = 0
         while True:
             if md5(inp + str(i))[:n] == (n * '0'):

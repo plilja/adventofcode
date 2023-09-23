@@ -2,7 +2,7 @@ import hashlib
 
 
 def solve(passcode):
-    def open(c):
+    def is_open(c):
         return 'b' <= c <= 'f'
 
     q = []
@@ -21,13 +21,13 @@ def solve(passcode):
             continue
 
         h = md5(passcode + path)
-        if y > 0 and open(h[0]):
+        if y > 0 and is_open(h[0]):
             q += [(dist + 1, x, y - 1, path + 'U')]
-        if y < 3 and open(h[1]):
+        if y < 3 and is_open(h[1]):
             q += [(dist + 1, x, y + 1, path + 'D')]
-        if x > 0 and open(h[2]):
+        if x > 0 and is_open(h[2]):
             q += [(dist + 1, x - 1, y, path + 'L')]
-        if x < 3 and open(h[3]):
+        if x < 3 and is_open(h[3]):
             q += [(dist + 1, x + 1, y, path + 'R')]
 
     return step1_path, step2

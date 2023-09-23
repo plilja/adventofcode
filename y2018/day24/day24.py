@@ -124,10 +124,10 @@ def parse_input():
             immunities = []
             if 'weak to' in s:
                 weaknesses = re.match(
-                    r'.*weak to ([^;\)]+)', s).groups()[0].split(', ')
+                    r'.*weak to ([^;)]+)', s).groups()[0].split(', ')
             if 'immune to' in s:
                 immunities = re.match(
-                    r'.*immune to ([^;\)]+)', s).groups()[0].split(', ')
+                    r'.*immune to ([^;)]+)', s).groups()[0].split(', ')
             attack_damage = int(args[2])
             attack_type = args[3]
             initiative = int(args[4])

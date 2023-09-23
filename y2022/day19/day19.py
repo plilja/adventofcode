@@ -153,9 +153,9 @@ def read_input():
                         Each clay robot costs (\\d+) ore. 
                         Each obsidian robot costs (\\d+) ore and (\\d+) clay. 
                         Each geode robot costs (\\d+) ore and (\\d+) obsidian.''')
-        [id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay] = list(
+        [_id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay] = list(
             map(int, re.match(expr, line).groups()))
-        result.append(Blueprint(id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay))
+        result.append(Blueprint(_id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay))
     return result
 
 

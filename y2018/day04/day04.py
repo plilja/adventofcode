@@ -40,7 +40,7 @@ class Records:
         guard = None
         log = []
         for line in inp:
-            ts_tmp, command = re.match(r'\[(.*)\] (.*)', line).groups()
+            ts_tmp, command = re.match(r'\[(.*)] (.*)', line).groups()
             ts = datetime.strptime(ts_tmp, '%Y-%m-%d %H:%M')
             log += [(ts, command)]
         log.sort()

@@ -41,9 +41,9 @@ def solve(inp, max_rounds):
                 grid[(x, y)] = True
                 elves.append((x, y))
     moves = MOVES[::]
-    round = 0
-    while round < max_rounds:
-        round += 1
+    rounds = 0
+    while rounds < max_rounds:
+        rounds += 1
         elf_to_next_pos = {}
         pos_to_count = defaultdict(int)
         for x, y in elves:
@@ -76,7 +76,7 @@ def solve(inp, max_rounds):
         moves.append(first)
         if not move_happened:
             break
-    return grid, elves, round
+    return grid, elves, rounds
 
 
 def read_input():
