@@ -25,3 +25,4 @@ __pycache__/
 *.iml
 *.swp
 *.pyc
+.answer*

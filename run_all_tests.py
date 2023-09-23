@@ -5,14 +5,10 @@ from concurrent.futures import ProcessPoolExecutor
 import multiprocessing
 
 
-def test(f):
-    p = os.getcwd()
-    os.chdir(f)
-    pys = list(filter(lambda f: f.endswith('.py'), os.listdir('.')))
-    if pys:
-        print(f + '/' + pys[0])
-        os.system('~/workspace/algolib/util/checksol.py %s -e python3' % pys[0])
-    os.chdir(p)
+def test(year, day):
+    day_padded = ('0' + day)[-2:]
+    if os.path.exists('./y{}/day{}/day{}.py'.format(year, day_padded, day_padded)):
+        os.system('./checksol.py {} {}'.format(year, day))
 
 
 def run():
@@ -22,10 +18,12 @@ def run():
         for d in sorted(os.listdir(os.getcwd())):
             try:
                 if os.path.isdir(d):
-                    int(d)  # check that it is an integer
+                    year = d[1:]
+                    int(year)  # check that it is an integer (yYYYY)
                     for f in sorted(os.listdir(d)):
                         if f.startswith('day') and os.path.isdir(d + '/' + f):
-                            future = executor.submit(test, './' + d + '/' + f)
+                            day = f.replace('day', '')
+                            future = executor.submit(test, year, day)
                             futures.append(future)
             except ValueError:
                 pass  # just ignore

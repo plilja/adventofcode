@@ -1,7 +1,5 @@
 from collections import defaultdict
-import sys
-sys.path.append("..")
-from intcode import IntcodeProcess
+from y2019.intcode import IntcodeProcess
 
 TILE_TYPES = {0: ' ', 1: '#', 2: '^', 3: '-', 4: 'o'}
 

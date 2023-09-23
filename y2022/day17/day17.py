@@ -1,7 +1,5 @@
-import sys
-
-sys.path.append("../..")
 from common.util import cycle_with_idx
+
 
 SHAPES = [
     ['####'],

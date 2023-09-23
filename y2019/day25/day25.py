@@ -1,6 +1,4 @@
-import sys
-sys.path.append("..")
-from intcode import IntcodeProcess
+from y2019.intcode import IntcodeProcess
 import itertools
 
 

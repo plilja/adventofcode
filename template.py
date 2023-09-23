@@ -7,7 +7,6 @@ from functools import lru_cache
 from itertools import permutations, combinations, chain, cycle, product, islice
 from heapq import heappop, heappush
 
-sys.path.append("../..")
 from common.math_util import *
 from common.timer import *
 from common.util import *

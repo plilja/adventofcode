@@ -1,8 +1,5 @@
 from itertools import product
-from collections import defaultdict
-import sys
-sys.path.append("..")
-from intcode import IntcodeProcess
+from y2019.intcode import IntcodeProcess
 
 
 def step1(program):

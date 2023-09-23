@@ -1,5 +1,3 @@
-import sys
-sys.path.append("../..")
 from common.math_util import chinese_remainder_theorem
 from math import ceil
 

@@ -1,8 +1,6 @@
 import sys
-
 from heapq import heappop, heappush
 
-sys.path.append("../..")
 from common.util import ever
 
 

@@ -1,5 +1,4 @@
 import sys
-sys.path.append("../..")
 from collections import namedtuple
 from common.math_util import *
 

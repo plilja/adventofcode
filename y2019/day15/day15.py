@@ -1,7 +1,5 @@
-import sys
-sys.path.append("..")
 from collections import defaultdict
-from intcode import IntcodeProcess
+from y2019.intcode import IntcodeProcess
 
 UNKNOWN = -1
 WALL = 0

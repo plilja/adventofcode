@@ -1,8 +1,6 @@
 import sys
-
 from collections import defaultdict
 
-sys.path.append("../..")
 from common.util import neighbors8
 
 MOVES = [((0, -1), [(-1, -1), (0, -1), (1, -1)]),

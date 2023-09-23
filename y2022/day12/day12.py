@@ -1,6 +1,5 @@
 import sys
 
-sys.path.append("../..")
 from common.util import neighbors4
 from collections import deque
 
