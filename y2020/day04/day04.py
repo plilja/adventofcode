@@ -26,7 +26,7 @@ def parse(inp):
 
 def filter_correct_fields(passports):
     result = []
-    for passport in parse(inp):
+    for passport in passports:
         missing = list(filter(lambda f: f not in passport.keys(), FIELDS))
         if missing == [] or missing == ['cid']:
             result.append(passport)
