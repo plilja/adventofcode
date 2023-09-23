@@ -41,6 +41,11 @@ def step2(nums):
     raise ValueError('Unable to find solution')
 
 
-nums = [int(x) for x in sys.stdin]
-print(step1(nums))
-print(step2(nums))
+def main():
+    nums = [int(x) for x in sys.stdin]
+    print(step1(nums))
+    print(step2(nums))
+
+
+if __name__ == '__main__':
+    main()

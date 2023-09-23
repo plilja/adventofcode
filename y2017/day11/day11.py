@@ -35,6 +35,11 @@ def run(directions):
     return dist(x, y), max_dist
 
 
-directions = input().split(',')
-print(step1(directions))
-print(step2(directions))
+def main():
+    directions = input().split(',')
+    print(step1(directions))
+    print(step2(directions))
+
+
+if __name__ == '__main__':
+    main()

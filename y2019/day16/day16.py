@@ -34,6 +34,11 @@ def step2(inp_signal):
     return ''.join(list(map(str, r)))
 
 
-signal = input()
-print(step1(signal))
-print(step2(signal))
+def main():
+    signal = input()
+    print(step1(signal))
+    print(step2(signal))
+
+
+if __name__ == '__main__':
+    main()

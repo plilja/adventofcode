@@ -35,6 +35,11 @@ def get_prio(c):
         return ord(c) - ord('A') + 27
 
 
-inp = [line.strip() for line in sys.stdin.readlines()]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [line.strip() for line in sys.stdin.readlines()]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

@@ -26,6 +26,11 @@ def step2(inp):
     return ans
 
 
-inp = list(map(str.strip, sys.stdin.readlines()))
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = list(map(str.strip, sys.stdin.readlines()))
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

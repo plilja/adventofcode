@@ -57,6 +57,10 @@ def to_snafu(target):
     raise ValueError("No solution found")
 
 
-if __name__ == '__main__':
+def main():
     inp = [line.strip() for line in sys.stdin]
     print(step1(inp))
+
+
+if __name__ == '__main__':
+    main()

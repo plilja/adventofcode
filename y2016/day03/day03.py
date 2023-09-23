@@ -34,6 +34,11 @@ def input_to_matrix(inp):
     return res
 
 
-inp = sys.stdin.read()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = sys.stdin.read()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

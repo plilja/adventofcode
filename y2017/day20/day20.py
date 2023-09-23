@@ -58,6 +58,11 @@ def ints(s):
     return tuple(map(int, s.split(',')))
 
 
-particles = get_input()
-print(step1(particles))
-print(step2(particles))
+def main():
+    particles = get_input()
+    print(step1(particles))
+    print(step2(particles))
+
+
+if __name__ == '__main__':
+    main()

@@ -108,6 +108,11 @@ def read_grid():
     return grid
 
 
-grid = read_grid()
-print(step1(grid))
-print(step2(grid))
+def main():
+    grid = read_grid()
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

@@ -78,7 +78,13 @@ def rev(ls, i, num):
         ls[(i + num - j - 1) % n] = tmp
 
 
-inp = input().strip()
-grid = get_grid(inp)
-print(step1(grid))
-print(step2(grid))
+def main():
+    inp = input().strip()
+    grid = get_grid(inp)
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()
+

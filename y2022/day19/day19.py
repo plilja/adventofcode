@@ -159,8 +159,12 @@ def read_input():
     return result
 
 
-if __name__ == '__main__':
+def main():
     blueprints = read_input()
     print('This one is slow. Wait for it...', file=sys.stderr)
     print(step1(blueprints))
     print(step2(blueprints))
+
+
+if __name__ == '__main__':
+    main()

@@ -19,5 +19,10 @@ def solve(n, inp):
         print(i)
 
 
-n = 5
-solve(n, map(str.strip, sys.stdin.readlines()))
+def main():
+    n = 5
+    solve(n, map(str.strip, sys.stdin.readlines()))
+
+
+if __name__ == '__main__':
+    main()

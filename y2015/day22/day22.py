@@ -128,6 +128,11 @@ def read_boss():
     return Boss(int(hp), int(damage))
 
 
-boss = read_boss()
-print('Step 1:', solve(boss, 0))
-print('Step 2:', solve(boss, 1))
+def main():
+    boss = read_boss()
+    print('Step 1:', solve(boss, 0))
+    print('Step 2:', solve(boss, 1))
+
+
+if __name__ == '__main__':
+    main()

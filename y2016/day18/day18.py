@@ -12,6 +12,11 @@ def solve(first_row, num_rows):
     return ans
 
 
-row = input()
-print(solve(row, 40))
-print(solve(row, 400000))
+def main():
+    row = input()
+    print(solve(row, 40))
+    print(solve(row, 400000))
+
+
+if __name__ == '__main__':
+    main()

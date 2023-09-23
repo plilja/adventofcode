@@ -43,6 +43,11 @@ def read_input():
     return result
 
 
-lines = read_input()
-print(step1(lines))
-print(step2(lines))
+def main():
+    lines = read_input()
+    print(step1(lines))
+    print(step2(lines))
+
+
+if __name__ == '__main__':
+    main()

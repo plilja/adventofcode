@@ -39,7 +39,12 @@ def md5(v):
     return m.hexdigest()
 
 
-passcode = input()
-step1, step2 = solve(passcode)
-print(step1)
-print(step2)
+def main():
+    passcode = input()
+    step1, step2 = solve(passcode)
+    print(step1)
+    print(step2)
+
+
+if __name__ == '__main__':
+    main()

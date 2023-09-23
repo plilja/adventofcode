@@ -67,6 +67,11 @@ def step2(d):
         edge += 2
 
 
-d = int(input())
-print(step1(d))
-print(step2(d))
+def main():
+    d = int(input())
+    print(step1(d))
+    print(step2(d))
+
+
+if __name__ == '__main__':
+    main()

@@ -116,9 +116,14 @@ def set_register(machine, register, value):
         raise ValueError('Unexpected register %s' % register)
 
 
-inp = sys.stdin.readlines()
-print('Step 1')
-print(step1(inp))
-print('This one is slow. Wait for it...', file=sys.stderr)
-print('Step 2')
-print(step2(inp))
+def main():
+    inp = sys.stdin.readlines()
+    print('Step 1')
+    print(step1(inp))
+    print('This one is slow. Wait for it...', file=sys.stderr)
+    print('Step 2')
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

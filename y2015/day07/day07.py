@@ -43,10 +43,17 @@ for line in sys.stdin.readlines():
 
     parse(line.split())
 
-step1 = wires['a']()
-computed.clear()
-wires['b'] = lambda: step1
-step2 = wires['a']()
 
-print(step1)
-print(step2)
+def main():
+    step1 = wires['a']()
+    computed.clear()
+    wires['b'] = lambda: step1
+    step2 = wires['a']()
+
+    print(step1)
+    print(step2)
+
+
+
+if __name__ == '__main__':
+    main()

@@ -34,7 +34,11 @@ def shift(ls, value):
     ls.insert(new_i, value)
 
 
-if __name__ == '__main__':
+def main():
     inp = list(map(int, sys.stdin.readlines()))
     print(step1(inp))
     print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

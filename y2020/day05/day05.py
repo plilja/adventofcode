@@ -43,6 +43,11 @@ def step2(boarding_passes):
     return result
 
 
-boarding_passes = [line.strip() for line in sys.stdin.readlines()]
-print(step1(boarding_passes))
-print(step2(boarding_passes))
+def main():
+    boarding_passes = [line.strip() for line in sys.stdin.readlines()]
+    print(step1(boarding_passes))
+    print(step2(boarding_passes))
+
+
+if __name__ == '__main__':
+    main()

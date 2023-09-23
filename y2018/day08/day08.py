@@ -40,7 +40,11 @@ def step2(inp):
     return sum_func(parse(inp))
 
 
-inp = list(map(int, input().split()))
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = list(map(int, input().split()))
+    print(step1(inp))
+    print(step2(inp))
 
+
+if __name__ == '__main__':
+    main()

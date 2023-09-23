@@ -40,6 +40,12 @@ def step2(inp):
     return dist['SAN'] - 2
 
 
-inp = [tuple(x.strip().split(')')) for x in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [tuple(x.strip().split(')')) for x in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()
+

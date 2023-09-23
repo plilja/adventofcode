@@ -99,7 +99,12 @@ def read_input():
     return scanners
 
 
-scanners = read_input()
-beacons, scanner_positions = solve(scanners)
-print(step1(beacons))
-print(step2(scanner_positions))
+def main():
+    scanners = read_input()
+    beacons, scanner_positions = solve(scanners)
+    print(step1(beacons))
+    print(step2(scanner_positions))
+
+
+if __name__ == '__main__':
+    main()

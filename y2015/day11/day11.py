@@ -36,7 +36,12 @@ def next_passwd(p):
             return p
 
 
-step1 = next_passwd(input())
-print(step1)
-step2 = next_passwd(step1)
-print(step2)
+def main():
+    step1 = next_passwd(input())
+    print(step1)
+    step2 = next_passwd(step1)
+    print(step2)
+
+
+if __name__ == '__main__':
+    main()

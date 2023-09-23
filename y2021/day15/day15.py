@@ -41,6 +41,11 @@ def dijkstra(grid):
     return costs[(n - 1, n - 1)]
 
 
-grid = [list(map(int, s.strip())) for s in sys.stdin]
-print(step1(grid))
-print(step2(grid))
+def main():
+    grid = [list(map(int, s.strip())) for s in sys.stdin]
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

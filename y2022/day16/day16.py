@@ -127,7 +127,12 @@ def read_input():
     return result
 
 
-layout = read_input()
-print(step1(layout))
-print('This one is slow. Wait for it...', file=sys.stderr)
-print(step2(layout))
+def main():
+    layout = read_input()
+    print(step1(layout))
+    print('This one is slow. Wait for it...', file=sys.stderr)
+    print(step2(layout))
+
+
+if __name__ == '__main__':
+    main()

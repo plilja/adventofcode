@@ -51,6 +51,11 @@ def step2(inp):
     return sum([expression(x.replace(' ', ''), simple_expression_step2) for x in inp])
 
 
-inp = [x.strip() for x in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [x.strip() for x in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

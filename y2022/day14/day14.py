@@ -79,6 +79,11 @@ def read_input():
     return paths
 
 
-paths = read_input()
-print(step1(paths))
-print(step2(paths))
+def main():
+    paths = read_input()
+    print(step1(paths))
+    print(step2(paths))
+
+
+if __name__ == '__main__':
+    main()

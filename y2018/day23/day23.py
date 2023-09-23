@@ -109,7 +109,11 @@ def parse_input():
     return r
 
 
-nanobots = parse_input()
-print(step1(nanobots))
-print(step2(nanobots))
+def main():
+    nanobots = parse_input()
+    print(step1(nanobots))
+    print(step2(nanobots))
 
+
+if __name__ == '__main__':
+    main()

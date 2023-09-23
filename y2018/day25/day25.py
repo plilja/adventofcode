@@ -32,7 +32,11 @@ def solve(points):
     return r
 
 
-points = [tuple(map(int, s.strip().split(','))) for s in sys.stdin]
-print(solve(points))
-# No step 2 this day
+def main():
+    points = [tuple(map(int, s.strip().split(','))) for s in sys.stdin]
+    print(solve(points))
+    # No step 2 this day
 
+
+if __name__ == '__main__':
+    main()

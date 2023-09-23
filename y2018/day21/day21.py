@@ -42,8 +42,12 @@ def parse_input():
     return ip, instructions
 
 
-ip, instructions = parse_input()
-a, b = solve(ip, instructions)
-print(a)
-print(b)
+def main():
+    ip, instructions = parse_input()
+    a, b = solve(ip, instructions)
+    print(a)
+    print(b)
 
+
+if __name__ == '__main__':
+    main()

@@ -41,6 +41,11 @@ def rev(ls, i, num):
         ls[(i + num - j - 1) % n] = tmp
 
 
-inp = input().strip()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = input().strip()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

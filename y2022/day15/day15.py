@@ -53,7 +53,12 @@ def read_input():
     return result
 
 
-sensors = read_input()
-print(step1(sensors))
-print('This one is slow. Wait for it...', file=sys.stderr)
-print(step2(sensors))
+def main():
+    sensors = read_input()
+    print(step1(sensors))
+    print('This one is slow. Wait for it...', file=sys.stderr)
+    print(step2(sensors))
+
+
+if __name__ == '__main__':
+    main()

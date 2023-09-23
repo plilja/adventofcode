@@ -19,6 +19,10 @@ def step2(crabs):
     return result
 
 
-crabs = [int(i) for i in input().split(',')]
-print(step1(crabs))
-print(step2(crabs))
+def main():
+    crabs = [int(i) for i in input().split(',')]
+    print(step1(crabs))
+    print(step2(crabs))
+
+if __name__ == '__main__':
+    main()

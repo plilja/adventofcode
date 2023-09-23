@@ -97,6 +97,11 @@ def read_input():
     return result
 
 
-cubes = read_input()
-print(step1(cubes))
-print(step2(cubes))
+def main():
+    cubes = read_input()
+    print(step1(cubes))
+    print(step2(cubes))
+
+
+if __name__ == '__main__':
+    main()

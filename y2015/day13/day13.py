@@ -39,6 +39,11 @@ def step2(g):
     return step1(g_)
 
 
-g = read_input()
-print(step1(g))
-print(step2(g))
+def main():
+    g = read_input()
+    print(step1(g))
+    print(step2(g))
+
+
+if __name__ == '__main__':
+    main()

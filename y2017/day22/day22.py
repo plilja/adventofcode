@@ -68,6 +68,11 @@ def run(inp, state_map, direction_map, iterations):
     return ans
 
 
-inp = [s.strip() for s in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [s.strip() for s in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

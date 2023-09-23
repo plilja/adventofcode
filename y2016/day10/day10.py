@@ -54,7 +54,12 @@ def solve(inp):
     return step1, step2
 
 
-inp = sys.stdin.readlines()
-(step1, step2) = solve(inp)
-print(step1)
-print(step2)
+def main():
+    inp = sys.stdin.readlines()
+    step1, step2 = solve(inp)
+    print(step1)
+    print(step2)
+
+
+if __name__ == '__main__':
+    main()

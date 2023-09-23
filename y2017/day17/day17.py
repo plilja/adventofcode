@@ -21,6 +21,11 @@ def step2(n):
     return ans
         
 
-n = int(input())
-print(step1(n))
-print(step2(n))
+def main():
+    n = int(input())
+    print(step1(n))
+    print(step2(n))
+
+
+if __name__ == '__main__':
+    main()

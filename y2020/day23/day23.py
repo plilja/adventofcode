@@ -51,6 +51,11 @@ def step2(cups):
     return nums[0] * nums[1]
 
 
-cups = [int(x) for x in input()]
-print(step1(cups[::]))
-print(step2(cups[::]))
+def main():
+    cups = [int(x) for x in input()]
+    print(step1(cups[::]))
+    print(step2(cups[::]))
+
+
+if __name__ == '__main__':
+    main()

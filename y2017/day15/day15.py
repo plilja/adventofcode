@@ -31,7 +31,12 @@ def step2(seed_a, seed_b):
     return ans
 
 
-seed_a = int(input())
-seed_b = int(input())
-print(step1(seed_a, seed_b))
-print(step2(seed_a, seed_b))
+def main():
+    seed_a = int(input())
+    seed_b = int(input())
+    print(step1(seed_a, seed_b))
+    print(step2(seed_a, seed_b))
+
+
+if __name__ == '__main__':
+    main()

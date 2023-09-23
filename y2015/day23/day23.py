@@ -40,6 +40,11 @@ def run(a, b, instructions, pointer):
     return a, b
 
 
-instructions = [s.replace(',', '').split() for s in sys.stdin.readlines()]
-print(run(0, 0, instructions, 0)[1])
-print(run(1, 0, instructions, 0)[1])
+def main():
+    instructions = [s.replace(',', '').split() for s in sys.stdin.readlines()]
+    print(run(0, 0, instructions, 0)[1])
+    print(run(1, 0, instructions, 0)[1])
+
+
+if __name__ == '__main__':
+    main()

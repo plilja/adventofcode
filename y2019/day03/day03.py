@@ -43,7 +43,12 @@ def step2(wire1, wire2):
     return min_dist
 
 
-wire1 = input().split(',')
-wire2 = input().split(',')
-print(step1(wire1, wire2))
-print(step2(wire1, wire2))
+def main():
+    wire1 = input().split(',')
+    wire2 = input().split(',')
+    print(step1(wire1, wire2))
+    print(step2(wire1, wire2))
+
+
+if __name__ == '__main__':
+    main()

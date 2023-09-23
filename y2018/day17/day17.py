@@ -75,8 +75,12 @@ def parse_inp():
     return grid
 
 
-sys.setrecursionlimit(4000)
-grid = parse_inp()
-print(step1(grid))
-print(step2(grid))
+def main():
+    sys.setrecursionlimit(4000)
+    grid = parse_inp()
+    print(step1(grid))
+    print(step2(grid))
 
+
+if __name__ == '__main__':
+    main()

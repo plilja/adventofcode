@@ -48,6 +48,11 @@ def step2(grid):
             return i
 
 
-grid = [list(map(int, s.strip())) for s in sys.stdin]
-print(step1(copy.deepcopy(grid)))
-print(step2(copy.deepcopy(grid)))
+def main():
+    grid = [list(map(int, s.strip())) for s in sys.stdin]
+    print(step1(copy.deepcopy(grid)))
+    print(step2(copy.deepcopy(grid)))
+
+
+if __name__ == '__main__':
+    main()

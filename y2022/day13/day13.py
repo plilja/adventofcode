@@ -59,6 +59,11 @@ def parse(line):
     return eval(line)
 
 
-inp = read_input()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = read_input()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

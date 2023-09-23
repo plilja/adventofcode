@@ -10,5 +10,10 @@ def solve(row, col):
         i += 1
 
 
-[row, col] = list(map(int, input().split()))
-print(solve(row, col))
+def main():
+    [row, col] = list(map(int, input().split()))
+    print(solve(row, col))
+
+
+if __name__ == '__main__':
+    main()

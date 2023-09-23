@@ -42,6 +42,12 @@ def read_input():
     return template, rules
 
 
-template, rules = read_input()
-print(step1(template, rules))
-print(step2(template, rules))
+def main():
+    template, rules = read_input()
+    print(step1(template, rules))
+    print(step2(template, rules))
+
+
+if __name__ == '__main__':
+    main()
+

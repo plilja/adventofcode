@@ -11,13 +11,22 @@ from common.math_util import *
 from common.timer import *
 from common.util import *
 
+
 INF = float('inf')
+
 
 def step1(inp):
     pass
 
+
 def read_input():
     return [line.strip() for line in sys.stdin]
 
-inp = read_input()
-print(step1(inp))
+
+def main():
+    inp = read_input()
+    print(step1(inp))
+
+
+if __name__ == '__main__':
+    main()

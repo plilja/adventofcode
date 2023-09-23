@@ -26,6 +26,11 @@ def solve(n, inp):
     return checksum(s[:n])
 
 
-[n, inp] = input().split()
-print(solve(272, inp))
-print(solve(35651584, inp))
+def main():
+    [n, inp] = input().split()
+    print(solve(272, inp))
+    print(solve(35651584, inp))
+
+
+if __name__ == '__main__':
+    main()

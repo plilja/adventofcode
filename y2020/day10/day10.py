@@ -21,6 +21,11 @@ def step2(adapters):
     return ms[0]
 
 
-adapters = [int(x) for x in sys.stdin]
-print(step1(adapters))
-print(step2(adapters))
+def main():
+    adapters = [int(x) for x in sys.stdin]
+    print(step1(adapters))
+    print(step2(adapters))
+
+
+if __name__ == '__main__':
+    main()

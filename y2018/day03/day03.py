@@ -51,7 +51,11 @@ def read_claims():
     return claims
 
 
-claims = read_claims()
-print(step1(claims))
-print(step2(claims))
+def main():
+    claims = read_claims()
+    print(step1(claims))
+    print(step2(claims))
 
+
+if __name__ == '__main__':
+    main()

@@ -50,8 +50,13 @@ def dfs(transitions, curr, v={}):
     return INF
 
 
-g = read_transitions()
-molecule = read_molecule()
+def main():
+    g = read_transitions()
+    molecule = read_molecule()
 
-print(len(step1(g, molecule)))
-print(dfs(g, molecule))
+    print(len(step1(g, molecule)))
+    print(dfs(g, molecule))
+
+
+if __name__ == '__main__':
+    main()

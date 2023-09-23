@@ -30,8 +30,12 @@ def step2(num_players, last_marble):
     return solve(num_players, 100 * last_marble)
 
 
-inp = input().split()
-num_players, last_marble = int(inp[0]), int(inp[6])
-print(step1(num_players, last_marble))
-print(step2(num_players, last_marble))
+def main():
+    inp = input().split()
+    num_players, last_marble = int(inp[0]), int(inp[6])
+    print(step1(num_players, last_marble))
+    print(step2(num_players, last_marble))
 
+
+if __name__ == '__main__':
+    main()

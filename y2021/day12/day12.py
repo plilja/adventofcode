@@ -49,6 +49,11 @@ def read_input():
     return result
 
 
-graph = read_input()
-print(step1(graph))
-print(step2(graph))
+def main():
+    graph = read_input()
+    print(step1(graph))
+    print(step2(graph))
+
+
+if __name__ == '__main__':
+    main()

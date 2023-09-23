@@ -47,6 +47,11 @@ def read_input():
     return int(args[0]), int(args[1]), int(args[2]), int(args[3])
 
 
-args = read_input()
-print(step1(*args))
-print(step2(*args))
+def main():
+    args = read_input()
+    print(step1(*args))
+    print(step2(*args))
+
+
+if __name__ == '__main__':
+    main()

@@ -35,6 +35,11 @@ def step2(start, end):
     return res
 
 
-[start, end] = list(map(int, input().split()))
-print(step1(start, end))
-print(step2(start, end))
+def main():
+    [start, end] = list(map(int, input().split()))
+    print(step1(start, end))
+    print(step2(start, end))
+
+
+if __name__ == '__main__':
+    main()

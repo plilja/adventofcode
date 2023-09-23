@@ -33,7 +33,12 @@ def step2(programs, moves):
     return programs
 
 
-programs = 'abcdefghijklmnop'
-moves = input().strip().split(',')
-print(step1(programs, moves))
-print(step2(programs, moves))
+def main():
+    programs = 'abcdefghijklmnop'
+    moves = input().strip().split(',')
+    print(step1(programs, moves))
+    print(step2(programs, moves))
+
+
+if __name__ == '__main__':
+    main()

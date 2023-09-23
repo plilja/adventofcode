@@ -147,7 +147,11 @@ def parse_input():
     return samples, program
 
 
-samples, program = parse_input()
-print(step1(samples))
-print(step2(samples, program))
+def main():
+    samples, program = parse_input()
+    print(step1(samples))
+    print(step2(samples, program))
 
+
+if __name__ == '__main__':
+    main()

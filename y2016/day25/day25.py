@@ -159,5 +159,10 @@ def set_register(machine, register, value):
         raise ValueError('Unexpected register %s' % register)
 
 
-inp = sys.stdin.readlines()
-print(solve(inp))
+def main():
+    inp = sys.stdin.readlines()
+    print(solve(inp))
+
+
+if __name__ == '__main__':
+    main()

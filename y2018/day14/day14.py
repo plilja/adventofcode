@@ -33,6 +33,11 @@ def step2(n):
     return len(recipes) - len(key)
 
 
-n = int(input())
-print(step1(n))
-print(step2(n))  # This one is slow
+def main():
+    n = int(input())
+    print(step1(n))
+    print(step2(n))  # This one is slow
+
+
+if __name__ == '__main__':
+    main()

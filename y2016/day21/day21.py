@@ -87,6 +87,11 @@ def scramble(start, ops):
     return ''.join(passwd)
 
 
-ops = sys.stdin.readlines()
-print(step1(ops))
-print(step2(ops))
+def main():
+    ops = sys.stdin.readlines()
+    print(step1(ops))
+    print(step2(ops))
+
+
+if __name__ == '__main__':
+    main()

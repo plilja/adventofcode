@@ -79,9 +79,13 @@ def solve(inp):
     return r1, r2
 
 
-sys.setrecursionlimit(10000)
-inp = input().strip()[1:-1]
-a, b = solve(inp)
-print(a)
-print(b)
+def main():
+    sys.setrecursionlimit(10000)
+    inp = input().strip()[1:-1]
+    a, b = solve(inp)
+    print(a)
+    print(b)
 
+
+if __name__ == '__main__':
+    main()

@@ -25,6 +25,11 @@ def step2(lines):
     return -ans
 
 
-lines = sys.stdin.readlines()
-print(step1(lines))
-print(step2(lines))
+def main():
+    lines = sys.stdin.readlines()
+    print(step1(lines))
+    print(step2(lines))
+
+
+if __name__ == '__main__':
+    main()

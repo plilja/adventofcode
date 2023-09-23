@@ -25,6 +25,11 @@ def step2(starting_numbers):
     return run(starting_numbers, 30000000)
 
 
-starting_numbers = [int(x) for x in input().split(',')]
-print(step1(starting_numbers))
-print(step2(starting_numbers))
+def main():
+    starting_numbers = [int(x) for x in input().split(',')]
+    print(step1(starting_numbers))
+    print(step2(starting_numbers))
+
+
+if __name__ == '__main__':
+    main()

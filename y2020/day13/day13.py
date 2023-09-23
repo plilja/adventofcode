@@ -25,7 +25,13 @@ def step2(busses):
     return r[0]
 
 
-x = int(input())
-busses = [y.strip() for y in input().split(',')]
-print(step1(x, busses))
-print(step2(busses))
+def main():
+    x = int(input())
+    busses = [y.strip() for y in input().split(',')]
+    print(step1(x, busses))
+    print(step2(busses))
+
+
+if __name__ == '__main__':
+    main()
+

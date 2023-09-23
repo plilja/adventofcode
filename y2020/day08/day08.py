@@ -59,6 +59,11 @@ def step2(program):
     raise ValueError('Unable to fix program')
 
 
-program = read_program()
-print(step1(program))
-print(step2(program))
+def main():
+    program = read_program()
+    print(step1(program))
+    print(step2(program))
+
+
+if __name__ == '__main__':
+    main()

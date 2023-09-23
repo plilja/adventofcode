@@ -70,7 +70,12 @@ def step2(coordinates):
     return ans
 
 
-coordinates = [tuple(map(int, s.split(', '))) for s in sys.stdin.readlines()]
-print(step1(coordinates))
-print(step2(coordinates))
+def main():
+    coordinates = [tuple(map(int, s.split(', '))) for s in sys.stdin.readlines()]
+    print(step1(coordinates))
+    print(step2(coordinates))
+
+
+if __name__ == '__main__':
+    main()
 

@@ -88,8 +88,12 @@ def determine_terrain(depth, tx, ty, maxx, maxy):
     return terrain
 
 
-depth = int(input().split()[1])
-tx, ty = list(map(int, re.findall(r'\d+', input())))
-print(step1(depth, tx, ty))
-print(step2(depth, tx, ty))  # This one is slow
+def main():
+    depth = int(input().split()[1])
+    tx, ty = list(map(int, re.findall(r'\d+', input())))
+    print(step1(depth, tx, ty))
+    print(step2(depth, tx, ty))  # This one is slow
 
+
+if __name__ == '__main__':
+    main()

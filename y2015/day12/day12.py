@@ -21,6 +21,11 @@ def _sum(j, dict_predicate):
         return int_or_zero(j)
 
 
-j = json.loads(input())
-print(_sum(j, lambda d: d))
-print(_sum(j, lambda d: not ('red' in d.values())))
+def main():
+    j = json.loads(input())
+    print(_sum(j, lambda d: d))
+    print(_sum(j, lambda d: not ('red' in d.values())))
+
+
+if __name__ == '__main__':
+    main()

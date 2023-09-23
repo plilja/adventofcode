@@ -73,7 +73,12 @@ def parse_input(inp):
     return g
 
 
-graph = parse_input(sys.stdin.readlines())
-print(step1(graph))
-print(step2(graph, 5, 60))
+def main():
+    graph = parse_input(sys.stdin.readlines())
+    print(step1(graph))
+    print(step2(graph, 5, 60))
+
+
+if __name__ == '__main__':
+    main()
 

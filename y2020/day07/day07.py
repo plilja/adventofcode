@@ -46,6 +46,12 @@ def step2(rules):
     return dfs('shiny gold') - 1
 
 
-rules = parse([line.strip() for line in sys.stdin.readlines()])
-print(step1(rules))
-print(step2(rules))
+def main():
+    rules = parse([line.strip() for line in sys.stdin.readlines()])
+    print(step1(rules))
+    print(step2(rules))
+
+
+if __name__ == '__main__':
+    main()
+

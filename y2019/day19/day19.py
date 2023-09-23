@@ -57,6 +57,11 @@ def step2(instructions):
     return 10000 * x + y
 
 
-instructions = list(map(int, input().split(',')))
-print(step1(instructions))
-print(step2(instructions))
+def main():
+    instructions = list(map(int, input().split(',')))
+    print(step1(instructions))
+    print(step2(instructions))
+
+
+if __name__ == '__main__':
+    main()

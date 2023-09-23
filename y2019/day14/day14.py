@@ -67,6 +67,12 @@ def read_input():
     return reactions
 
 
-reactions = read_input()
-print(step1(reactions))
-print(step2(reactions))
+def main():
+    reactions = read_input()
+    print(step1(reactions))
+    print(step2(reactions))
+
+
+if __name__ == '__main__':
+    main()
+

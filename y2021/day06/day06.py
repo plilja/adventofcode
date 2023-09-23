@@ -19,6 +19,12 @@ def calculate_fishes(fishes, days):
     return sum(ages.values())
 
 
-fishes = [int(i) for i in input().split(',')]
-print(step1(fishes))
-print(step2(fishes))
+def main():
+    fishes = [int(i) for i in input().split(',')]
+    print(step1(fishes))
+    print(step2(fishes))
+
+
+if __name__ == '__main__':
+    main()
+

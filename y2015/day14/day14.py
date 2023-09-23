@@ -41,6 +41,11 @@ def solve():
     return winner_by_dist, winner_by_points
 
 
-step1, step2 = solve()
-print(step1)
-print(step2)
+def main():
+    step1, step2 = solve()
+    print(step1)
+    print(step2)
+
+
+if __name__ == '__main__':
+    main()

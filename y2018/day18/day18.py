@@ -60,6 +60,11 @@ def solve(inp, iterations):
     return trees * lumber
 
 
-inp = list(map(lambda s: list(s.strip()), sys.stdin.readlines()))
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = list(map(lambda s: list(s.strip()), sys.stdin.readlines()))
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

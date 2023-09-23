@@ -60,6 +60,11 @@ def get_input():
     return res
 
 
-inp = get_input()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = get_input()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

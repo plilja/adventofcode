@@ -156,9 +156,14 @@ def generify(floors):
     return tuple(new_floors)
 
 
-inp = sys.stdin.readlines()
-print('Step 1')
-print(step1(inp))
-print('This one is slow. Wait for it...', file=sys.stderr)
-print('Step 2')
-print(step2(inp))
+def main():
+    inp = sys.stdin.readlines()
+    print('Step 1')
+    print(step1(inp))
+    print('This one is slow. Wait for it...', file=sys.stderr)
+    print('Step 2')
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

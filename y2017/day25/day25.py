@@ -67,6 +67,11 @@ def get_input():
     return start_state, diagnostics, states
 
 
-start_state, diagnostics, states = get_input()
-print(step1(start_state, diagnostics, states))
-# No step 2 for this day
+def main():
+    start_state, diagnostics, states = get_input()
+    print(step1(start_state, diagnostics, states))
+    # No step 2 for this day
+
+
+if __name__ == '__main__':
+    main()

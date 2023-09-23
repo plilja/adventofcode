@@ -50,6 +50,11 @@ def step2(rooms):
     return -1
 
 
-rooms = read_rooms()
-print(step1(rooms))
-print(step2(rooms))
+def main():
+    rooms = read_rooms()
+    print(step1(rooms))
+    print(step2(rooms))
+
+
+if __name__ == '__main__':
+    main()

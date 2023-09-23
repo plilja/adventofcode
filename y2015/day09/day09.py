@@ -30,5 +30,10 @@ def h(factor):
     return r
 
 
-print(h(1))
-print(-h(-1))
+def main():
+    print(h(1))
+    print(-h(-1))
+
+
+if __name__ == '__main__':
+    main()

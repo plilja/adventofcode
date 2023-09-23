@@ -78,7 +78,11 @@ def advance_avalanches(grid):
     return new_grid
 
 
-if __name__ == '__main__':
+def main():
     grid = [line.strip() for line in sys.stdin]
     print(step1(grid))
     print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

@@ -138,7 +138,11 @@ def parse_input():
     return groups
 
 
-groups = parse_input()
-print(step1(groups))
-print(step2(groups))
+def main():
+    groups = parse_input()
+    print(step1(groups))
+    print(step2(groups))
 
+
+if __name__ == '__main__':
+    main()

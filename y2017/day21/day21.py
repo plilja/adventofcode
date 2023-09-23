@@ -76,6 +76,11 @@ def flip(grid):
     return tuple(map(lambda xs: ''.join(xs), res))
 
 
-rules = get_input()
-print(step1(rules))
-print(step2(rules))
+def main():
+    rules = get_input()
+    print(step1(rules))
+    print(step2(rules))
+
+
+if __name__ == '__main__':
+    main()

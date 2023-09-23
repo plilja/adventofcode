@@ -58,6 +58,11 @@ def step2(inp):
     return sum(grids[100 % 2].values())
 
 
-inp = [line.strip() for line in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [line.strip() for line in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

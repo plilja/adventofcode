@@ -98,8 +98,12 @@ def solve(grid, elves_hit, goblins_hit):
     return winner, r, list(elves.values()) + list(goblins.values())
 
 
-# Spread input across a matrix for mutability
-inp = [[c for c in s.strip()] for s in sys.stdin.readlines()]
-print(step1(inp))
-print(step2(inp))
+def main():
+    # Spread input across a matrix for mutability
+    inp = [[c for c in s.strip()] for s in sys.stdin.readlines()]
+    print(step1(inp))
+    print(step2(inp))
 
+
+if __name__ == '__main__':
+    main()

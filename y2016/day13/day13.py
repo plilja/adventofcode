@@ -51,7 +51,12 @@ def is_open(n, x, y):
     return count % 2 == 0
 
 
-n = int(input())
-[x, y] = list(map(int, input().split()))
-print(step1(n, x, y))
-print(step2(n))
+def main():
+    n = int(input())
+    [x, y] = list(map(int, input().split()))
+    print(step1(n, x, y))
+    print(step2(n))
+
+
+if __name__ == '__main__':
+    main()

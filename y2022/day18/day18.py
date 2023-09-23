@@ -69,7 +69,12 @@ def read_input():
     return result
 
 
-inp = read_input()
-sys.setrecursionlimit(2 * len(inp) + 1)
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = read_input()
+    sys.setrecursionlimit(2 * len(inp) + 1)
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

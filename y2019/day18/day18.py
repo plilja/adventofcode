@@ -112,6 +112,11 @@ def step2(grid):
     return solve(grid, robots)
 
 
-grid = [[c for c in s] for s in sys.stdin.readlines()]
-print(step1(grid))
-print(step2(grid))
+def main():
+    grid = [[c for c in s] for s in sys.stdin.readlines()]
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

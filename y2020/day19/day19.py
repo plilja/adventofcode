@@ -61,9 +61,14 @@ def read_input():
     return rules, inp
 
 
-rules, inp = read_input()
-print(solve(rules, inp))
-# Replacements of rule 8 and 11 according to instructions from step 2
-rules[8] = Rule(8, [[42], [42, 8]], None)
-rules[11] = Rule(11, [[42, 31], [42, 11, 31]], None)
-print(solve(rules, inp))
+def main():
+    rules, inp = read_input()
+    print(solve(rules, inp))
+    # Replacements of rule 8 and 11 according to instructions from step 2
+    rules[8] = Rule(8, [[42], [42, 8]], None)
+    rules[11] = Rule(11, [[42, 31], [42, 11, 31]], None)
+    print(solve(rules, inp))
+
+
+if __name__ == '__main__':
+    main()

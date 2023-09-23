@@ -89,8 +89,13 @@ def parse_grid(inp):
     return grid
 
 
-input()  # skip
-input()  # skip
-df = sys.stdin.readlines()
-print(step1(df))
-print(step2(df))
+def main():
+    input()  # skip
+    input()  # skip
+    df = sys.stdin.readlines()
+    print(step1(df))
+    print(step2(df))
+
+
+if __name__ == '__main__':
+    main()

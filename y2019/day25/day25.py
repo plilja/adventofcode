@@ -64,5 +64,10 @@ def solve(instructions):
             add_input(process, 'south')
 
 
-instructions = list(map(int, input().split(',')))
-print(solve(instructions))
+def main():
+    instructions = list(map(int, input().split(',')))
+    print(solve(instructions))
+
+
+if __name__ == '__main__':
+    main()

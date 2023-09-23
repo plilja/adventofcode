@@ -42,6 +42,11 @@ def solve(instructions, tie_breaker):
     return ''.join(map(str, states[0]))
 
 
-inp = [s.strip() for s in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [s.strip() for s in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

@@ -23,6 +23,11 @@ def parse(inp):
     return result
 
 
-inp = sys.stdin.readlines()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = sys.stdin.readlines()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

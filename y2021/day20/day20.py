@@ -40,8 +40,13 @@ def enhance(enhancement, grid, steps):
     return len(lit)
 
 
-inp = sys.stdin.readlines()
-enhancement = inp[0]
-grid = inp[2:]
-print(step1(enhancement, grid))
-print(step2(enhancement, grid))
+def main():
+    inp = sys.stdin.readlines()
+    enhancement = inp[0]
+    grid = inp[2:]
+    print(step1(enhancement, grid))
+    print(step2(enhancement, grid))
+
+
+if __name__ == '__main__':
+    main()

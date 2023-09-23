@@ -117,6 +117,11 @@ def read_input():
     return monkeys, graph
 
 
-monkeys, graph = read_input()
-print(step1(graph, monkeys))
-print(step2(graph, monkeys))
+def main():
+    monkeys, graph = read_input()
+    print(step1(graph, monkeys))
+    print(step2(graph, monkeys))
+
+
+if __name__ == '__main__':
+    main()

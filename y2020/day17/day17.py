@@ -62,7 +62,12 @@ def step2(initial_state):
     return run(initial_state, 4)
 
 
-initial_state = [x.strip() for x in sys.stdin]
-print(step1(initial_state))
-print(step2(initial_state))
-# this one is really slow
+def main():
+    initial_state = [x.strip() for x in sys.stdin]
+    print(step1(initial_state))
+    print(step2(initial_state))
+    # this one is really slow
+
+
+if __name__ == '__main__':
+    main()

@@ -92,6 +92,11 @@ def read_input():
     return rules, your_ticket, nearby_tickets
 
 
-rules, your_ticket, nearby_tickets = read_input()
-print(step1(rules, nearby_tickets))
-print(step2(rules, your_ticket, nearby_tickets))
+def main():
+    rules, your_ticket, nearby_tickets = read_input()
+    print(step1(rules, nearby_tickets))
+    print(step2(rules, your_ticket, nearby_tickets))
+
+
+if __name__ == '__main__':
+    main()

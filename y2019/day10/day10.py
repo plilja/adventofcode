@@ -60,7 +60,12 @@ def step2(inp):
     return 100 * last_vaporized[0] + last_vaporized[1]
 
 
-getcontext().prec = 8
-inp = list(map(str.strip, sys.stdin.readlines()))
-print(step1(inp)[0])
-print(step2(inp))
+def main():
+    getcontext().prec = 8
+    inp = list(map(str.strip, sys.stdin.readlines()))
+    print(step1(inp)[0])
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

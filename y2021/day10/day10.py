@@ -49,6 +49,11 @@ def step2(inp):
     return rows[len(rows) // 2]
 
 
-inp = [s.strip() for s in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [s.strip() for s in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

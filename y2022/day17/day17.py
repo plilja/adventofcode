@@ -106,6 +106,11 @@ def get_skyline(grid, highest):
     return tuple(res)
 
 
-jet_stream = input()
-print(step1(jet_stream))
-print(step2(jet_stream))
+def main():
+    jet_stream = input()
+    print(step1(jet_stream))
+    print(step2(jet_stream))
+
+
+if __name__ == '__main__':
+    main()

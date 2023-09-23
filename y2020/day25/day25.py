@@ -22,7 +22,12 @@ def step1(card_public, door_public):
     return transform(card_public, door_loop_size)
 
 
-card_public = int(input())
-door_public = int(input())
-print(step1(card_public, door_public))
-# No step 2 this day
+def main():
+    card_public = int(input())
+    door_public = int(input())
+    print(step1(card_public, door_public))
+    # No step 2 this day
+
+
+if __name__ == '__main__':
+    main()

@@ -86,6 +86,11 @@ def step2(instructions):
     return result
 
 
-instructions = list(map(int, input().split(',')))
-print(step1(instructions))
-print(step2(instructions))
+def main():
+    instructions = list(map(int, input().split(',')))
+    print(step1(instructions))
+    print(step2(instructions))
+
+
+if __name__ == '__main__':
+    main()

@@ -31,6 +31,11 @@ def step2(blocks):
     return step1(state)
     
 
-blocks = [int(i) for i in input().split()]
-print(step1(blocks))
-print(step2(blocks))
+def main():
+    blocks = [int(i) for i in input().split()]
+    print(step1(blocks))
+    print(step2(blocks))
+
+
+if __name__ == '__main__':
+    main()

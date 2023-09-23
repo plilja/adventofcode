@@ -38,6 +38,11 @@ def read_input():
     return res
 
 
-g = read_input()
-print(step1(g))
-print(step2(g))
+def main():
+    g = read_input()
+    print(step1(g))
+    print(step2(g))
+
+
+if __name__ == '__main__':
+    main()

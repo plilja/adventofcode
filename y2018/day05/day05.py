@@ -20,6 +20,11 @@ def step2(inp):
     return min(lengths)
 
 
-inp = input()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = input()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

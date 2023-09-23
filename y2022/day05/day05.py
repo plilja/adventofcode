@@ -53,6 +53,11 @@ def read_input():
     return stacks, moves
 
 
-stacks, moves = read_input()
-print(step1(stacks, moves))
-print(step2(stacks, moves))
+def main():
+    stacks, moves = read_input()
+    print(step1(stacks, moves))
+    print(step2(stacks, moves))
+
+
+if __name__ == '__main__':
+    main()

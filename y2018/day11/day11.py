@@ -35,6 +35,11 @@ def solve(serial_number, min_size, max_size):
     return rx, ry, rz
 
 
-serial_number = int(input())
-print(step1(serial_number))
-print(step2(serial_number)) 
+def main():
+    serial_number = int(input())
+    print(step1(serial_number))
+    print(step2(serial_number))
+
+
+if __name__ == '__main__':
+    main()

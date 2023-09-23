@@ -102,6 +102,12 @@ def read_instructions():
     return result
 
 
-instructions = read_instructions()
-print(step1(instructions))
-print(step2(instructions))
+def main():
+    instructions = read_instructions()
+    print(step1(instructions))
+    print(step2(instructions))
+
+
+if __name__ == '__main__':
+    main()
+

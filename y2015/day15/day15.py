@@ -41,6 +41,11 @@ def solve(ings, pred):
     return f(ings, 100, )
 
 
-ings = read_input()
-print(solve(ings, lambda calories: True))
-print(solve(ings, lambda calories: calories == 500))
+def main():
+    ings = read_input()
+    print(solve(ings, lambda calories: True))
+    print(solve(ings, lambda calories: calories == 500))
+
+
+if __name__ == '__main__':
+    main()

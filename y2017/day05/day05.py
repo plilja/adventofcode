@@ -28,6 +28,11 @@ def step2(inp):
     return ans
 
 
-inp = [int(s) for s in sys.stdin.readlines()]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [int(s) for s in sys.stdin.readlines()]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

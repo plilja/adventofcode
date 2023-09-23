@@ -66,6 +66,11 @@ def parse_input(lines):
     return result
 
 
-lines = sys.stdin.readlines()
-print(step1(parse_input(lines)))
-print(step2(parse_input(lines)))
+def main():
+    lines = sys.stdin.readlines()
+    print(step1(parse_input(lines)))
+    print(step2(parse_input(lines)))
+
+
+if __name__ == '__main__':
+    main()

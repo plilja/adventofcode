@@ -47,6 +47,11 @@ def step2(program):
         print()
 
 
-program = list(map(int, input().split(',')))
-print(step1(program))
-step2(program)
+def main():
+    program = list(map(int, input().split(',')))
+    print(step1(program))
+    step2(program)
+
+
+if __name__ == '__main__':
+    main()

@@ -35,7 +35,12 @@ def parse_discs(inp):
     return res
 
 
-inp = sys.stdin.readlines()
-discs = parse_discs(inp)
-print(step1(discs))
-print(step2(discs))
+def main():
+    inp = sys.stdin.readlines()
+    discs = parse_discs(inp)
+    print(step1(discs))
+    print(step2(discs))
+
+
+if __name__ == '__main__':
+    main()

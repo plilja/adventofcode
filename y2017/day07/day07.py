@@ -63,8 +63,13 @@ def step2(programs, root):
     return go(root)
 
 
-programs = read_input()
-root = step1(programs)
-print(root.name)
-print(step2(programs, root))
+def main():
+    programs = read_input()
+    root = step1(programs)
+    print(root.name)
+    print(step2(programs, root))
+
+
+if __name__ == '__main__':
+    main()
 

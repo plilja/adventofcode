@@ -55,6 +55,11 @@ def step2(instructions):
     return abs(x) + abs(y)
 
 
-instructions = [x.strip() for x in sys.stdin]
-print(step1(instructions))
-print(step2(instructions))
+def main():
+    instructions = [x.strip() for x in sys.stdin]
+    print(step1(instructions))
+    print(step2(instructions))
+
+
+if __name__ == '__main__':
+    main()

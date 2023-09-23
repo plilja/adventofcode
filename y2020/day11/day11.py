@@ -76,6 +76,11 @@ def step2(inp):
     return solve(inp, get_diagonal, 5)
 
 
-inp = [list(x.strip()) for x in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [list(x.strip()) for x in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

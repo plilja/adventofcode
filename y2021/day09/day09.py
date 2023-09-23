@@ -39,6 +39,11 @@ def step2(inp):
     return basins[0] * basins[1] * basins[2]
 
 
-inp = [list(map(int, line.strip())) for line in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [list(map(int, line.strip())) for line in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

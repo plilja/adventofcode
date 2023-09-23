@@ -23,6 +23,12 @@ def solve(datastream, count):
     return -1
 
 
-datastream = input()
-print(step1(datastream))
-print(step2(datastream))
+def main():
+    datastream = input()
+    print(step1(datastream))
+    print(step2(datastream))
+
+
+if __name__ == '__main__':
+    main()
+

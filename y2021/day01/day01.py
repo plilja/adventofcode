@@ -17,6 +17,11 @@ def step2(inp):
     return result
 
 
-inp = [int(i) for i in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [int(i) for i in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

@@ -171,7 +171,11 @@ def read_input():
     return grid, path
 
 
-if __name__ == '__main__':
+def main():
     grid, path = read_input()
     print(step1(grid, path))
     print(step2(grid, path))
+
+
+if __name__ == '__main__':
+    main()

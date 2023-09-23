@@ -33,6 +33,11 @@ def md5(v):
     return m.hexdigest()
 
 
-door_id = input().strip()
-print(step1(door_id))
-print(step2(door_id))
+def main():
+    door_id = input().strip()
+    print(step1(door_id))
+    print(step2(door_id))
+
+
+if __name__ == '__main__':
+    main()

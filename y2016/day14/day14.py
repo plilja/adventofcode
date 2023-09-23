@@ -70,7 +70,13 @@ def md5(v):
     return m.hexdigest()
 
 
-salt = input().strip()
-print(step1(salt))
-print('This one is slow...', file=sys.stderr)
-print(step2(salt))
+def main():
+    salt = input().strip()
+    print(step1(salt))
+    print('This one is slow...', file=sys.stderr)
+    print(step2(salt))
+
+
+if __name__ == '__main__':
+    main()
+

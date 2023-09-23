@@ -213,6 +213,11 @@ def read_input():
     return tiles
 
 
-tiles = read_input()
-print(step1(tiles))
-print(step2(tiles))
+def main():
+    tiles = read_input()
+    print(step1(tiles))
+    print(step2(tiles))
+
+
+if __name__ == '__main__':
+    main()

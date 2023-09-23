@@ -84,6 +84,11 @@ def single_char(c, s):
     return len(s) > 0 and s[0] == c
 
 
-inp = input()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = input()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

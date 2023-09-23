@@ -63,6 +63,11 @@ def tsp(grid, return_to_start):
     return solve(grid, 0, dists, unvisited)
 
 
-grid = sys.stdin.readlines()
-print(step1(grid))
-print(step2(grid))
+def main():
+    grid = sys.stdin.readlines()
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

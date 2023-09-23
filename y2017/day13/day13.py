@@ -37,6 +37,11 @@ def read_input():
     return res
 
 
-layers = read_input()    
-print(step1(layers))
-print(step2(layers))
+def main():
+    layers = read_input()
+    print(step1(layers))
+    print(step2(layers))
+
+
+if __name__ == '__main__':
+    main()

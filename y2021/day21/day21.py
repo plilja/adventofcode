@@ -47,7 +47,12 @@ def replace(t, i, v):
     return tuple(result)
 
 
-player1 = int(input().split()[-1])
-player2 = int(input().split()[-1])
-print(step1(player1, player2))
-print(step2(player1, player2))
+def main():
+    player1 = int(input().split()[-1])
+    player2 = int(input().split()[-1])
+    print(step1(player1, player2))
+    print(step2(player1, player2))
+
+
+if __name__ == '__main__':
+    main()

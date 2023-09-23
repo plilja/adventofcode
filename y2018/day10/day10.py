@@ -54,5 +54,10 @@ def parse_inp():
     return res
 
 
-inp = parse_inp()
-solve(inp, 15000)
+def main():
+    inp = parse_inp()
+    solve(inp, 15000)
+
+
+if __name__ == '__main__':
+    main()

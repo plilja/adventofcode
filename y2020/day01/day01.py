@@ -31,6 +31,11 @@ def step2(nums):
     raise ValueError('Unable to find solution')
 
 
-nums = list(map(int, sys.stdin.readlines()))
-print(step1(nums))
-print(step2(nums))
+def main():
+    nums = list(map(int, sys.stdin.readlines()))
+    print(step1(nums))
+    print(step2(nums))
+
+
+if __name__ == '__main__':
+    main()

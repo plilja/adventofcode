@@ -59,6 +59,11 @@ def solve(packages, groups):
     return INF
 
 
-packages = list(map(int, sys.stdin.readlines()))
-print(solve(packages, 3))
-print(solve(packages, 4))
+def main():
+    packages = list(map(int, sys.stdin.readlines()))
+    print(solve(packages, 3))
+    print(solve(packages, 4))
+
+
+if __name__ == '__main__':
+    main()

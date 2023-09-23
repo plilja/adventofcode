@@ -44,9 +44,13 @@ def solve(initial_state, notes, iterations):
     return sum([k + off for k in state.keys() if state[k] == '#'])
 
 
-state = input().split()[2]
-input()  # skip blank row
-notes = {k: v for k, _, v in map(str.split, sys.stdin.readlines())}
-print(step1(state, notes))
-print(step2(state, notes))
+def main():
+    state = input().split()[2]
+    input()  # skip blank row
+    notes = {k: v for k, _, v in map(str.split, sys.stdin.readlines())}
+    print(step1(state, notes))
+    print(step2(state, notes))
 
+
+if __name__ == '__main__':
+    main()

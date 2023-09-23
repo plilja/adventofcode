@@ -31,6 +31,11 @@ def step2(inp):
     return '\n'.join([''.join(x) for x in image])
 
 
-inp = input()
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = input()
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

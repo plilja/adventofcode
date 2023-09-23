@@ -23,6 +23,11 @@ def step2(inp):
     raise ValueError('No solution found')
 
 
-inp = list(map(str.strip, sys.stdin.readlines()))
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = list(map(str.strip, sys.stdin.readlines()))
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

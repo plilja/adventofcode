@@ -57,6 +57,11 @@ def read_input():
     return result
 
 
-foods = read_input()
-print(step1(foods))
-print(step2(foods))
+def main():
+    foods = read_input()
+    print(step1(foods))
+    print(step2(foods))
+
+
+if __name__ == '__main__':
+    main()

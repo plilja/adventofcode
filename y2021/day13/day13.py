@@ -59,6 +59,12 @@ def read_input():
     return grid, folds
 
 
-grid, folds = read_input()
-print(step1(copy.deepcopy(grid), folds))
-step2(copy.deepcopy(grid), folds)
+def main():
+    grid, folds = read_input()
+    print(step1(copy.deepcopy(grid), folds))
+    step2(copy.deepcopy(grid), folds)
+
+
+if __name__ == '__main__':
+    main()
+

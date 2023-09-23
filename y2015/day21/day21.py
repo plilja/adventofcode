@@ -90,4 +90,9 @@ def solve(boss):
     return ans1, ans2
 
 
-print(solve(read_boss()))
+def main():
+    print(solve(read_boss()))
+
+
+if __name__ == '__main__':
+    main()

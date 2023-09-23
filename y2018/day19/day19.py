@@ -93,7 +93,11 @@ def parse_input():
     return ip, instructions
 
 
-ip, instructions = parse_input()
-print(step1(ip, instructions))
-print(step2(ip, instructions))
+def main():
+    ip, instructions = parse_input()
+    print(step1(ip, instructions))
+    print(step2(ip, instructions))
 
+
+if __name__ == '__main__':
+    main()

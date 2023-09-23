@@ -6,7 +6,7 @@ def lcm(a, b):
     return abs(a * b) // gcd(a, b)
 
 
-def forward(vs, dvs):
+def forward(moons, vs, dvs):
     for j in range(0, len(vs)):
         for k in range(0, len(vs)):
             if j == k:
@@ -27,9 +27,9 @@ def step1(moons):
     zs = [m[2] for m in moons]
     dzs = [0 for _ in range(0, 4)]
     for i in range(0, 1000):
-        forward(xs, dxs)
-        forward(ys, dys)
-        forward(zs, dzs)
+        forward(moons, xs, dxs)
+        forward(moons, ys, dys)
+        forward(moons, zs, dzs)
     result = 0
     for i in range(0, 4):
         result += (abs(xs[i]) + abs(ys[i]) + abs(zs[i])) * (abs(dxs[i]) + abs(dys[i]) + abs(dzs[i]))
@@ -44,7 +44,7 @@ def step2(moons):
         first = (tuple(vs), tuple(dvs))
         i = 0
         while i == 0 or first != (tuple(vs), tuple(dvs)):
-            forward(vs, dvs)
+            forward(moons, vs, dvs)
             i += 1
         result = lcm(result, i)
     return result
@@ -55,6 +55,11 @@ def read_moon():
     return int(x), int(y), int(z)
 
 
-moons = [read_moon() for _ in range(0, 4)]
-print(step1(moons))
-print(step2(moons))
+def main():
+    moons = [read_moon() for _ in range(0, 4)]
+    print(step1(moons))
+    print(step2(moons))
+
+
+if __name__ == '__main__':
+    main()

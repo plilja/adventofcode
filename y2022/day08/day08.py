@@ -46,6 +46,11 @@ def step2(grid):
     return result
 
 
-grid = [s.strip() for s in sys.stdin.readlines()]
-print(step1(grid))
-print(step2(grid))
+def main():
+    grid = [s.strip() for s in sys.stdin.readlines()]
+    print(step1(grid))
+    print(step2(grid))
+
+
+if __name__ == '__main__':
+    main()

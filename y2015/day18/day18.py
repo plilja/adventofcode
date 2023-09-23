@@ -47,11 +47,16 @@ def read_input():
     return grid
 
 
-grid = read_input()
-print(solve(grid, set()))
+def main():
+    grid = read_input()
+    print(solve(grid, set()))
 
-grid[0][0] = 1
-grid[0][DIM - 1] = 1
-grid[DIM - 1][0] = 1
-grid[DIM - 1][DIM - 1] = 1
-print(solve(grid, {(0, 0), (DIM - 1, 0), (0, DIM - 1), (DIM - 1, DIM - 1)}))
+    grid[0][0] = 1
+    grid[0][DIM - 1] = 1
+    grid[DIM - 1][0] = 1
+    grid[DIM - 1][DIM - 1] = 1
+    print(solve(grid, {(0, 0), (DIM - 1, 0), (0, DIM - 1), (DIM - 1, DIM - 1)}))
+
+
+if __name__ == '__main__':
+    main()

@@ -43,6 +43,11 @@ def signum(x):
         return 1
 
 
-inp = [(x.split()[0], int(x.split()[1])) for x in sys.stdin]
-print(step1(inp))
-print(step2(inp))
+def main():
+    inp = [(x.split()[0], int(x.split()[1])) for x in sys.stdin]
+    print(step1(inp))
+    print(step2(inp))
+
+
+if __name__ == '__main__':
+    main()

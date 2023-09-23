@@ -35,6 +35,11 @@ def solve(lines, toggle, turn_on, turn_off):
     return ans
 
 
-lines = sys.stdin.readlines()
-print(solve(lines, lambda x: (x + 1) % 2, lambda x: 1, lambda x: 0))
-print(solve(lines, lambda x: x + 2, lambda x: x + 1, lambda x: max(0, x - 1)))
+def main():
+    lines = sys.stdin.readlines()
+    print(solve(lines, lambda x: (x + 1) % 2, lambda x: 1, lambda x: 0))
+    print(solve(lines, lambda x: x + 2, lambda x: x + 1, lambda x: max(0, x - 1)))
+
+
+if __name__ == '__main__':
+    main()

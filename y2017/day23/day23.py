@@ -52,6 +52,11 @@ def step2():
     return sum(1 if not is_prime(i) else 0 for i in range(109900, 126900 + 1, 17))
 
 
-inp = sys.stdin.readlines()
-print(step1(inp))
-print(step2())
+def main():
+    inp = sys.stdin.readlines()
+    print(step1(inp))
+    print(step2())
+
+
+if __name__ == '__main__':
+    main()

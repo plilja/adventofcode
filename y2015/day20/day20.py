@@ -20,8 +20,13 @@ def solve(n, m, fact, lim=10000):
     return solve(n, m, fact, 2 * lim)
 
 
-n = int(input())
-a = solve(n, INF, 10)
-print(a)
-b = solve(n, 50, 11)
-print(b)
+def main():
+    n = int(input())
+    a = solve(n, INF, 10)
+    print(a)
+    b = solve(n, 50, 11)
+    print(b)
+
+
+if __name__ == '__main__':
+    main()

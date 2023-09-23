@@ -33,6 +33,11 @@ def step2(containers):
     return 0
 
 
-containers = [int(s) for s in sys.stdin.readlines()]
-print(step1(containers))
-print(step2(containers))
+def main():
+    containers = [int(s) for s in sys.stdin.readlines()]
+    print(step1(containers))
+    print(step2(containers))
+
+
+if __name__ == '__main__':
+    main()

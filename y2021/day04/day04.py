@@ -54,6 +54,11 @@ def read_input():
     return draw, boards
 
 
-draw, boards = read_input()
-print(step1(draw, boards))
-print(step2(draw, boards))
+def main():
+    draw, boards = read_input()
+    print(step1(draw, boards))
+    print(step2(draw, boards))
+
+
+if __name__ == '__main__':
+    main()
