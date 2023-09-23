@@ -34,3 +34,25 @@ def traced(f):
         return result
 
     return traced_f
+
+
+def cycle(ls):
+    i = -1
+
+    def f():
+        nonlocal i
+        i = (i + 1) % len(ls)
+        return ls[i]
+
+    return f
+
+
+def cycle_with_idx(ls):
+    i = -1
+
+    def f():
+        nonlocal i
+        i = (i + 1) % len(ls)
+        return ls[i], i % len(ls)
+
+    return f

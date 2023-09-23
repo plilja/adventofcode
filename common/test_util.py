@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from common.util import ever, traced, manhattan
+from common.util import ever, traced, manhattan, cycle
 
 
 @traced
@@ -26,3 +26,13 @@ class Test(TestCase):
         self.assertEqual(0, manhattan((0, 0), (0, 0)))
         self.assertEqual(2, manhattan((0, -2), (0, 0)))
         self.assertEqual(2, manhattan((0, 0), (-2, 0)))
+
+    def test_cycle(self):
+        c = cycle([1, 2, 3])
+        self.assertEqual(1, c())
+        self.assertEqual(2, c())
+        self.assertEqual(3, c())
+        self.assertEqual(1, c())
+        self.assertEqual(2, c())
+        self.assertEqual(3, c())
+        self.assertEqual(1, c())
