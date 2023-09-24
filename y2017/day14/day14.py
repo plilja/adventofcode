@@ -1,3 +1,6 @@
+from common.util import deltas4
+
+
 M = 256
 
 
@@ -24,8 +27,7 @@ def step2(grid):
                     if (x_, y_) in visited:
                         continue
                     visited |= {(x_, y_)}
-                    deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-                    for dx, dy in deltas:
+                    for dx, dy in deltas4():
                         if 0 <= x_ + dx < 128 and \
                                 0 <= y_ + dy < 128 and \
                                 grid[y_ + dy][x_ + dx] == 1:

@@ -1,14 +1,7 @@
-import sys
 import copy
+import sys
 
-DELTAS = [(1, 0),
-          (1, 1),
-          (0, 1),
-          (-1, 1),
-          (-1, 0),
-          (-1, -1),
-          (0, -1),
-          (1, -1)]
+from common.util import deltas8
 
 FLOOR = '.'
 EMPTY = 'L'
@@ -44,7 +37,7 @@ def solve(inp, nearby_seat_func, limit):
             for x in range(0, len(seats[i % 2][y])):
                 seat = seats[i % 2][y][x]
                 in_proximity = 0
-                for dx, dy in DELTAS:
+                for dx, dy in deltas8():
                     if nearby_seat_func(seats[i % 2], x + dx, dx, y + dy, dy) == OCCUPIED:
                         in_proximity += 1
 

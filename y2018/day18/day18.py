@@ -1,16 +1,6 @@
 import copy
 import sys
-
-deltas = [
-        (-1, -1),
-        (0, -1),
-        (1, -1),
-        (-1, 0),
-        (1, 0),
-        (-1, 1),
-        (0, 1),
-        (1, 1)
-        ]
+from common.util import deltas8
 
 
 def step1(inp):
@@ -30,7 +20,7 @@ def solve(inp, iterations):
         for y in range(0, len(g)):
             for x in range(0, len(g[y])):
                 num_trees, num_lumber, num_open = 0, 0, 0
-                for dx, dy in deltas:
+                for dx, dy in deltas8():
                     if 0 <= y + dy < len(g) and 0 <= x + dx < len(g[y]):
                         num_trees += 1 if g[y + dy][x + dx] == '|' else 0
                         num_open += 1 if g[y + dy][x + dx] == '.' else 0

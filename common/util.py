@@ -7,9 +7,17 @@ def ever(n=0):
 
 def neighbors4(x, y):
     return ((x + 1, y),
-            (x, y - 1),
+            (x, y + 1),
             (x - 1, y),
-            (x, y + 1))
+            (x, y - 1))
+
+
+def deltas4():
+    return [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+
+def deltas8():
+    return [(1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)]
 
 
 def neighbors8(x, y):

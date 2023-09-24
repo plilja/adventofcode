@@ -2,13 +2,7 @@ import sys
 import copy
 from collections import defaultdict
 
-
-DELTAS = [
-        (1, 0),
-        (-1, 0),
-        (0, 1),
-        (0, -1)
-    ]
+from common.util import deltas4
 
 
 def biodiversity(grid):
@@ -36,7 +30,7 @@ def step1(initial_grid):
         for y in range(0, 5):
             for x in range(0, 5):
                 c = 0
-                for dx, dy in DELTAS:
+                for dx, dy in deltas4():
                     if grid[y + dy][x + dx]:
                         c += 1
                 next_grid[y][x] = grid[y][x]
@@ -66,7 +60,7 @@ def step2(initial_grid):
                     if (x, y) == (2, 2):
                         continue
                     c = 0
-                    for dx, dy in DELTAS:
+                    for dx, dy in deltas4():
                         x2 = x + dx
                         y2 = y + dy
                         if (x2, y2) == (2, 2):

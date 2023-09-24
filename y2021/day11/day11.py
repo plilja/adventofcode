@@ -1,14 +1,7 @@
-import sys
 import copy
+import sys
 
-deltas = [(1, 0),
-          (1, 1),
-          (0, 1),
-          (-1, 1),
-          (-1, 0),
-          (-1, -1),
-          (0, -1),
-          (1, -1)]
+from common.util import deltas8
 
 
 def one_step(grid):
@@ -23,7 +16,7 @@ def one_step(grid):
         x, y = flashes.pop(0)
         grid[y][x] = 0
         result += 1
-        for dx, dy in deltas:
+        for dx, dy in deltas8():
             if 0 <= x + dx < 10 and 0 <= y + dy < 10:
                 if 0 < grid[y + dy][x + dx] < 10:
                     grid[y + dy][x + dx] += 1

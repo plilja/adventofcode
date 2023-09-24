@@ -1,8 +1,7 @@
 import sys
 import copy
 from collections import deque
-
-deltas = [(0, -1), (-1, 0), (1, 0), (0, 1)]
+from common.util import deltas4
 
 
 def step1(grid):
@@ -33,7 +32,7 @@ def solve(grid, elves_hit, goblins_hit):
         pre = {}
         while q:
             x, y = q.popleft()
-            for dx, dy in deltas:
+            for dx, dy in deltas4():
                 if (x + dx, y + dy) in targets:
                     p = (x, y)
                     if (x, y) == (start_x, start_y):
@@ -80,7 +79,7 @@ def solve(grid, elves_hit, goblins_hit):
                 grid[y][x] = '.'
                 x, y = move
 
-            attacking_dist = [(x + dx, y + dy) for dx, dy in deltas]
+            attacking_dist = [(x + dx, y + dy) for dx, dy in deltas4()]
             possible_attacks = sorted(
                 [p for p in attacking_dist if p in targets], key=lambda p: (targets[p], p[1], p[0]))
             if possible_attacks:

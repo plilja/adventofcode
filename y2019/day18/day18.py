@@ -2,12 +2,7 @@ import sys
 import heapq
 from collections import defaultdict
 
-DELTAS = [
-        (1, 0),
-        (-1, 0),
-        (0, 1),
-        (0, -1)
-    ]
+from common.util import deltas4
 
 
 def find(grid, what):
@@ -47,7 +42,7 @@ def dist(grid, initial_x, initial_y):
         v.add(v_key)
         if is_key(grid[y][x]) and (x, y) != (initial_x, initial_y):
             result.append((d, x, y, needed_keys))
-        for dx, dy in DELTAS:
+        for dx, dy in deltas4():
             x2 = x + dx
             y2 = y + dy
             if y2 < 0 or y2 >= len(grid):

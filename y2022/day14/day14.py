@@ -1,4 +1,5 @@
 import sys
+from common.math_util import sign
 
 
 def step1(paths):
@@ -28,8 +29,8 @@ def simulate(paths):
         for i in range(1, len(path)):
             x1, y1 = path[i - 1]
             x2, y2 = path[i]
-            dx = signum(x2 - x1)
-            dy = signum(y2 - y1)
+            dx = sign(x2 - x1)
+            dy = sign(y2 - y1)
             x, y = x1, y1
             grid.add((x, y))
             while x != x2 or y != y2:
@@ -59,14 +60,6 @@ def simulate(paths):
             return result - 1
         grid.add((x, y))
 
-
-def signum(x):
-    if x == 0:
-        return 0
-    elif x < 0:
-        return -1
-    else:
-        return 1
 
 
 def read_input():

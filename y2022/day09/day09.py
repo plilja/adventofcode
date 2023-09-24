@@ -1,4 +1,5 @@
 import sys
+from common.math_util import sign
 
 dirs = {
     'R': (1, 0),
@@ -26,21 +27,13 @@ def snake(inp, ropelen):
             rope[0][1] += dy
             for i in range(1, ropelen):
                 if abs(rope[i - 1][0] - rope[i][0]) > 1 or abs(rope[i - 1][1] - rope[i][1]) > 1:
-                    dx2 = signum(rope[i - 1][0] - rope[i][0])
-                    dy2 = signum(rope[i - 1][1] - rope[i][1])
+                    dx2 = sign(rope[i - 1][0] - rope[i][0])
+                    dy2 = sign(rope[i - 1][1] - rope[i][1])
                     rope[i][0] += dx2
                     rope[i][1] += dy2
             visited.add(tuple(rope[-1]))
     return len(visited)
 
-
-def signum(x):
-    if x == 0:
-        return 0
-    elif x < 0:
-        return -1
-    else:
-        return 1
 
 
 def main():

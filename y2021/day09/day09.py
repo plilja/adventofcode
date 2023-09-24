@@ -1,6 +1,6 @@
 import sys
 
-deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+from common.util import deltas4
 
 
 def step1(inp):
@@ -8,7 +8,7 @@ def step1(inp):
     for y in range(0, len(inp)):
         for x in range(0, len(inp[y])):
             lowest = True
-            for dx, dy in deltas:
+            for dx, dy in deltas4():
                 if 0 <= x + dx < len(inp[y]) and 0 <= y + dy < len(inp):
                     lowest = lowest and inp[y][x] < inp[y + dy][x + dx]
             if lowest:
@@ -25,7 +25,7 @@ def step2(inp):
             return 0
         result = 1
         visited.add((x, y))
-        for dx, dy in deltas:
+        for dx, dy in deltas4():
             result += dfs(x + dx, y + dy, visited)
         return result
 

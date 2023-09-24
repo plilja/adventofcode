@@ -1,4 +1,5 @@
 import re
+from common.math_util import sign
 
 
 def step1(x1, x2, y1, y2):
@@ -34,11 +35,6 @@ def solve(x1, x2, y1, y2):
                 max_ys.append(max_y)
     return max(max_ys), len(max_ys)
 
-
-def sign(n):
-    if n == 0:
-        return 0
-    return -1 if n < 0 else 1
 
 
 def read_input():

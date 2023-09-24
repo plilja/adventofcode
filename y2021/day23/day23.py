@@ -1,6 +1,7 @@
 import heapq
 import sys
 
+from common.util import deltas4
 
 COST = {'A': 1,
         'B': 10,
@@ -25,8 +26,6 @@ GRID2 = ['#############',
          '  #.#.#.#.#',
          '  #.#.#.#.#',
          '  #########']
-
-DELTAS = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
 
 def step1(inp):
@@ -88,7 +87,7 @@ def possible_moves(grid, correct, incorrect):
                     result.append((init_pos, (x, y, c), move_cost))
                 elif init_pos[1] != 1 and grid[y][x] == ' ':
                     result.append((init_pos, (x, y, c), move_cost))  # can rest at this position
-            for dx, dy in DELTAS:
+            for dx, dy in deltas4():
                 new_pos = (x + dx, y + dy, c)
                 if grid[y + dy][x + dx] != '#' and (x + dx, y + dy) not in vis and (x + dx, y + dy) not in occupied:
                     vis.add((x, y))

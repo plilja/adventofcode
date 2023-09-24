@@ -1,10 +1,7 @@
 import sys
 import heapq
 
-DELTAS = [(1, 0),
-          (0, 1),
-          (-1, 0),
-          (0, -1)]
+from common.util import deltas4
 
 
 def step1(grid):
@@ -33,7 +30,7 @@ def dijkstra(grid):
         if (x, y) in costs:
             continue
         costs[(x, y)] = cost
-        for dx, dy in DELTAS:
+        for dx, dy in deltas4():
             x2 = x + dx
             y2 = y + dy
             if 0 <= x2 < len(grid[0]) and 0 <= y2 < len(grid):

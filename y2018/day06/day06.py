@@ -1,7 +1,6 @@
 import sys
 from collections import defaultdict, deque
-
-deltas = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+from common.util import deltas4
 
 
 def step1(coordinates):
@@ -27,7 +26,7 @@ def step1(coordinates):
         closest[y][x] |= {i}
         dist[y][x] = d
         visited[y][x][i] = True
-        for dx, dy in deltas:
+        for dx, dy in deltas4():
             if edge_left_x <= x + dx <= edge_right_x and edge_bottom_y <= y + dy <= edge_top_y:
                 q.append((x + dx, y + dy, i, d + 1))
 
