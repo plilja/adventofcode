@@ -34,7 +34,7 @@ def solve(initial_state, notes, iterations):
         if cache_key in cache:
             (prev_gen, prev_off) = cache[cache_key]
             d = generation - prev_gen
-            loops = (iterations - i - 1) // d
+            loops = (iterations - len(initial_state) - 1) // d
             generation += d * loops
             off += loops * (off - prev_off)
 

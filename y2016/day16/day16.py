@@ -27,7 +27,7 @@ def solve(n, inp):
 
 
 def main():
-    [n, inp] = input().split()
+    [_, inp] = input().split()
     print(solve(272, inp))
     print(solve(35651584, inp))
 

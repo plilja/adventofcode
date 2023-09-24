@@ -8,7 +8,7 @@ def solve(n, m, fact, lim=10000):
     arr = array('i', [10 for _ in range(0, lim + 1)])
 
     for i in range(2, lim):
-        q = min(m, floor(lim / i))
+        q = min(m, lim // i)
         for j in range(1, q + 1):
             arr[j * i] += fact * i
 

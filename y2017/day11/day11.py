@@ -28,6 +28,8 @@ def run(directions):
             dx, dy = 0, 1
         elif dr == 'nw':
             dx, dy = -1, 0
+        else:
+            raise ValueError('Unknown direction ' + dr)
         x += dx
         y += dy
         max_dist = max(max_dist, dist(x, y))

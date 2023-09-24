@@ -79,7 +79,7 @@ def spells():
 
 
 def solve(boss, turn_cost):
-    def apply_spells(player, boss, avail_spells, act_spells):
+    def apply_spells(player, boss, act_spells):
         act_spells_ = {}
         for k, s in act_spells.items():
             s_, player, boss = s.apply(player, boss)
@@ -88,7 +88,7 @@ def solve(boss, turn_cost):
         return player, boss, act_spells_
 
     def boss_turn(player, boss, avail_spells, act_spells, best):
-        player, boss, act_spells = apply_spells(player, boss, avail_spells, act_spells)
+        player, boss, act_spells = apply_spells(player, boss, act_spells)
         if boss.hp <= 0:
             return 0
         else:
@@ -102,7 +102,7 @@ def solve(boss, turn_cost):
         player = inflict_damage(player, turn_cost)
         if player.hp <= 0:
             return float('inf')
-        player, boss, act_spells = apply_spells(player, boss, avail_spells, act_spells)
+        player, boss, act_spells = apply_spells(player, boss, act_spells)
         if boss.hp <= 0:
             return 0
 

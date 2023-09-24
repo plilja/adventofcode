@@ -40,7 +40,7 @@ def execute(m, instructions):
         elif xs[0] == 'tgl':
             tgl(m, xs[1], instructions)
         else:
-            raise ValueError('Unexpected instruction [%s]' % inp[0])
+            raise ValueError('Unexpected instruction [%s]' % xs[0])
 
 
 def try_mul(m, instructions):

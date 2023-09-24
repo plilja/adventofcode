@@ -2,7 +2,6 @@ import sys
 import re
 from collections import namedtuple
 from enum import Enum
-from math import *
 
 Group = namedtuple(
     'Group', 'type id units hit_points weaknesses immunities attack_damage attack_type initiative')

@@ -30,7 +30,7 @@ def run(iterations, rules):
             d = 3
 
         side_length = (len(grid) // d) * (d + 1)
-        new_grid = [['.'] * side_length for k in range(0, side_length)]
+        new_grid = [['.'] * side_length for _ in range(0, side_length)]
         for i in range(0, len(grid) // d):
             for j in range(0, len(grid) // d):
                 p = extract(grid, i*d, j*d, d)

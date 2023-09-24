@@ -2,7 +2,7 @@ import sys
 from math import *
 
 
-def solve(ip, instructions):
+def solve():
     seen_order = []
     seen = set()
     reg3, reg4, reg5 = 0, 0, 0
@@ -30,21 +30,8 @@ def solve(ip, instructions):
             start_from_top = False
 
 
-def parse_input():
-    instructions = []
-    ip = None
-    for s in sys.stdin:
-        args = s.split()
-        if args[0] == '#ip':
-            ip = int(args[1])
-        else:
-            instructions += [[args[0]] + list(map(int, args[1:]))]
-    return ip, instructions
-
-
 def main():
-    ip, instructions = parse_input()
-    a, b = solve(ip, instructions)
+    a, b = solve()
     print(a)
     print(b)
 

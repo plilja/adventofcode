@@ -16,7 +16,7 @@ def step1(inp):
                         continue
                     n1 = grid[y1][x1]
                     n2 = grid[y2][x2]
-                    if n1.used > 0 and n2.size - n2.used >= n1.used:
+                    if 0 < n1.used <= n2.size - n2.used:
                         r += 1
     return r
 

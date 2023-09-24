@@ -40,7 +40,7 @@ def get_label(x, y):
     c1 = grid[y][x]
     for dy, dx in DELTAS:
         c2 = get_or(x + dx, y + dy, '-')
-        if c2 >= 'A' and c2 <= 'Z':
+        if 'A' <= c2 <= 'Z':
             return min(c1, c2) + max(c1, c2)
     raise ValueError('Unable to get label at %d %d' % (x, y))
 

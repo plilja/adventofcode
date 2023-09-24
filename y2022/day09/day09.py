@@ -19,8 +19,8 @@ def step2(inp):
 def snake(inp, ropelen):
     rope = [[0, 0] for _ in range(0, ropelen)]
     visited = set()
-    for dir, steps in inp:
-        dx, dy = dirs[dir]
+    for directory, steps in inp:
+        dx, dy = dirs[directory]
         for _ in range(0, steps):
             rope[0][0] += dx
             rope[0][1] += dy

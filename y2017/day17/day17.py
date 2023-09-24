@@ -16,10 +16,10 @@ def step2(n):
         pos = (pos + n) % buf_len
         pos += 1
         if pos == 1:
-            ans = val
+            return val
         buf_len += 1
-    return ans
-        
+    raise ValueError('Solution not found')
+
 
 def main():
     n = int(input())

@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict, deque
+from collections import defaultdict
 
 DELTAS = [(1, 0, 0), 
           (-1, 0, 0), 

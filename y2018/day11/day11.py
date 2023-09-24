@@ -22,7 +22,7 @@ def solve(serial_number, min_size, max_size):
             s += power_level(serial_number, x, y)
             grid[y][x] = grid[y - 1][x] + s
 
-    r, rz, ry, rz = 0, 0, 0, 0
+    r, rx, rz, ry, rz = 0, 0, 0, 0, 0
     for z in range(min_size, max_size + 1):
         for y in range(1, 301 - z):
             for x in range(1, 301 - z):

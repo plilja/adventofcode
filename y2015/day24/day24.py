@@ -50,7 +50,7 @@ def solve(packages, groups):
             used.remove(j)
         return ans
 
-    for c in range(1, floor(n / groups) + 1):
+    for c in range(1, n // groups + 1):
         s = set()
         a = f(target, c, 0, s)
         if a < INF:

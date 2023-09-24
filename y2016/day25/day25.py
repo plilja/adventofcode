@@ -53,7 +53,7 @@ def execute(m, instructions):
                 return True
             visited |= {(m_copy, tuple(instructions))}
         else:
-            raise ValueError('Unexpected instruction [%s]' % inp[0])
+            raise ValueError('Unexpected instruction [%s]' % xs[0])
 
 
 def valid_signal(signal):

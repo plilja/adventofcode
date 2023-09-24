@@ -13,7 +13,7 @@ def step2(layers):
     i = 0
     while True:
         valid = True
-        for caught_layer in run(layers, i):
+        for _ in run(layers, i):
             valid = False
             break
         if valid:
